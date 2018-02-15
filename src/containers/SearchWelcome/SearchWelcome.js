@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
+import { getCityData, cleanEventData } from '../../helper';
+import { addEvents } from '../../actions/';
 import './SearchWelcome.css';
 
 // SearchWelcome.propTypes = {
@@ -21,9 +23,20 @@ export class SearchWelcome extends Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     // make fetch call to api with function from helper
+    console.log('handleSubmit')
+    const response = await getCityData();
+    const events = await cleanEventData(response);
+
+    console.log('handleSubmit events', events);
+    this.props.addEvents(events);
+
+    // if successful put city into local storage
+    // take clean data and put it into redux store
+    // this.push history onto 
+    // error return an error
   }
 
   render() {
@@ -46,4 +59,8 @@ export class SearchWelcome extends Component {
   }
 }
 
-export default SearchWelcome;
+const mapDispatchToProps = (dispatch) => ({
+  addEvents: events => dispatch(addEvents(events)),
+})
+
+export default connect(null, mapDispatchToProps)(SearchWelcome);
