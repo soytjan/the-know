@@ -17,6 +17,7 @@ class Main extends Component {
     return (
       <section className="Main">
         I'm a Main!
+        <h3>{this.props.title}</h3>
         <Route 
           exact path='/home' 
           render={() => (<Events info='home data' />)}
