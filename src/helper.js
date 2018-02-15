@@ -6,10 +6,11 @@ import key from './api/key.js';
 
 // http://denver.eventful.com/events/categories#!when=next%2030%20days -- think about the categories section
 
-export const getCityData = async () => {
+export const getCityData = async (location) => {
   try {
     const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&date=Future&app_key=${key}`
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${key}`
+    // const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&date=Future&app_key=${key}`
     const response = await fetch(url, {mode: 'cors'})
     return await response.json();
   } catch (error) {
