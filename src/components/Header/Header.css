@@ -6,7 +6,8 @@
   justify-content: space-between;
   border-bottom: 10px solid #4ECDC4; }
   .Header h1 {
-    font-size: 2.5em; }
+    font-size: 2.5em;
+    padding: 15px 15px 10px; }
   .Header a {
     text-decoration: none;
     color: #383838;
@@ -14,8 +15,13 @@
     .Header a:hover {
       background-color: #BEECE9; }
 
+.header-link-cont {
+  display: flex; }
+
 .header-link-box {
   border-left: 1px solid #383838;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 120px;
   height: 100%; }
