@@ -3,11 +3,28 @@ import { shallow } from 'enzyme';
 import SearchWelcome from './SearchWelcome';
 
 describe('SearchWelcome', () => {
-  it.skip('should match snapshot', () => {
-    const renderedComponent = shallow(<SearchWelcome />);
+  let renderedComponent;
 
-    expect(renderedComponent).toMatchSnapshot();
+  beforeEach(() => {
+    renderedComponent = shallow(<SearchWelcome />);
   })
 
-  it('', )
+  it.skip('should match snapshot', () => {
+    expect(renderedComponent).toMatchSnapshot();
+  });
+
+  it('should update state on input change', () => {
+    const mockEvent = { target: { value: 'abc', name: 'location' }};
+    const expected = 'abc';
+
+    renderedComponent.instance().handleChange(mockEvent);
+
+    renderedComponent.update();
+
+    expect(renderedComponent.state().location).toEqual(expected);
+  });
+
+  it('should call searchCity when button is clicked', () => {
+
+  });
 })
