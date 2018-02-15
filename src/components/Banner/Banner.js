@@ -1,4 +1,5 @@
 import React from 'react';
+import NavCategories from '../../containers/NavCategories/NavCategories';
 import './Banner.css';
 
 
@@ -7,6 +8,7 @@ const Banner = () => {
   return (
     <section className="banner">
       I'm a BANNER!
+      <NavCategories /> 
     </section>
   )
 }
