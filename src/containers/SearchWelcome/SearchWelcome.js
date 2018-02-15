@@ -31,11 +31,9 @@ export class SearchWelcome extends Component {
       const response = await getCityData(location);
       const events = await cleanEventData(response);
       this.props.addEvents(events);
-      // localStorage.setItem('location', location)
-
-      // this.push history onto 
+      localStorage.setItem('location', location); 
+      // this.push history to home page 
       // this.props.history.push('/home');
-      console.log(this.props)
     } catch (error) {
       this.setState({ error: true })
     } 
