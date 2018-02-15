@@ -1,9 +1,8 @@
-export const eventsReducer = (state = [], action) => {
+export const favoritesReducer = (state = [], action) => {
   switch(action.type) {
-    case 'ADD_EVENTS':
+    case 'ADD_FAVORITES':
       return [...state, ...action.events];
     default:
       return state;
   }
 };
-

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import Events from '../../components/Events/Events';
+import NavTime from '../NavTime/NavTime';
 import './Main.css';
 
 // Main.propTypes = {
@@ -13,13 +14,16 @@ import './Main.css';
 // };
 
 class Main extends Component {
+  // on componentDidMount make the fetch calls for music, food, culture, nightlife
+
   render() {
     return (
       <section className="Main">
         I'm a Main!
+        <h3>{this.props.type}</h3>
         <Route 
           exact path='/home' 
-          render={() => (<Events info='home data' />)}
+          render={() => (<Events info={this.props.events} />)}
         />
         <Route 
           exact path='/music' 
@@ -42,4 +46,8 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = (state) => ({
+  events: state.events,
+})
+
+export default connect(mapStateToProps)(Main);

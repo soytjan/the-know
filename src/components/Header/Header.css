@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Poiret+One");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300|Poiret+One");
 .Header {
   display: flex;
   flex-direction: row;
@@ -23,5 +23,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
+  width: 130px;
   height: 100%; }

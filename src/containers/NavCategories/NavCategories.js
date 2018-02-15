@@ -4,25 +4,24 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './NavCategories.css';
 
-NavCategories.propTypes = {
+// NavCategories.propTypes = {
 
-};
+// };
 
 class NavCategories extends Component {
   render() {
     return (
       <nav className='NavCategories'>
-        I'm a NavCategories!
-        <NavLink to='/music'>
+        <NavLink to='/home/music'>
           Music
         </NavLink>
-        <NavLink to='/food'>
+        <NavLink to='/home/food'>
           Food
         </NavLink>
-        <NavLink to='/culture'>
+        <NavLink to='/home/culture'>
           Culture
         </NavLink>
-        <NavLink to='/nightlife'>
+        <NavLink to='/home/nightlife'>
           Nightlife
         </NavLink>
       </nav>

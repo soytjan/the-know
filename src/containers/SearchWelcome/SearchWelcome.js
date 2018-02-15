@@ -14,6 +14,7 @@ export class SearchWelcome extends Component {
     super();
     this.state = {
       location: '',
+      error: false,
     }
   }
 
@@ -25,18 +26,17 @@ export class SearchWelcome extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    // make fetch call to api with function from helper
-    console.log('handleSubmit')
-    const response = await getCityData();
-    const events = await cleanEventData(response);
-
-    console.log('handleSubmit events', events);
-    this.props.addEvents(events);
-
-    // if successful put city into local storage
-    // take clean data and put it into redux store
-    // this.push history onto 
-    // error return an error
+    try {
+      const { location } = this.state;
+      const response = await getCityData(location);
+      const events = await cleanEventData(response);
+      this.props.addEvents(events);
+      localStorage.setItem('location', location); 
+      // this.push history to home page 
+      // this.props.history.push('/home');
+    } catch (error) {
+      this.setState({ error: true })
+    } 
   }
 
   render() {
