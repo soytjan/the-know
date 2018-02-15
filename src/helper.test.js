@@ -5,7 +5,7 @@ describe('helper', () => {
     expect(true).toEqual(false);
   })
 
-  describe('findCity', () => {
+  describe('getCityData', () => {
     it('should call fetch with the expected params', () => {
 
     });
@@ -15,7 +15,7 @@ describe('helper', () => {
     });
 
     it('should throw an error if status code is not okay', () => {
-      
+
     })
   })
 })
