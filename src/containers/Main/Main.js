@@ -48,6 +48,8 @@ class Main extends Component {
 
 const mapStateToProps = (state) => ({
   events: state.events,
+  music: state.music,
+  
 })
 
 export default connect(mapStateToProps)(Main);
