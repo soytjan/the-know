@@ -8,4 +8,6 @@ describe('SearchWelcome', () => {
 
     expect(renderedComponent).toMatchSnapshot();
   })
+
+  it('', )
 })
