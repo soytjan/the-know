@@ -6,6 +6,8 @@ import Banner from '../Banner/Banner';
 import Main from '../../containers/Main/Main';
 import './App.css';
 
+// think about if I need all the other route paths in here if I just need it to load main...then change these paths within main
+
 class App extends Component {
   render() {
     return (
