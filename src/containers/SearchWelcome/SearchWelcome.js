@@ -7,7 +7,7 @@ import './SearchWelcome.css';
 
 // };
 
-class SearchWelcome extends Component {
+export class SearchWelcome extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,14 +22,15 @@ class SearchWelcome extends Component {
   }
 
   handleSubmit = (e) => {
-
+    e.preventDefault();
+    // make fetch call to api with function from helper
   }
 
   render() {
     return (
       <article className='SearchWel'>
         <h2>Discover your city</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
             value={this.state.location}

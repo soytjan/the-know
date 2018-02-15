@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import SearchWelcome from './SearchWelcome';
+import { SearchWelcome } from './SearchWelcome';
 
 describe('SearchWelcome', () => {
   let renderedComponent;
@@ -24,7 +24,7 @@ describe('SearchWelcome', () => {
     expect(renderedComponent.state().location).toEqual(expected);
   });
 
-  it('should call searchCity when button is clicked', () => {
-
+  it('should call findCity with the expected params on handleSubmit', () => {
+    
   });
 })
