@@ -8,11 +8,10 @@ import key from './api/key.js';
 
 export const getCityData = async () => {
   try {
-    const url = `http://api.eventful.com/json/events/search?...&location=San+Diego&date=Future&app_key=${key}`
+    const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&date=Future&app_key=${key}`
     const response = await fetch(url, {mode: 'cors'})
-    // debugger
-    const jsonEvents = await response.json();
-    return jsonEvents;
+    return await response.json();
   } catch (error) {
     throw (error);
   }
@@ -36,6 +35,5 @@ export const cleanEventData = (cityData) => {
     }
   })
 
-  console.log(cleanedEvents);
   return cleanedEvents;
 }

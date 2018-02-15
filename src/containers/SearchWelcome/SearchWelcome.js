@@ -26,12 +26,12 @@ export class SearchWelcome extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     // make fetch call to api with function from helper
-    console.log('handleSubmit')
+    const { location } = this.state;
+    console.log(location);
     const response = await getCityData();
     const events = await cleanEventData(response);
-
-    console.log('handleSubmit events', events);
     this.props.addEvents(events);
+    // localStorage.setItem('location', )
 
     // if successful put city into local storage
     // take clean data and put it into redux store
