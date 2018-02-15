@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  font-family: $header-font;
+  justify-content: space-between;
+  border-bottom: 10px solid $turq;
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  a {
+    text-decoration: none;
+    color: $default-font-color;
+    font-size: 1.5em;
+
+    &:hover {
+      background-color: $headerlink-hover-color;
+    }
+  }
+}
+
+.header-link-box {
+  border-left: 1px solid $black;
+  display: inline-block;
+  width: 120px;
+  height: 100%;
+}
