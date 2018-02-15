@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Poiret+One");
+.SearchWel {
+  background-color: #FBFCFC; }
+  .SearchWel h2 {
+    font-size: 1.5em; }
+
+.input-wel {
+  font-size: 1.2em;
+  width: 350px; }
