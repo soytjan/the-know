@@ -14,7 +14,7 @@ const middleware = applyMiddleware(logger);
 const store = createStore(rootReducer, devTools, middleware);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store = { store }>
     <BrowserRouter>
       <App />
     </BrowserRouter>

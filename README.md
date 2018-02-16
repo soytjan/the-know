@@ -24,4 +24,10 @@ Describe and show how to run the tests with code examples.
 
 Amanda Tjan is the software developer for this project.
 
+## Wireframes
+
+![Welcome Page](./public/TheKnow-Welcome.png)
+![Main Landing Page](./public/TheKnow-Main.png)
+![Music Landing Page](./public/TheKnow-MusicLanding.png)
+
 
