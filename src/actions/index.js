@@ -28,7 +28,7 @@ export const addNightlife = events => ({
   events
 });
 
-export const addFavorites = events => {
+export const addFavorites = events => ({
   type: 'ADD_FAVORITES',
   events
-}
+});
