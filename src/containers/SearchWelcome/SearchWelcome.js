@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import { getCityData, cleanEventData } from '../../helper';
-import { addEvents } from '../../actions/';
+import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 
 // SearchWelcome.propTypes = {
@@ -18,6 +18,8 @@ export class SearchWelcome extends Component {
     }
   }
 
+  // componentDidMount -- check and see if there is anything in localStorage and check for geobase location
+
   handleChange = (e) => {
     const { value, name } = e.target;
 
@@ -31,7 +33,9 @@ export class SearchWelcome extends Component {
       const response = await getCityData(location);
       const events = await cleanEventData(response);
       this.props.addEvents(events);
+      this.props.addLocation(location);
       localStorage.setItem('location', location); 
+      console.log(this.props)
       // this.push history to home page 
       // this.props.history.push('/home');
     } catch (error) {
@@ -61,6 +65,7 @@ export class SearchWelcome extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   addEvents: events => dispatch(addEvents(events)),
+  addLocation: location => dispatch(addLocation(location))
 })
 
 export default connect(null, mapDispatchToProps)(SearchWelcome);

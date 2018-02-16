@@ -15,31 +15,36 @@ import './Main.css';
 
 class Main extends Component {
   // on componentDidMount make the fetch calls for music, food, culture, nightlife
+  // componentDidMount = async() {
+  //   const musicResponse = await 
+  // }
 
   render() {
+    const { events, music, food, culture, nightlife } = this.props;
+
     return (
       <section className="Main">
         I'm a Main!
         <h3>{this.props.type}</h3>
         <Route 
           exact path='/home' 
-          render={() => (<Events info={this.props.events} />)}
+          render={() => (<Events info={events} />)}
         />
         <Route 
-          exact path='/music' 
-          render={() => (<Events info='music data' />)}
+          exact path='/home/music' 
+          render={() => (<Events info={music} />)}
         />
         <Route 
-          exact path='/food' 
-          render={() => (<Events info='food data' />)}
+          exact path='/home/food' 
+          render={() => (<Events info={food} />)}
         />
         <Route 
-          exact path='/culture' 
-          render={() => (<Events info='culture data' />)}
+          exact path='/home/culture' 
+          render={() => (<Events info={culture} />)}
         />
         <Route 
-          exact path='/nightlife' 
-          render={() => (<Events info='nightlife data' />)}
+          exact path='/home/9nightlife' 
+          render={() => (<Events info={nightlife} />)}
         />
       </section>
     )
@@ -49,7 +54,9 @@ class Main extends Component {
 const mapStateToProps = (state) => ({
   events: state.events,
   music: state.music,
-  
+  food: state.food,
+  culture: state.culture,
+  nightlife: state.nightlife
 })
 
 export default connect(mapStateToProps)(Main);
