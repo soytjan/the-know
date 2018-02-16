@@ -10,8 +10,8 @@ import './SearchWelcome.css';
 // };
 
 export class SearchWelcome extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       location: '',
       error: false,
@@ -35,7 +35,7 @@ export class SearchWelcome extends Component {
       this.props.addEvents(events);
       this.props.addLocation(location);
       localStorage.setItem('location', location); 
-      console.log(this.props)
+      this.props.onReroute()
       // this.push history to home page 
       // this.props.history.push('/home');
     } catch (error) {
