@@ -26,26 +26,7 @@ class Main extends Component {
       <section className="Main">
         I'm a Main!
         <h3>{this.props.type}</h3>
-        <Route 
-          exact path='/home' 
-          render={() => (<Events info={events} />)}
-        />
-        <Route 
-          exact path='/home/music' 
-          render={() => (<Events info={music} />)}
-        />
-        <Route 
-          exact path='/home/food' 
-          render={() => (<Events info={food} />)}
-        />
-        <Route 
-          exact path='/home/culture' 
-          render={() => (<Events info={culture} />)}
-        />
-        <Route 
-          exact path='/home/9nightlife' 
-          render={() => (<Events info={nightlife} />)}
-        />
+        
       </section>
     )
   }

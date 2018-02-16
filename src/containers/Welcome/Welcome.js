@@ -9,6 +9,10 @@ import './Welcome.css';
 // };
 
 class Welcome extends Component {
+  handleReroute = () => {
+    return this.props.history.push('/home');
+  }
+
   render() {
     return (
       <section className='Welcome'>
@@ -16,7 +20,7 @@ class Welcome extends Component {
         </section>
         <section className='half-page'>
         </section>
-        <SearchWelcome />
+        <SearchWelcome onReroute={this.handleReroute} />
       </section>
     )
   }
