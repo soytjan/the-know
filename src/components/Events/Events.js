@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { Route } from 'react-router-dom';
 // import PropTypes from 'prop-types';
+import EventCard from '../EventCard/EventCard';
 import './Events.css';
 
 // Events.propTypes = {
@@ -10,11 +11,16 @@ import './Events.css';
 
 class Events extends Component {
   render() {
+    const { info } = this.props;
+    const renderedEvents = info.map(event => {
+      return <EventCard event={event} /> 
+    })
+
     return (
-      <nav className='Categories'>
+      <section className='Events'>
         I'm the Events!
-        { this.props.info }
-      </nav>
+        { renderedEvents }
+      </section>
     )
   }
 }

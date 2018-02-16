@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
 import './Welcome.css';
 
-// Welcome.propTypes = {
-
-// };
-
+// can probably make Welcome into a Component -- won't need to connect with store
 class Welcome extends Component {
   handleReroute = () => {
     return this.props.history.push('/home');
@@ -25,5 +22,9 @@ class Welcome extends Component {
     )
   }
 }
+
+Welcome.propTypes = {
+  history: PropTypes.object,
+};
 
 export default Welcome;

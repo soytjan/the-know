@@ -1,4 +1,5 @@
 import key from './api/key.js';
+const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
 // url to use: http://api.eventful.com/rest/events/search?...&location=San+Diego&date=Future&app_key=qg9B9xnpPW5JQvXm
 
@@ -8,15 +9,58 @@ import key from './api/key.js';
 
 export const getCityData = async (location) => {
   try {
-    const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${key}`
-    // const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&date=Future&app_key=${key}`
-    const response = await fetch(url, {mode: 'cors'})
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${key}`;
+    const response = await fetch(url, {mode: 'cors'});
+
     return await response.json();
   } catch (error) {
     throw (error);
   }
 };
+
+export const getMusicData = async (location) => {
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=music`;
+    const response = await fetch(url, {mode: 'cors'});
+
+    return await response.json();
+  } catch (error) {
+    throw (error)
+  }
+}
+
+export const getFoodData = async (location) => {
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=food`;
+    const response = await fetch(url, {mode: 'cors'});
+
+    return await response.json();
+  } catch (error) {
+    throw (error)
+  }
+}
+
+export const getCultureData = async (location) => {
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=attractions`;
+    const response = await fetch(url, {mode: 'cors'});
+
+    return await response.json();
+  } catch (error) {
+    throw (error)
+  }
+}
+
+export const getNightlifeData = async (location) => {
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=singles_social`;
+    const response = await fetch(url, {mode: 'cors'});
+
+    return await response.json();
+  } catch (error) {
+    throw (error)
+  }
+}
 
 export const cleanEventData = (cityData) => {
   const events = cityData.events.event;
