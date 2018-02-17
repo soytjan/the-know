@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.SearchMain {
+  input {
+    font-size: 1em;
+    padding: 5px;
+    color: $black;
+    border: 2px solid $input-border-color;
+  }
+
+  button {
+    font-size: 1em;
+    border: 2px solid $search-btn-border-color;
+    background-color: $white;
+    color: $search-btn-font;
+    padding: 5px;
+    width: 120px;
+  }
+
+  .input-search {
+    width: 358px;
+  }
+
+  .input-location {
+    width: 150px;
+    text-transform: capitalize;
+  }
+}

@@ -58,11 +58,10 @@ class Main extends Component {
   }  
 
   render() {
-    const { events, music, food, culture, nightlife } = this.props;
+    const { events, music, food, culture, nightlife, favorites } = this.props;
 
     return (
       <section className="Main">
-        I'm a Main!
         <h3>{this.props.type}</h3>
         <Route 
           exact path='/home/' 
@@ -83,6 +82,10 @@ class Main extends Component {
         <Route 
           exact path='/home/nightlife' 
           render={() => (<Events info={nightlife} type='nightlife' />)}
+        />
+        <Route 
+          exact path='/home/favorites' 
+          render={() => (<Events info={favorites} type='favorites' />)}
         />
       </section>
     )
@@ -108,7 +111,8 @@ const mapStateToProps = (state) => ({
   music: state.music,
   food: state.food,
   culture: state.culture,
-  nightlife: state.nightlife
+  nightlife: state.nightlife,
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = (dispatch) => ({

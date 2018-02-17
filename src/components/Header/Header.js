@@ -9,7 +9,7 @@ const Header = () => {
       <h1>THE KNOW</h1>
       <div className='header-link-cont'>
         <div className='header-link-box'>
-          <NavLink to='/favorites'>FAVORITES</NavLink>
+          <NavLink to='/home/favorites'>FAVORITES</NavLink>
         </div>
         <div className='header-link-box'>
           <NavLink to='/signup'>SIGN UP</NavLink>
