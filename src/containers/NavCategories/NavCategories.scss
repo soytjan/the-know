@@ -10,7 +10,7 @@
 .a-category {
   button {
     color: $nav-font-btn-color;
-    font-size: 20px;
+    font-size: 1.2em;
     width: 160px;
     padding: 5px;
     border: 2px solid $nav-border-color;
@@ -20,7 +20,7 @@
 
 .a-category.active {
   button {
-    color: #383838;
+    color: $black;
     background-color: $nav-category-active-bg;
     font-weight: 400;
   }
