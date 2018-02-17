@@ -11,9 +11,9 @@ import './Events.css';
 
 class Events extends Component {
   render() {
-    const { info } = this.props;
+    const { info, type } = this.props;
     const renderedEvents = info.map(event => {
-      return <EventCard event={event} /> 
+      return <EventCard event={event} type={type} /> 
     })
 
     return (

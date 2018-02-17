@@ -1,18 +1,16 @@
 import key from './api/key.js';
 const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
-// url to use: http://api.eventful.com/rest/events/search?...&location=San+Diego&date=Future&app_key=qg9B9xnpPW5JQvXm
-
-// http://api.eventful.com/json/events/search?...&location=San+Diego&date=Future&app_key=qg9B9xnpPW5JQvXm
-
-// http://denver.eventful.com/events/categories#!when=next%2030%20days -- think about the categories section
-
 export const getCityData = async (location) => {
   try {
     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${key}`;
     const response = await fetch(url, {mode: 'cors'});
 
-    return await response.json();
+    if (response.status > 226) {
+      throw new Error('could not get city event data');
+    } else {
+      return await response.json();
+    }
   } catch (error) {
     throw (error);
   }
@@ -76,7 +74,8 @@ export const cleanEventData = (cityData) => {
       startTime: event.start_time,
       venueAddress: event.venue_address,
       image: event.image,
-      url: event.url
+      url: event.url,
+      id: event.id,
     }
   })
 
