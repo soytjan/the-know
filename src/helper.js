@@ -1,6 +1,37 @@
 import key from './api/key.js';
 const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
+export const getGeoLocation = async (location) => {
+   return await navigator.geolocation.getCurrentPosition(success, error);
+    // const geo = await navigator.geolocation.getCurrentLocation(position => position.coords)
+}
+
+const returnCoords = (position) => {
+  return position.coords;
+}
+
+const success = async (pos) => {
+  const crd = await pos.coords;
+  const latitude = crd.latitude;
+  const longitude = crd.longitude;
+  console.log({ latitude, longitude });
+  debugger;
+  console.log('Your current position is:');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+  return {latitude, longitude};
+
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+};
+
+const returnPositionError = (error) => {
+  return console.log(error);
+}
+
 export const getCityData = async (location) => {
   try {
     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${key}`;

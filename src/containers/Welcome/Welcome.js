@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getGeoLocation } from '../../helper'
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
 import './Welcome.css';
 
 // can probably make Welcome into a Component -- won't need to connect with store
 class Welcome extends Component {
+  componentDidMount = async () => {
+    const coordinates = await getGeoLocation();
+    debugger;
+  }
+
   handleReroute = () => {
     return this.props.history.push('/home');
   }
