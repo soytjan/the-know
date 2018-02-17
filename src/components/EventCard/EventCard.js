@@ -17,9 +17,17 @@ const EventCard = (props) => {
       <div className={`img-box`}>
         {img}
       </div>
-      <h4>{event.title}</h4>
-      <p>{event.venueName}</p>
-      <p>{event.startTime}</p>
+      <div>
+        <h4>{event.title}</h4>
+        <p>{event.venueName}</p>
+        <p>{event.startTime}</p>
+        <div className='btn-cont'>
+          <button className='btn-fav'>
+            <i class="far fa-heart"></i>
+          </button>
+          <button className='btn-see-more'>SEE MORE</button>
+        </div>
+      </div>
     </article>
   )
 }

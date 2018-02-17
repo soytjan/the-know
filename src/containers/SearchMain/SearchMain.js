@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './SearchMain.css';
 
 
@@ -20,7 +20,12 @@ export class SearchMain extends Component {
   }
 
   handleSubmit = () => {
-
+    // will need to make another API call and get back information
+    // clean information from API
+    // clear out storage
+    // then put in something new
+    // change the location in store
+    // change the location in localStorage
   }
 
   render() {
@@ -48,9 +53,9 @@ export class SearchMain extends Component {
   }
 }
 
-// SearchMain.propTypes = {
-
-// };
+SearchMain.propTypes = {
+  location: PropTypes.string,
+};
 
 const mapStateToProps = state => ({
   location: state.location
