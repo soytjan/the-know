@@ -1,3 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300|Poiret+One");
 .EventCard {
   border: 1px solid turquoise; }
+
+.box,
+.img-event {
+  height: 128px;
+  width: 128px;
+  background-color: pink; }

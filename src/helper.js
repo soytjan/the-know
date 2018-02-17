@@ -74,7 +74,9 @@ export const cleanEventData = (cityData) => {
       startTime: event.start_time,
       venueAddress: event.venue_address,
       image: event.image,
-      url: event.url
+      url: event.url,
+      id: event.id,
+      
     }
   })
 
