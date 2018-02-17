@@ -76,7 +76,6 @@ export const cleanEventData = (cityData) => {
       image: event.image,
       url: event.url,
       id: event.id,
-      
     }
   })
 
