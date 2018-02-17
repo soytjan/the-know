@@ -66,23 +66,23 @@ class Main extends Component {
         <h3>{this.props.type}</h3>
         <Route 
           exact path='/home/' 
-          render={() => (<Events info={events} />)}
+          render={() => (<Events info={events} type='event' />)}
         />
         <Route 
           exact path='/home/music' 
-          render={() => (<Events info={music} />)}
+          render={() => (<Events info={music} type='music' />)}
         />
         <Route 
           exact path='/home/food' 
-          render={() => (<Events info={food} />)}
+          render={() => (<Events info={food} type='food' />)}
         />
         <Route 
           exact path='/home/culture' 
-          render={() => (<Events info={culture} />)}
+          render={() => (<Events info={culture} type='culture' />)}
         />
         <Route 
           exact path='/home/nightlife' 
-          render={() => (<Events info={nightlife} />)}
+          render={() => (<Events info={nightlife} type='nightlife' />)}
         />
       </section>
     )

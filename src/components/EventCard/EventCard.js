@@ -2,14 +2,17 @@ import React from 'react';
 import './EventCard.css';
 
 // need to look into how image is being returned
+// why is it not returning the image??
 const EventCard = (props) => {
-  const { event } = props;
-  const image = event.image ? <img src={event.image} alt={event.title} className='img-event' /> : <div className='box'></div>
+  const { event, type } = props;
+  const imageSrc = event.image ? event.img : `./${type}.jpg`;
 
   return (
     <article className="EventCard">
+      <div className='img-box'>
+        <img src={imageSrc} alt={event.title} className='img-event' />
+      </div>
       <h4>{event.title}</h4>
-      {image}
       <p>{event.venueName}</p>
       <p>{event.description}</p>
       <p>{event.startTime}</p>

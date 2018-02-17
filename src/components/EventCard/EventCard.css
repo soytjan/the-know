@@ -2,8 +2,12 @@
 .EventCard {
   border: 1px solid turquoise; }
 
-.box,
 .img-event {
   height: 128px;
   width: 128px;
   background-color: pink; }
+
+.img-box {
+  background-color: #BEECE9;
+  height: 230px;
+  width: 230px; }

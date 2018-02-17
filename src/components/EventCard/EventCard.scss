@@ -4,9 +4,14 @@
   border: 1px solid turquoise;
 }
 
-.box,
 .img-event {
   height: 128px;
   width: 128px;
   background-color: pink;
+}
+
+.img-box {
+  background-color: $light-turq;
+  height: 230px;
+  width: 230px;
 }
