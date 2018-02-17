@@ -12,17 +12,25 @@ class NavCategories extends Component {
   render() {
     return (
       <nav className='NavCategories'>
-        <NavLink to='/home/music'>
-          Music
+        <NavLink to='/home/music' className='a-category'>
+          <button>
+            MUSIC
+          </button>
         </NavLink>
-        <NavLink to='/home/food'>
-          Food
+        <NavLink to='/home/food' className='a-category'>
+          <button>
+            FOOD
+          </button>
         </NavLink>
-        <NavLink to='/home/culture'>
-          Culture
+        <NavLink to='/home/culture' className='a-category'>
+          <button>
+            CULTURE
+          </button>
         </NavLink>
-        <NavLink to='/home/nightlife'>
-          Nightlife
+        <NavLink to='/home/nightlife' className='a-category'>
+          <button>
+            NIGHTLIFE
+          </button>
         </NavLink>
       </nav>
     )

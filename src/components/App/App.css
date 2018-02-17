@@ -1,11 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300|Poiret+One");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 body,
 html {
   height: 100%; }
 
 input,
 button {
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300; }
+
+a {
+  text-decoration: none; }
 
 .App {
   color: #383838;

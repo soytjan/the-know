@@ -8,6 +8,11 @@ html {
 input, 
 button {
   font-family: $main-font;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
 }
 
 .App {

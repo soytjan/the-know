@@ -2,11 +2,9 @@ import React from 'react';
 import NavCategories from '../../containers/NavCategories/NavCategories';
 import './Banner.css';
 
-
-// need to add in conditional rendering that checks if welcome is true or false
 const Banner = () => {
   return (
-    <section className="banner">
+    <section className="Banner">
       I'm a BANNER!
       <NavCategories /> 
     </section>

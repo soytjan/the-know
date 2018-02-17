@@ -6,8 +6,6 @@ import React from 'react';
 // import nightlife from '../../assets/nightlife.jpg';
 import './EventCard.css';
 
-// need to look into how image is being returned
-// why is it not returning the image??
 const EventCard = (props) => {
   const { event, type } = props;
   const img = event.image ? 
@@ -27,5 +25,3 @@ const EventCard = (props) => {
 }
 
 export default EventCard;
-
-// <img src={imageSrc} alt={event.title} className='img-event' />

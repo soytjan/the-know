@@ -1,17 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One');
 
 // background colors
 $main-bg: #ECF0F1;
+$nav-category-active-bg: #BEECE9;
+
+// border colors
+$nav-border-color: #979797;
 
 // font colors
 $default-font-color: #383838;
 $headerlink-hover-color: #BEECE9;
+$nav-font-btn-color: #4ECDC4; 
+$nav-font-active-btn-color: #383838; 
 
 // colors
 $black: #383838;
 $light-turq: #BEECE9;
 $turq: #4ECDC4;
 $gray: #979797;
+$light-gray: #ECF0F1;
 $white: #FBFCFC;
 
 // fonts
