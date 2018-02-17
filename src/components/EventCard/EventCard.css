@@ -4,10 +4,27 @@
 
 .img-event {
   height: 128px;
-  width: 128px;
-  background-color: pink; }
+  width: 128px; }
 
 .img-box {
   background-color: #BEECE9;
   height: 230px;
-  width: 230px; }
+  width: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.event {
+  background: center/contain no-repeat url("../../assets/event.jpg"); }
+
+.food {
+  background: center/contain no-repeat url("../../assets/food.jpg"); }
+
+.music {
+  background: center/contain no-repeat url("../../assets/music.jpg"); }
+
+.culture {
+  background: center/contain no-repeat url("../../assets/culture.jpg"); }
+
+.nightlife {
+  background: center/contain no-repeat url("../../assets/nightlife.jpg"); }
