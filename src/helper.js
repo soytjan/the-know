@@ -15,7 +15,6 @@ const success = async (pos) => {
   const latitude = crd.latitude;
   const longitude = crd.longitude;
   console.log({ latitude, longitude });
-  debugger;
   console.log('Your current position is:');
   console.log(`Latitude : ${crd.latitude}`);
   console.log(`Longitude: ${crd.longitude}`);

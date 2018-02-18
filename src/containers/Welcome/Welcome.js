@@ -7,9 +7,18 @@ import './Welcome.css';
 
 // can probably make Welcome into a Component -- won't need to connect with store
 class Welcome extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentLocation: null
+    }
+  }
+
   componentDidMount = async () => {
     const coordinates = await getGeoLocation();
-    debugger;
+
+    // await this.setState({ currentLocation: coordinates })
+    // ^ this is making state empty
   }
 
   handleReroute = () => {
