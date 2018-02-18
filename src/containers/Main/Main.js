@@ -28,12 +28,32 @@ class Main extends Component {
   }
 
   // need to pass this down to the EventCard
-  handleFavorites = (event) => {
+  handleFavorites = (event, type) => {
+    console.log('handleFavorite run')
     const { favorites } = this.props;
     const isDuplicated = favorites.some(fav => fav.title === event.title);
     const favEvent = {...event, isFavorited: !event.isFavorited };
-
+    // need to update master array
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
+
+    this.handleUpdateEvents(type, event);
+  }
+
+  handleUpdateEvents = (type='event', event) => {
+    const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
+
+    switch (type) {
+      case 'music':
+        return updateMusic(event);
+      case 'food':
+        return updateFood(event);
+      case 'culture':
+        return updateCulture(event);
+      case 'nightlife':
+        return updateNightlife(event);
+      default:
+        return updateEvents(event);
+    }
   }
 
   addFavEvent = (event) => {
