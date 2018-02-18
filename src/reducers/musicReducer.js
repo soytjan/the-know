@@ -4,7 +4,7 @@ export const musicReducer = (state = [], action) => {
       return [...state, ...action.events];
     case 'UPDATE_MUSIC':
       return state.map(event => { 
-        if (event.title === action.event.title) {
+        if (event.id === action.event.id) {
           return action.event;
         } 
         

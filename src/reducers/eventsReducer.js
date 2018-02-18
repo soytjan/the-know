@@ -4,10 +4,10 @@ export const eventsReducer = (state = [], action) => {
       return [...state, ...action.events];
     case 'UPDATE_EVENTS':
       return state.map(event => { 
-        if (event.title === action.event.title) {
+        if (event.id === action.event.id) {
           return action.event;
         } 
-        
+
         return event;
       })
     default:

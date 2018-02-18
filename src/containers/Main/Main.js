@@ -12,6 +12,11 @@ import { addMusic,
   addFood,
   addCulture,
   addNightlife,
+  updateEvents,
+  updateMusic,
+  updateFood,
+  updateCulture,
+  updateNightlife,
   addFavorite,
   removeFavorite
  } from '../../actions/';
@@ -36,7 +41,7 @@ class Main extends Component {
     // need to update master array
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
-    this.handleUpdateEvents(type, event);
+    this.handleUpdateEvents(type, favEvent);
   }
 
   handleUpdateEvents = (type='event', event) => {
@@ -183,6 +188,11 @@ const mapDispatchToProps = (dispatch) => ({
   addFood: events => dispatch(addFood(events)),
   addCulture: events => dispatch(addCulture(events)),
   addNightlife: events => dispatch(addNightlife(events)),
+  updateEvents: event => dispatch(updateEvents(event)),
+  updateMusic: event => dispatch(updateMusic(event)),
+  updateFood: event => dispatch(updateFood(event)),
+  updateCulture: event => dispatch(updateCulture(event)),
+  updateNightlife: event => dispatch(updateNightlife(event)),
   addFavorite: event => dispatch(addFavorite(event)),
   removeFavorite: event => dispatch(removeFavorite(event))
 })

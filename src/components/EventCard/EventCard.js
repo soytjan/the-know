@@ -9,12 +9,13 @@ import './EventCard.css';
 
 const EventCard = (props) => {
   const { event, type, onFavorite } = props;
+  const favorited = event.isFavorited ? 'favorited' : '';
   const img = event.image ? 
     <img className='img-event' src={event.image.medium.url} alt={event.title} /> 
     : <div className={`img-event ${type}`}></div>;
 
   return (
-    <article className="EventCard">
+    <article className={`EventCard ${favorited}`}>
       <div className={`img-box`}>
         {img}
       </div>
@@ -25,9 +26,9 @@ const EventCard = (props) => {
         <div className='btn-cont'>
           <button 
             className='btn-fav'
-            onClick={() => onFavorite(event)}
+            onClick={() => onFavorite(event, type)}
           >
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </button>
           <button className='btn-see-more'>SEE MORE</button>
         </div>
