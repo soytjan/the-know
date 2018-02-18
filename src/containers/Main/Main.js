@@ -11,7 +11,9 @@ import { cleanEventData,
 import { addMusic,
   addFood,
   addCulture,
-  addNightlife
+  addNightlife,
+  addFavorite,
+  removeFavorite
  } from '../../actions/';
 import Events from '../../components/Events/Events';
 import NavTime from '../NavTime/NavTime';
@@ -23,6 +25,27 @@ class Main extends Component {
     this.getAndStoreFood();
     this.getAndStoreCulture();
     this.getAndStoreNightlife();  
+  }
+
+  // need to pass this down to the EventCard
+  handleFavorites = (event) => {
+    const { favorites } = this.props;
+    const isDuplicated = favorites.some(fav => fav.title === event.title);
+    const favEvent = {...event, isFavorited: !event.isFavorited };
+
+    isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
+  }
+
+  addFavEvent = (event) => {
+    const { addFavorite } = this.props;
+
+    addFavorite(event); 
+  }
+
+  removeFavEvent = (event) => {
+    const { removeFavorite } = this.props;
+
+    removeFavorite(event);
   }
 
   getAndStoreMusic = async () => {
@@ -102,7 +125,9 @@ Main.propTypes = {
   addMusic: PropTypes.func,
   addFood: PropTypes.func,
   addCulture: PropTypes.func,
-  addNightlife: PropTypes.func
+  addNightlife: PropTypes.func,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -119,7 +144,9 @@ const mapDispatchToProps = (dispatch) => ({
   addMusic: events => dispatch(addMusic(events)),
   addFood: events => dispatch(addFood(events)),
   addCulture: events => dispatch(addCulture(events)),
-  addNightlife: events => dispatch(addNightlife(events))
+  addNightlife: events => dispatch(addNightlife(events)),
+  addFavorite: event => dispatch(addFavorite(event)),
+  removeFavorite: event => dispatch(removeFavorite(event))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
