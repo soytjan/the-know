@@ -1,43 +1,34 @@
-import key from './api/key.js';
+import keys from './api/keys.js';
 const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
-export const getGeoLocation = async (location) => {
-   return await navigator.geolocation.getCurrentPosition(success, error);
-    // const geo = await navigator.geolocation.getCurrentLocation(position => position.coords)
-}
+// if this gets really big think about organize api calls into their own api files
+export const getGeoLocation = async () => {
+  try {
+    const url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${keys.googleMapsApiKey}`
+    const response = await fetch(url, {
+      method: 'POST',
+      header: { 'content-type': 'application/json' }
+     })
 
-const returnCoords = (position) => {
-  return position.coords;
-}
-
-const success = async (pos) => {
-  const crd = await pos.coords;
-  const latitude = crd.latitude;
-  const longitude = crd.longitude;
-  console.log({ latitude, longitude });
-  console.log('Your current position is:');
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-  return {latitude, longitude};
-
-}
-
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-};
-
-const returnPositionError = (error) => {
-  return console.log(error);
+    if (response.status > 226) {
+      throw new Error('could not get current location coordinates');
+    } else {
+      const jsonResponse = await response.json();
+      return jsonResponse.location;
+    }
+  } catch (error) {
+    throw (error);
+  }
 }
 
 export const getCityData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${key}`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${keys.eventfulKey}`;
     const response = await fetch(url, {mode: 'cors'});
 
     if (response.status > 226) {
       throw new Error('could not get city event data');
+      // handleError function that handles error
     } else {
       return await response.json();
     }
@@ -46,9 +37,12 @@ export const getCityData = async (location) => {
   }
 };
 
+// build URL function that builds out the URL 
+// minimize some of the repetition
+// handleError and pass in error as an argument
 export const getMusicData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=music`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${keys.eventfulKey}&category=music`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
@@ -59,7 +53,7 @@ export const getMusicData = async (location) => {
 
 export const getFoodData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=food`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${keys.eventfulKey}&category=food`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
@@ -70,7 +64,7 @@ export const getFoodData = async (location) => {
 
 export const getCultureData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=attractions`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${keys.eventfulKey}&category=attractions`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
@@ -81,7 +75,7 @@ export const getCultureData = async (location) => {
 
 export const getNightlifeData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=singles_social`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${keys.eventfulKey}&category=singles_social`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();

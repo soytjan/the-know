@@ -10,15 +10,18 @@ class Welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentLocation: null
+      currentLocation: {}
     }
   }
 
   componentDidMount = async () => {
-    const coordinates = await getGeoLocation();
+    // instead of calling this here, call a map to prop action here
+    // make an action that calls getGeoLocation, if that is successful, pass that down as prop
+    // if that is unsucessful, handle it in Redux 
+    const coords = await getGeoLocation();
+    // if this is successful do this, otherwise setState to an error
 
-    // await this.setState({ currentLocation: coordinates })
-    // ^ this is making state empty
+    this.setState({ currentLocation: coords })
   }
 
   handleReroute = () => {
