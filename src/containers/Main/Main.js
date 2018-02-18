@@ -88,27 +88,45 @@ class Main extends Component {
         <h3>{this.props.type}</h3>
         <Route 
           exact path='/home/' 
-          render={() => (<Events info={events} type='event' />)}
+          render={() => (<Events 
+            info={events} 
+            type='event' 
+            onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/music' 
-          render={() => (<Events info={music} type='music' />)}
+          render={() => (<Events 
+            info={music} 
+            type='music' 
+            onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/food' 
-          render={() => (<Events info={food} type='food' />)}
+          render={() => (<Events 
+            info={food} 
+            type='food' 
+            onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/culture' 
-          render={() => (<Events info={culture} type='culture' />)}
+          render={() => (<Events 
+            info={culture} 
+            type='culture' 
+            onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/nightlife' 
-          render={() => (<Events info={nightlife} type='nightlife' />)}
+          render={() => (<Events 
+            info={nightlife} 
+            type='nightlife' 
+            onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/favorites' 
-          render={() => (<Events info={favorites} type='favorites' />)}
+          render={() => (<Events 
+            info={favorites} 
+            type='favorites' 
+            onFavorite={this.handleFavorites} />)}
         />
       </section>
     )
