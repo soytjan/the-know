@@ -8,9 +8,19 @@ export const addEvents = events => ({
   events
 });
 
+export const updateEvents = event => ({
+  type: 'UPDATE_EVENTS',
+  event
+});
+
 export const addMusic = events => ({
   type: 'ADD_MUSIC',
   events
+});
+
+export const updateMusic = event => ({
+  type: 'UPDATE_MUSIC',
+  event
 });
 
 export const addFood = events => ({
@@ -18,14 +28,29 @@ export const addFood = events => ({
   events
 });
 
+export const updateFood = event => ({
+  type: 'UPDATE_FOOD',
+  event
+});
+
 export const addCulture = events => ({
   type: 'ADD_CULTURE',
   events
 });
 
+export const updateCulture = event => ({
+  type: 'UPDATE_CULTURE',
+  event
+});
+
 export const addNightlife = events => ({
   type: 'ADD_NIGHTLIFE',
   events
+});
+
+export const updateNightlife = event => ({
+  type: 'UPDATE_NIGHTLIFE',
+  event
 });
 
 export const addFavorite = event => ({

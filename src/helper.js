@@ -18,7 +18,7 @@ export const getCityData = async (location) => {
 
 export const getMusicData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=music`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=music`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
@@ -29,7 +29,7 @@ export const getMusicData = async (location) => {
 
 export const getFoodData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=food`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=food`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
@@ -40,7 +40,7 @@ export const getFoodData = async (location) => {
 
 export const getCultureData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=attractions`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=attractions`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
@@ -51,7 +51,7 @@ export const getCultureData = async (location) => {
 
 export const getNightlifeData = async (location) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=San+Diego&app_key=${key}&category=singles_social`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&app_key=${key}&category=singles_social`;
     const response = await fetch(url, {mode: 'cors'});
 
     return await response.json();
