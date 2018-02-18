@@ -25,6 +25,18 @@ describe('actions', () => {
     })
   })
 
+  describe('updateEvents', () => {
+    it('should return a type of UPDATE_EVENTS with an event object', () => {
+      const event = {title: 'fun', isFavorited: true};
+      const expected = {
+        type: 'UPDATE_EVENTS',
+        event
+      }
+
+      expect(actions.updateEvents(event)).toEqual(expected);
+    })
+  })
+
   describe('addMusic', () => {
     it('should return a type of ADD_MUSIC with an array of events', () => {
       const events = [{title: 'fun'}, {title: 'times'}, {title: 'woot'}];
@@ -34,6 +46,18 @@ describe('actions', () => {
       }
 
       expect(actions.addMusic(events)).toEqual(expected);
+    })
+  })
+
+  describe('updateMusic', () => {
+    it('should return a type of UPDATE_MUSIC with an event object', () => {
+      const event = {title: 'fun', isFavorited: true};
+      const expected = {
+        type: 'UPDATE_MUSIC',
+        event
+      }
+
+      expect(actions.updateMusic(event)).toEqual(expected);
     })
   })
 
@@ -49,6 +73,18 @@ describe('actions', () => {
     })
   })
 
+  describe('updateFood', () => {
+    it('should return a type of UPDATE_FOOD with an event object', () => {
+      const event = {title: 'fun', isFavorited: true};
+      const expected = {
+        type: 'UPDATE_FOOD',
+        event
+      }
+
+      expect(actions.updateFood(event)).toEqual(expected);
+    })
+  })
+
   describe('addCulture', () => {
     it('should return a type of ADD_CULTURE with an array of events', () => {
       const events = [{title: 'fun'}, {title: 'times'}, {title: 'woot'}];
@@ -61,6 +97,18 @@ describe('actions', () => {
     })
   })
 
+  describe('updateCulture', () => {
+    it('should return a type of UPDATE_CULTURE with an event object', () => {
+      const event = {title: 'fun', isFavorited: true};
+      const expected = {
+        type: 'UPDATE_CULTURE',
+        event
+      }
+
+      expect(actions.updateCulture(event)).toEqual(expected);
+    })
+  })
+
   describe('addNightlife', () => {
     it('should return a type of ADD_NIGHTLIFE with an array of events', () => {
       const events = [{title: 'fun'}, {title: 'times'}, {title: 'woot'}];
@@ -70,6 +118,18 @@ describe('actions', () => {
       }
 
       expect(actions.addNightlife(events)).toEqual(expected);
+    })
+  })
+
+  describe('updateNightlife', () => {
+    it('should return a type of UPDATE_NIGHTLIFE with an event object', () => {
+      const event = {title: 'fun', isFavorited: true};
+      const expected = {
+        type: 'UPDATE_NIGHTLIFE',
+        event
+      }
+
+      expect(actions.updateNightlife(event)).toEqual(expected);
     })
   })
 
