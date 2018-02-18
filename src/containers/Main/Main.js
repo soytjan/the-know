@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { cleanEventData, 
-  getMusicData, 
-  getFoodData, 
-  getCultureData, 
-  getNightlifeData 
-} from '../../helper';
+// import { cleanEventData, 
+//   getMusicData, 
+//   getFoodData, 
+//   getCultureData, 
+//   getNightlifeData 
+// } from '../../helper';
 import { addMusic,
   addFood,
   addCulture,
@@ -25,20 +25,11 @@ import NavTime from '../NavTime/NavTime';
 import './Main.css';
 
 class Main extends Component {
-  componentDidMount() {
-    this.getAndStoreMusic();
-    this.getAndStoreFood();
-    this.getAndStoreCulture();
-    this.getAndStoreNightlife();  
-  }
-
-  // need to pass this down to the EventCard
   handleFavorites = (event, type) => {
     console.log('handleFavorite run')
     const { favorites } = this.props;
     const isDuplicated = favorites.some(fav => fav.title === event.title);
     const favEvent = {...event, isFavorited: !event.isFavorited };
-    // need to update master array
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
     this.handleUpdateEvents(type, favEvent);
@@ -71,39 +62,7 @@ class Main extends Component {
     const { removeFavorite } = this.props;
 
     removeFavorite(event);
-  }
-
-  getAndStoreMusic = async () => {
-    const { location, addMusic } = this.props;
-    const musicData = await getMusicData(location);
-    const cleanMusicData = cleanEventData(musicData);
-
-    addMusic(cleanMusicData);    
-  }
-
-  getAndStoreFood = async () => {
-    const { location, addFood } = this.props;
-    const foodData = await getFoodData(location);
-    const cleanFoodData = cleanEventData(foodData);
-
-    addFood(cleanFoodData);
-  }
-
-  getAndStoreCulture = async () => {
-    const { location, addCulture } = this.props;
-    const cultureData = await getCultureData(location);
-    const cleanCultureData = cleanEventData(cultureData);
-
-    addCulture(cleanCultureData);
-  }
-
-  getAndStoreNightlife = async () => {
-    const { location, addNightlife } = this.props;
-    const nightlifeData = await getNightlifeData(location);
-    const cleanNightlifeData = cleanEventData(nightlifeData);
-
-    addNightlife(cleanNightlifeData);
-  }  
+  } 
 
   render() {
     const { events, music, food, culture, nightlife, favorites } = this.props;
@@ -165,10 +124,6 @@ Main.propTypes = {
   food: PropTypes.array,
   culture: PropTypes.array,
   nightlife: PropTypes.array,
-  addMusic: PropTypes.func,
-  addFood: PropTypes.func,
-  addCulture: PropTypes.func,
-  addNightlife: PropTypes.func,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func
 };
@@ -184,10 +139,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addMusic: events => dispatch(addMusic(events)),
-  addFood: events => dispatch(addFood(events)),
-  addCulture: events => dispatch(addCulture(events)),
-  addNightlife: events => dispatch(addNightlife(events)),
   updateEvents: event => dispatch(updateEvents(event)),
   updateMusic: event => dispatch(updateMusic(event)),
   updateFood: event => dispatch(updateFood(event)),
