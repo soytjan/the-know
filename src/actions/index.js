@@ -1,3 +1,17 @@
+import { getGeoLocation } from '../helper';
+
+export const addCurrentLocation = coordinates => ({
+  type: 'ADD_CURRENT_LOCATION',
+  coordinates
+});
+
+export const currentLocationFetchData = () => {
+  return async (dispatch) => {
+    const coordinates = await getGeoLocation();
+    dispatch(addCurrentLocation(coordinates));
+  }
+};
+
 export const addLocation = location => ({
   type: 'ADD_LOCATION',
   location
