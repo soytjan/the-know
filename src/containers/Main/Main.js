@@ -18,6 +18,7 @@ import './Main.css';
 class Main extends Component {
   handleFavorites = (event, type) => {
     console.log('handleFavorite run')
+    console.log('category fav', type)
     const { favorites } = this.props;
     const isDuplicated = favorites.some(fav => fav.title === event.title);
     const favEvent = {...event, isFavorited: !event.isFavorited };
@@ -26,10 +27,10 @@ class Main extends Component {
     this.handleUpdateEvents(type, favEvent);
   }
 
-  handleUpdateEvents = (type='event', event) => {
+  handleUpdateEvents = (category, event) => {
     const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
 
-    switch (type) {
+    switch (category) {
       case 'music':
         return updateMusic(event);
       case 'food':

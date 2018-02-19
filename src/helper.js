@@ -128,13 +128,14 @@ export const getCategoryData = async (type, location) => {
   }
 }
 
-export const cleanEventData = (cityData) => {
+export const cleanEventData = (cityData, category) => {
   const events = cityData.events.event;
 
   const cleanedEvents = events.map(event => {
     return {
       title: event.title,
       description: event.description,
+      category: category,
       venueName: event.venue_name,
       region: event.region_abbr,
       postalCode: event.postal_code,

@@ -36,7 +36,7 @@ export class SearchWelcome extends Component {
       const jsonCoordinates = await getAddressCoords(location);
       const cleanLocation = cleanAddressCoords(jsonCoordinates);
       const jsonCityData = await fetchCityData(cleanLocation);
-      const events = cleanEventData(jsonCityData);
+      const events = cleanEventData(jsonCityData, 'event');
       addEvents(events);
       addLocation(cleanLocation);
       localStorage.setItem('location', cleanLocation.address); 
