@@ -8,12 +8,6 @@ import { getCityData,
   fetchCityData } from '../../helper';
 import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
-// var geocoder = require('geocoder');
-// var NodeGeocoder = require('node-geocoder');
-
-// SearchWelcome.propTypes = {
-
-// };
 
 export class SearchWelcome extends Component {
   constructor(props) {
@@ -66,30 +60,6 @@ export class SearchWelcome extends Component {
     }
   }
 
-  // convertAddressToCoordinates = () => {
-  //   // console.log('location', this.state.location)
-  //   // geocoder.geocode(this.state.location, function (err, data) {
-  //   //   const results = data;
-  //   //   debugger;
-
-  //   // })
-  //   var options = {
-  //     provider: 'google',
-  //     httpAdapter: 'https',
-  //     apiKey: 'AIzaSyDvXq3Ia5_KRgpVZ4QEvopD_X7wzJ07nYE',
-  //     formatter: null
-  //   }
-
-  //   var geocoder = NodeGeocoder(options);
-
-  //   geocoder.geocode('29 champs elysée paris')
-  // .then(function(res) {
-  //   console.log(res);
-  // })
-  // .catch(function(err) {
-  //   console.log(err);
-  // });
-  // }
 
   render() {
     return (
@@ -111,6 +81,10 @@ export class SearchWelcome extends Component {
     )
   }
 }
+
+// SearchWelcome.propTypes = {
+
+// };
 
 const mapStateToProps = (state) => ({
   currentLocation: state.currentLocation
