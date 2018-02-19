@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { cleanEventData, 
-//   getMusicData, 
-//   getFoodData, 
-//   getCultureData, 
-//   getNightlifeData 
-// } from '../../helper';
-import { addMusic,
-  addFood,
-  addCulture,
-  addNightlife,
+import {
   updateEvents,
   updateMusic,
   updateFood,
@@ -118,7 +109,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
   events: PropTypes.array,
   music: PropTypes.array,
   food: PropTypes.array,

@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { cleanEventData, 
-  getMusicData, 
-  getFoodData, 
-  getCultureData, 
-  getNightlifeData 
-} from '../../helper';
+import { cleanEventData, getCategoryData } from '../../helper';
 import { addMusic,
   addFood,
   addCulture,
@@ -17,6 +12,7 @@ import './NavCategories.css';
 
 class NavCategories extends Component {
   componentDidMount() {
+    // check for location in localStorage if there is no location in this.props
     this.getAndStoreMusic();
     this.getAndStoreFood();
     this.getAndStoreCulture();
@@ -25,8 +21,7 @@ class NavCategories extends Component {
 
   getAndStoreMusic = async () => {
     const { location, addMusic } = this.props;
-    console.log(location);
-    const musicData = await getMusicData(location);
+    const musicData = await getCategoryData('music', location);
     const cleanMusicData = cleanEventData(musicData);
 
     addMusic(cleanMusicData);    
@@ -34,7 +29,7 @@ class NavCategories extends Component {
 
   getAndStoreFood = async () => {
     const { location, addFood } = this.props;
-    const foodData = await getFoodData(location);
+    const foodData = await getCategoryData('food', location);
     const cleanFoodData = cleanEventData(foodData);
 
     addFood(cleanFoodData);
@@ -42,7 +37,7 @@ class NavCategories extends Component {
 
   getAndStoreCulture = async () => {
     const { location, addCulture } = this.props;
-    const cultureData = await getCultureData(location);
+    const cultureData = await getCategoryData('culture', location);
     const cleanCultureData = cleanEventData(cultureData);
 
     addCulture(cleanCultureData);
@@ -50,7 +45,7 @@ class NavCategories extends Component {
 
   getAndStoreNightlife = async () => {
     const { location, addNightlife } = this.props;
-    const nightlifeData = await getNightlifeData(location);
+    const nightlifeData = await getCategoryData('nightlife', location)
     const cleanNightlifeData = cleanEventData(nightlifeData);
 
     addNightlife(cleanNightlifeData);
@@ -85,7 +80,7 @@ class NavCategories extends Component {
 }
 
 NavCategories.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
   addMusic: PropTypes.func,
   addFood: PropTypes.func,
   addCulture: PropTypes.func,

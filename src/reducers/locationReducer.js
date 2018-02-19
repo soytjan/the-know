@@ -1,4 +1,4 @@
-export const locationReducer = (state = '', action) => {
+export const locationReducer = (state = {}, action) => {
   switch(action.type) {
     case 'ADD_LOCATION':
       return action.location;

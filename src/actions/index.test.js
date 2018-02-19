@@ -2,8 +2,11 @@ import * as actions from './index';
 
 describe('actions', () => {
   describe('addLocation', () => {
-    it('should return a type of ADD_LOCATION with a single location as a string', () => {
-      const location = 'Denver';
+    it('should return a type of ADD_LOCATION with a location object', () => {
+      const location = {
+        address: 'Denver, CO, USA',
+        coordinates: {lat: 1234, lng: 12345}
+      };
       const expected = {
         type: 'ADD_LOCATION',
         location

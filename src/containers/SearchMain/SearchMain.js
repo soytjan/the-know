@@ -5,11 +5,12 @@ import './SearchMain.css';
 
 
 export class SearchMain extends Component {
+  // for local state location need to check for local storage
   constructor(props) {
     super(props);
     this.state = {
       eventSearch: '',
-      location: this.props.location
+      location: this.props.location.address || ''
     }
   }
 
@@ -54,7 +55,7 @@ export class SearchMain extends Component {
 }
 
 SearchMain.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
 };
 
 const mapStateToProps = state => ({

@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { currentLocationFetchData } from '../../actions/';
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
 import './Welcome.css';
 
-// can probably make Welcome into a Component -- won't need to connect with store
 class Welcome extends Component {
+  componentDidMount = () => {
+    const { fetchCurrentLocation } = this.props;
+
+    fetchCurrentLocation();
+  }
+
   handleReroute = () => {
     return this.props.history.push('/home');
   }
 
   render() {
+    // look into doing some sort of React alert here
+    if (this.props.currentHasErrored) {
+      return alert('There has a been error finding your location!')
+    }
+
     return (
       <section className='Welcome'>
         <section className='bg-img half-page'>
@@ -27,4 +38,14 @@ Welcome.propTypes = {
   history: PropTypes.object,
 };
 
-export default Welcome;
+// do i actually need access to currentLocation?
+const mapStateToProps = (state) => ({
+  currentLocation: state.currentLocation,
+  currentHasErrored: state.currentHasErrored
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchCurrentLocation: () => dispatch(currentLocationFetchData())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

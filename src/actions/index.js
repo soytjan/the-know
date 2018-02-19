@@ -1,3 +1,33 @@
+import { getGeoLocation } from '../helper';
+
+export const addCurrentLocation = coordinates => ({
+  type: 'ADD_CURRENT_LOCATION',
+  coordinates
+});
+
+export const currentLocationFetchData = () => {
+  return async (dispatch) => {
+    try {
+      const response = await getGeoLocation();
+      
+      if (response.status > 226) {
+        throw new Error('could not get current location coordinates');
+      } else {
+        const jsonResponse = await response.json();
+        dispatch(addCurrentLocation(jsonResponse.location));
+      }
+    } catch (err) {
+      dispatch(currentHasErrored(true));
+      throw err;
+    }  
+  }
+};
+
+export const currentHasErrored = (bool) => ({
+  type: 'CURRENT_HAS_ERRORED',
+  hasErrored: bool
+})
+
 export const addLocation = location => ({
   type: 'ADD_LOCATION',
   location
