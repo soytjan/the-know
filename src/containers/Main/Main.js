@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addMusic,
-  addFood,
-  addCulture,
-  addNightlife,
+import {
   updateEvents,
   updateMusic,
   updateFood,

@@ -7,7 +7,7 @@ import './Welcome.css';
 
 class Welcome extends Component {
   componentDidMount = () => {
-    const { fetchCurrentLocation, currentLocation } = this.props;
+    const { fetchCurrentLocation } = this.props;
 
     fetchCurrentLocation();
   }
@@ -38,6 +38,7 @@ Welcome.propTypes = {
   history: PropTypes.object,
 };
 
+// do i actually need access to currentLocation?
 const mapStateToProps = (state) => ({
   currentLocation: state.currentLocation,
   currentHasErrored: state.currentHasErrored

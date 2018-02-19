@@ -16,37 +16,82 @@ export const getGeoLocation = async () => {
   }
 }
 
-export const initialFetchWithCoordinates = async (coords) => {
+export const initialFetchWithCoords = async (coords) => {
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/rest/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}`;
-    const response = await fetch(url);
-
-    if (response.status > 226) {
-      throw new Error('could not get city event data');
-      // handleError function that handles error
-    } else {
-      return await response.json();
-    }
-  } catch (error) {
-    throw (error);
-  }
-};
-
-export const getCityData = async (location) => {
-  try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${keys.eventfulKey}`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
     const response = await fetch(url, {mode: 'cors'});
 
     if (response.status > 226) {
       throw new Error('could not get city event data');
       // handleError function that handles error
     } else {
-      return await response.json();
+      const responseJson = await response.json();
+      return responseJson
     }
   } catch (error) {
     throw (error);
   }
 };
+
+export const getCityDataWithCoords = async (location) => {
+  const coords = location.coordinates;
+  
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+    const response = await fetch(url, {mode: 'cors'});
+
+    if (response.status > 226) {
+      throw new Error('could not get city event data');
+      // handleError function that handles error
+    } else {
+      const responseJson = await response.json();
+      return responseJson
+    }
+  } catch (error) {
+    throw (error)
+  }
+}
+
+export const getAddressCoords = async (location) => {
+  try {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${keys.googleMapsApiKey}`
+    const response = await fetch(url);
+    if (response.status > 226) {
+      throw new Error('could not get address coordinates');
+    } else {
+      const responseJson = await response.json();
+      return responseJson
+    }
+  } catch (error) {
+    throw (error)
+  }
+}
+
+export const cleanAddressCoords = (address) => {
+  const geocode = address.results[0];
+  const cleanLocation = {
+    address: geocode.formatted_address,
+    coordinates: geocode.geometry.location,
+  }
+
+  return cleanLocation;
+}  
+
+// export const getCityData = async (location) => {
+//   try {
+//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=${location}&date=Future&app_key=${keys.eventfulKey}`;
+//     const response = await fetch(url, {mode: 'cors'});
+
+//     if (response.status > 226) {
+//       throw new Error('could not get city event data');
+//       // handleError function that handles error
+//     } else {
+//       return await response.json();
+//     }
+//   } catch (error) {
+//     throw (error);
+//   }
+// };
 
 // build URL function that builds out the URL 
 // minimize some of the repetition
