@@ -14,7 +14,8 @@ export const currentLocationFetchData = () => {
         throw new Error('could not get current location coordinates');
       } else {
         const jsonResponse = await response.json();
-        dispatch(addCurrentLocation(jsonResponse.location));
+        const currentLocation = { coordinates: jsonResponse.location }
+        dispatch(addCurrentLocation(currentLocation));
       }
     } catch (err) {
       dispatch(currentHasErrored(true));

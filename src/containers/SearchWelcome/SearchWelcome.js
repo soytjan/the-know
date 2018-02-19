@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import { getCityData, 
   cleanEventData, 
-  initialFetchWithCoords,
   getAddressCoords,
   cleanAddressCoords,
-  getCityDataWithCoords } from '../../helper';
+  fetchCityData } from '../../helper';
 import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 // var geocoder = require('geocoder');
@@ -39,27 +38,28 @@ export class SearchWelcome extends Component {
     e.preventDefault();
     try {
       const { location } = this.state;
+      const { addEvents, addLocation, onReroute } = this.props;
       const jsonCoordinates = await getAddressCoords(location);
       const cleanLocation = cleanAddressCoords(jsonCoordinates);
-      const jsonCityData = await getCityDataWithCoords(cleanLocation);
+      const jsonCityData = await fetchCityData(cleanLocation);
       const events = cleanEventData(jsonCityData);
-      this.props.addEvents(events);
-      this.props.addLocation(cleanLocation);
+      addEvents(events);
+      addLocation(cleanLocation);
       localStorage.setItem('location', cleanLocation.address); 
-      this.props.onReroute()
+      onReroute()
     } catch (error) {
       this.setState({ error: true })
     } 
   }
 
-  // need to make a function using the coordinates
   handleCurrentLocation = async () => {
     try {
-      const { currentLocation, addEvents, onReroute } = this.props;
-      const jsonResponse = await initialFetchWithCoords(currentLocation);
+      const { currentLocation, addEvents, addLocation, onReroute } = this.props;
+      const jsonResponse = await fetchCityData(currentLocation);
       const events = await cleanEventData(jsonResponse);
 
       addEvents(events);
+      addLocation(currentLocation);
       onReroute();
     } catch (error) {
       this.setState({ error: true })

@@ -16,24 +16,24 @@ export const getGeoLocation = async () => {
   }
 }
 
-export const initialFetchWithCoords = async (coords) => {
-  try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-    const response = await fetch(url, {mode: 'cors'});
+// export const initialFetchWithCoords = async (coords) => {
+//   try {
+//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+//     const response = await fetch(url, {mode: 'cors'});
 
-    if (response.status > 226) {
-      throw new Error('could not get city event data');
-      // handleError function that handles error
-    } else {
-      const responseJson = await response.json();
-      return responseJson
-    }
-  } catch (error) {
-    throw (error);
-  }
-};
+//     if (response.status > 226) {
+//       throw new Error('could not get city event data');
+//       // handleError function that handles error
+//     } else {
+//       const responseJson = await response.json();
+//       return responseJson
+//     }
+//   } catch (error) {
+//     throw (error);
+//   }
+// };
 
-export const getCityDataWithCoords = async (location) => {
+export const fetchCityData = async (location) => {
   const coords = location.coordinates;
   
   try {
