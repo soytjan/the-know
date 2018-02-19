@@ -14,6 +14,10 @@ export class SearchMain extends Component {
     }
   }
 
+  componentDidMount() {
+    
+  }
+
   handleChange = (e) => {
     const { value, name } = e.target;
 

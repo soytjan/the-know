@@ -16,20 +16,19 @@ import NavTime from '../NavTime/NavTime';
 import './Main.css';
 
 class Main extends Component {
-  handleFavorites = (event, type) => {
-    console.log('handleFavorite run')
+  handleFavorites = (event, category) => {
     const { favorites } = this.props;
     const isDuplicated = favorites.some(fav => fav.title === event.title);
     const favEvent = {...event, isFavorited: !event.isFavorited };
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
-    this.handleUpdateEvents(type, favEvent);
+    this.handleUpdateEvents(category, favEvent);
   }
 
-  handleUpdateEvents = (type='event', event) => {
+  handleUpdateEvents = (category, event) => {
     const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
 
-    switch (type) {
+    switch (category) {
       case 'music':
         return updateMusic(event);
       case 'food':

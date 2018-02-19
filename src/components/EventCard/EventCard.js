@@ -26,7 +26,7 @@ const EventCard = (props) => {
         <div className='btn-cont'>
           <button 
             className='btn-fav'
-            onClick={() => onFavorite(event, type)}
+            onClick={() => onFavorite(event, event.category)}
           >
             <i className="far fa-heart"></i>
           </button>

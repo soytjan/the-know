@@ -38,9 +38,7 @@ Welcome.propTypes = {
   history: PropTypes.object,
 };
 
-// do i actually need access to currentLocation?
 const mapStateToProps = (state) => ({
-  currentLocation: state.currentLocation,
   currentHasErrored: state.currentHasErrored
 })
 

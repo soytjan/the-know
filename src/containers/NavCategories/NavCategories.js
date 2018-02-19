@@ -22,7 +22,7 @@ class NavCategories extends Component {
   getAndStoreMusic = async () => {
     const { location, addMusic } = this.props;
     const musicData = await getCategoryData('music', location);
-    const cleanMusicData = cleanEventData(musicData);
+    const cleanMusicData = cleanEventData(musicData, 'music');
 
     addMusic(cleanMusicData);    
   }
@@ -30,7 +30,7 @@ class NavCategories extends Component {
   getAndStoreFood = async () => {
     const { location, addFood } = this.props;
     const foodData = await getCategoryData('food', location);
-    const cleanFoodData = cleanEventData(foodData);
+    const cleanFoodData = cleanEventData(foodData, 'food');
 
     addFood(cleanFoodData);
   }
@@ -38,7 +38,7 @@ class NavCategories extends Component {
   getAndStoreCulture = async () => {
     const { location, addCulture } = this.props;
     const cultureData = await getCategoryData('culture', location);
-    const cleanCultureData = cleanEventData(cultureData);
+    const cleanCultureData = cleanEventData(cultureData, 'culture');
 
     addCulture(cleanCultureData);
   }
@@ -46,7 +46,7 @@ class NavCategories extends Component {
   getAndStoreNightlife = async () => {
     const { location, addNightlife } = this.props;
     const nightlifeData = await getCategoryData('nightlife', location)
-    const cleanNightlifeData = cleanEventData(nightlifeData);
+    const cleanNightlifeData = cleanEventData(nightlifeData, 'nightlife');
 
     addNightlife(cleanNightlifeData);
   } 
