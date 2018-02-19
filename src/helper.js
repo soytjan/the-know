@@ -10,16 +10,27 @@ export const getGeoLocation = async () => {
       header: { 'content-type': 'application/json' }
      })
 
-    if (response.status > 226) {
-      throw new Error('could not get current location coordinates');
-    } else {
-      const jsonResponse = await response.json();
-      return jsonResponse.location;
-    }
+    return response;
   } catch (error) {
     throw (error);
   }
 }
+
+export const initialFetchWithCoordinates = async (coords) => {
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/rest/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}`;
+    const response = await fetch(url);
+
+    if (response.status > 226) {
+      throw new Error('could not get city event data');
+      // handleError function that handles error
+    } else {
+      return await response.json();
+    }
+  } catch (error) {
+    throw (error);
+  }
+};
 
 export const getCityData = async (location) => {
   try {

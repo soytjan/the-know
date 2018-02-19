@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { cleanEventData, 
-//   getMusicData, 
-//   getFoodData, 
-//   getCultureData, 
-//   getNightlifeData 
-// } from '../../helper';
 import { addMusic,
   addFood,
   addCulture,
