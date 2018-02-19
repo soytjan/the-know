@@ -109,7 +109,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  location: PropTypes.string,
+  location: PropTypes.object,
   events: PropTypes.array,
   music: PropTypes.array,
   food: PropTypes.array,
