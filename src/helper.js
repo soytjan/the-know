@@ -42,7 +42,6 @@ export const cleanAddressCoords = (address) => {
 } 
 
 export const fetchCityData = async (location) => {
-  console.log('fetch', location)
   const coords = location.coordinates;
   
   try {
@@ -86,7 +85,7 @@ export const cleanEventData = (cityData, category) => {
 
 // minimize some of the repetition
 // handleError and pass in error as an argument
-const genApiUrl = (type, location) => {
+export const genApiUrl = (type, location) => {
   const coords = location.coordinates;
   
   if (!coords) {
