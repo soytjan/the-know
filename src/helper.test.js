@@ -216,8 +216,95 @@ describe('helper', () => {
   })
 
   describe('getCategoryData', () => {
+    let location;
+
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({
+          events: 'array of events'
+        })
+      }));
+    })
+
     beforeAll(() => {
-      
+      location = {
+        address: "Denver, CO, USA",
+        coordinates: {
+          "lat": 39.7392358,
+          "lng": -104.990251
+        }
+      }
+    })
+
+    it('should call fetch with expected music params when the type is music', () => {
+      const coords = location.coordinates;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=music`;
+      const init = {mode: 'cors'};
+      const type = 'music';
+
+      expect(window.fetch).not.toHaveBeenCalled();
+
+      helper.getCategoryData(type, location);
+
+      expect(window.fetch).toHaveBeenCalledWith(url, init);
+    });
+
+    it('should call fetch with expected food params when the type is food', () => {
+      const coords = location.coordinates;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=food`;
+      const init = {mode: 'cors'};
+      const type = 'food';
+
+      expect(window.fetch).not.toHaveBeenCalled();
+
+      helper.getCategoryData(type, location);
+
+      expect(window.fetch).toHaveBeenCalledWith(url, init);
+    });
+
+    it('should call fetch with expected culture params when the type is culture', () => {
+      const coords = location.coordinates;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=attractions`;
+      const init = {mode: 'cors'};
+      const type = 'culture';
+
+      expect(window.fetch).not.toHaveBeenCalled();
+
+      helper.getCategoryData(type, location);
+
+      expect(window.fetch).toHaveBeenCalledWith(url, init);
+    });
+
+    it('should call fetch with expected nightlife params when the type is nightlife', () => {
+      const coords = location.coordinates;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=singles_social`;
+      const init = {mode: 'cors'};
+      const type = 'nightlife';
+
+      expect(window.fetch).not.toHaveBeenCalled();
+
+      helper.getCategoryData(type, location);
+
+      expect(window.fetch).toHaveBeenCalledWith(url, init);
+    })
+
+    it('should return an object if status code is ok', () => {
+      const response = helper.getCategoryData('music',location);
+      const expected = {events: 'array of events'};
+
+      expect(response).resolves.toEqual(expected);
+    })
+
+    it('should throw an error if status code is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 500
+      }));
+
+      const response = helper.getCategoryData('music',location);
+      const expected = Error('could not get city event data');
+
+      expect(response).rejects.toEqual(expected);
     })
   })
 })
