@@ -16,42 +16,6 @@ export const getGeoLocation = async () => {
   }
 }
 
-// export const initialFetchWithCoords = async (coords) => {
-//   try {
-//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-//     const response = await fetch(url, {mode: 'cors'});
-
-//     if (response.status > 226) {
-//       throw new Error('could not get city event data');
-//       // handleError function that handles error
-//     } else {
-//       const responseJson = await response.json();
-//       return responseJson
-//     }
-//   } catch (error) {
-//     throw (error);
-//   }
-// };
-
-export const fetchCityData = async (location) => {
-  const coords = location.coordinates;
-  
-  try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-    const response = await fetch(url, {mode: 'cors'});
-
-    if (response.status > 226) {
-      throw new Error('could not get city event data');
-      // handleError function that handles error
-    } else {
-      const responseJson = await response.json();
-      return responseJson
-    }
-  } catch (error) {
-    throw (error)
-  }
-}
-
 export const getAddressCoords = async (location) => {
   try {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${keys.googleMapsApiKey}`
@@ -75,12 +39,53 @@ export const cleanAddressCoords = (address) => {
   }
 
   return cleanLocation;
-}  
+} 
 
+export const fetchCityData = async (location) => {
+  const coords = location.coordinates;
+  
+  try {
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+    const response = await fetch(url, {mode: 'cors'});
+
+    if (response.status > 226) {
+      throw new Error('could not get city event data');
+      // handleError function that handles error
+    } else {
+      const responseJson = await response.json();
+      return responseJson
+    }
+  } catch (error) {
+    throw (error)
+  }
+}
+
+export const cleanEventData = (cityData, category) => {
+  const events = cityData.events.event;
+
+  const cleanedEvents = events.map(event => {
+    return {
+      title: event.title,
+      description: event.description,
+      category: category,
+      venueName: event.venue_name,
+      region: event.region_abbr,
+      postalCode: event.postal_code,
+      city: event.city_name,
+      startTime: event.start_time,
+      venueAddress: event.venue_address,
+      image: event.image,
+      url: event.url,
+      id: event.id,
+    }
+  })
+
+  return cleanedEvents;
+}
 
 // minimize some of the repetition
 // handleError and pass in error as an argument
-const genApiUrl = (type, location) => {
+export const genApiUrl = (type, location) => {
   const coords = location.coordinates;
   
   if (!coords) {
@@ -128,25 +133,29 @@ export const getCategoryData = async (type, location) => {
   }
 }
 
-export const cleanEventData = (cityData, category) => {
-  const events = cityData.events.event;
 
-  const cleanedEvents = events.map(event => {
-    return {
-      title: event.title,
-      description: event.description,
-      category: category,
-      venueName: event.venue_name,
-      region: event.region_abbr,
-      postalCode: event.postal_code,
-      city: event.city_name,
-      startTime: event.start_time,
-      venueAddress: event.venue_address,
-      image: event.image,
-      url: event.url,
-      id: event.id,
-    }
-  })
+// export const initialFetchWithCoords = async (coords) => {
+//   try {
+//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+//     const response = await fetch(url, {mode: 'cors'});
 
-  return cleanedEvents;
-}
+//     if (response.status > 226) {
+//       throw new Error('could not get city event data');
+//       // handleError function that handles error
+//     } else {
+//       const responseJson = await response.json();
+//       return responseJson
+//     }
+//   } catch (error) {
+//     throw (error);
+//   }
+// };
+
+
+
+ 
+
+
+
+
+
