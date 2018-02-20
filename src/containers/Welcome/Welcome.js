@@ -5,7 +5,7 @@ import { currentLocationFetchData } from '../../actions/';
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
 import './Welcome.css';
 
-class Welcome extends Component {
+export class Welcome extends Component {
   componentDidMount = () => {
     const { fetchCurrentLocation } = this.props;
 

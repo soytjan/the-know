@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { 
   cleanEventData, 
   getAddressCoords,
@@ -26,21 +26,19 @@ export class SearchWelcome extends Component {
     this.setState({ [name]: value });
   }
 
-  // look into moving this into the Redux store
+  // look into moving this into the Redux store?
+  // need to come up with a way of handling loading time and error
+  // -- eventsLoading in Redux? eventsErrored? 
 
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { location } = this.state;
       const { addEvents, addLocation, onReroute } = this.props;
-      const jsonCoordinates = await getAddressCoords(location);
-      const cleanLocation = cleanAddressCoords(jsonCoordinates);
-      const jsonCityData = await fetchCityData(cleanLocation);
-      const events = cleanEventData(jsonCityData, 'event');
-      addEvents(events);
-      addLocation(cleanLocation);
-      localStorage.setItem('location', cleanLocation.address); 
-      onReroute()
+      const geocodeLocation = await this.fetchGeocodeAddress(location);
+      const events = await this.fetchAndCleanEventData(geocodeLocation);
+
+      this.storeDataAndReroute(events, geocodeLocation);
     } catch (error) {
       this.setState({ error: true })
     } 
@@ -48,16 +46,36 @@ export class SearchWelcome extends Component {
 
   handleCurrentLocation = async () => {
     try {
-      const { currentLocation, addEvents, addLocation, onReroute } = this.props;
-      const jsonResponse = await fetchCityData(currentLocation);
-      const events = await cleanEventData(jsonResponse);
+      const { currentLocation } = this.props;
+      const events = await this.fetchAndCleanEventData(currentLocation);
 
-      addEvents(events);
-      addLocation(currentLocation);
-      onReroute();
+      this.storeDataAndReroute(events, currentLocation);
     } catch (error) {
       this.setState({ error: true })
     }
+  }
+
+  fetchGeocodeAddress = async (location) => {
+    const jsonResponse = await getAddressCoords(location);
+    const geocodeLocation = cleanAddressCoords(jsonResponse);
+
+    return geocodeLocation;
+  }
+
+  fetchAndCleanEventData = async (location) => {
+    const jsonResponse = await fetchCityData(location);
+    const events = cleanEventData(jsonResponse);
+ 
+    return events;
+  }
+
+  storeDataAndReroute = (events, location) => {
+    const { addEvents, addLocation, onReroute } = this.props;
+
+    addEvents(events);
+    addLocation(location);
+    localStorage.setItem('location', location.address);
+    onReroute();
   }
 
 
@@ -82,9 +100,13 @@ export class SearchWelcome extends Component {
   }
 }
 
-// SearchWelcome.propTypes = {
+SearchWelcome.propTypes = {
+  currentLocation: PropTypes.object,
+  addEvents: PropTypes.func,
+  addLocation: PropTypes.func,
+  onReroute: PropTypes.func,
 
-// };
+};
 
 const mapStateToProps = (state) => ({
   currentLocation: state.currentLocation
