@@ -10,7 +10,13 @@ export const getGeoLocation = async () => {
       header: { 'content-type': 'application/json' }
      })
 
-    return response;
+    if (response.status > 226) {
+      throw new Error('could not get current location coordinates');
+    } else {
+      const jsonResponse = await response.json();
+      
+      return jsonResponse;
+    }
   } catch (error) {
     throw (error);
   }

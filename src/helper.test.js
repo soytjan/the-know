@@ -33,26 +33,24 @@ describe('helper', () => {
 
       expect(window.fetch).toHaveBeenCalledWith(url, init);
     });
-    
-    // RETURNS A RESPONSE...DO I NEED TO TEST THAT HERE?
 
-    // it('should return an object if status code is ok', () => {
-    //   const response = helper.getGeoLocation(location);
-    //   const expected = {"json": [Function json], "status": 200};
+    it('should return an object if status code is ok', () => {
+      const response = helper.getGeoLocation(location);
+      const expected = {location: {}};
 
-    //   expect(response).resolves.toEqual(expected);
-    // })
+      expect(response).resolves.toEqual(expected);
+    });
 
-    // it('should throw an error if status code is not ok', () => {
-    //   window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-    //     status: 500
-    //   }));
+    it('should throw an error if status code is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 500
+      }));
 
-    //   const response = helper.getGeoLocation();
-    //   const expected = Error('could not get city event data');
+      const response = helper.getGeoLocation();
+      const expected = Error('could not get current location coordinates');
 
-    //   expect(response).rejects.toEqual(expected);
-    // })
+      expect(response).rejects.toEqual(expected);
+    });
   })
 
   describe('getAddressCoords', () => {
