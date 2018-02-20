@@ -3,7 +3,7 @@ import * as actions from '../actions';
 
 describe('locationReducer', () => {
   it('should return the default state', () => {
-    const expected = '';
+    const expected = {};
 
     expect(locationReducer(undefined, {})).toEqual(expected);
   });

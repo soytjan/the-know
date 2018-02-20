@@ -8,15 +8,9 @@ export const addCurrentLocation = coordinates => ({
 export const currentLocationFetchData = () => {
   return async (dispatch) => {
     try {
-      const response = await getGeoLocation();
-      
-      if (response.status > 226) {
-        throw new Error('could not get current location coordinates');
-      } else {
-        const jsonResponse = await response.json();
-        const currentLocation = { coordinates: jsonResponse.location }
-        dispatch(addCurrentLocation(currentLocation));
-      }
+      const jsonResponse = await getGeoLocation();
+      const currentLocation = { coordinates: jsonResponse.location }
+      dispatch(addCurrentLocation(currentLocation));
     } catch (err) {
       dispatch(currentHasErrored(true));
       throw err;

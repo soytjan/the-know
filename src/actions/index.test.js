@@ -1,6 +1,72 @@
 import * as actions from './index';
+import { getGeoLocation } from '../helper';
 
 describe('actions', () => {
+  describe('addCurrentLocation', () => {
+    it('should return a type of ADD_CURRENT_LOCATION with a coordinates object', () => {
+      const coordinates = {
+        coordinates: {lat: 123, lng: 456}
+      }
+      const expected = {
+        type: 'ADD_CURRENT_LOCATION',
+        coordinates
+      }
+
+      expect(actions.addCurrentLocation(coordinates)).toEqual(expected);
+    })
+  })
+
+  describe('currentLocationFetchData', () => {
+    let mockResponse;
+
+    beforeAll(() => {
+      mockResponse = {
+        "location": {
+          "lat": 39.7380371,
+          "lng": -105.02651949999999
+        },
+        "accuracy": 12489
+      }
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({
+          mockResponse
+        })
+      }));
+    })
+    
+    // how do I set up these tests?
+    
+    // it('should dispatch addCurrentLocation with the expected params if status code is ok', () => {
+    //   const expectedParams = {
+    //     coordinates: {
+    //       "lat": 39.7380371,
+    //       "lng": -105.02651949999999
+    //     }
+    //   }
+    //   addCurrentLocation = jest.fn();
+    //   actions.currentLocationFetchData();
+
+    //   expect(actions.addCurrentLocation).toHaveBeenCalledWith(expectedParams);
+    // });
+
+    // it('should dispatch currentHasErrored if status code is not ok', () => {
+
+    // });
+  })
+
+  describe('currentHasErrored', () => {
+    it('should return a type of CURRENT_HAS_ERRORED with a boolean', () => {
+      const boolean = false;
+      const expected = {
+        type: 'CURRENT_HAS_ERRORED',
+        hasErrored: false
+      }
+      
+      expect(actions.currentHasErrored(boolean)).toEqual(expected);
+    })
+  })
+
   describe('addLocation', () => {
     it('should return a type of ADD_LOCATION with a location object', () => {
       const location = {
