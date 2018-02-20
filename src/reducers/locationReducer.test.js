@@ -8,9 +8,22 @@ describe('locationReducer', () => {
     expect(locationReducer(undefined, {})).toEqual(expected);
   });
 
-  it('ADD_LOCATION should return the state with a location string added', () => {
-    const action = actions.addLocation('Denver');
-    const expected = 'Denver';
+  it('ADD_LOCATION should return the state with a location object added', () => {
+    const location = {
+      address: "Denver, CO, USA",
+      coordinates: {
+        "lat": 39.7392358,
+        "lng": -104.990251
+      }
+    }
+    const action = actions.addLocation(location);
+    const expected = {
+      address: "Denver, CO, USA",
+      coordinates: {
+        "lat": 39.7392358,
+        "lng": -104.990251
+      }
+    };
 
     expect(locationReducer(undefined, action)).toEqual(expected);
   });
