@@ -1,20 +1,111 @@
 import * as helper from './helper';
 import keys from './api/keys';
-import { mockEventData, mockCleanEventData } from './mockData';
+import { 
+  mockEventData, 
+  mockCleanEventData, 
+  mockGeocodeData, 
+  mockCleanGeocodeData 
+} from './mockData';
 
 describe('helper', () => {
   const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
   
   describe('getGeoLocation', () => {
+    beforeAll(() => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({
+          location: {}
+        })
+      }));
+    })
+
+    it('should call fetch with the expected params', () => {
+      const url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${keys.googleMapsApiKey}`;
+      const init = {
+        method: 'POST',
+        header: { 'content-type': 'application/json' }
+      }
+
+      expect(window.fetch).not.toHaveBeenCalled();
+
+      helper.getGeoLocation();
+
+      expect(window.fetch).toHaveBeenCalledWith(url, init);
+    });
     
+    // RETURNS A RESPONSE...DO I NEED TO TEST THAT HERE?
+
+    // it('should return an object if status code is ok', () => {
+    //   const response = helper.getGeoLocation(location);
+    //   const expected = {"json": [Function json], "status": 200};
+
+    //   expect(response).resolves.toEqual(expected);
+    // })
+
+    // it('should throw an error if status code is not ok', () => {
+    //   window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+    //     status: 500
+    //   }));
+
+    //   const response = helper.getGeoLocation();
+    //   const expected = Error('could not get city event data');
+
+    //   expect(response).rejects.toEqual(expected);
+    // })
   })
 
   describe('getAddressCoords', () => {
+    let location;
 
+    beforeAll(() => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve({
+          location: {}
+        })
+      }));
+
+      location = 'Denver';
+    })
+
+    it('should call fetch with the expected params', () => {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=${keys.googleMapsApiKey}`;
+      
+      expect(window.fetch).not.toHaveBeenCalled();
+
+      helper.getAddressCoords(location);
+
+      expect(window.fetch).toHaveBeenCalledWith(url);
+
+    });
+
+    it('should return an object if status code is ok', () => {
+      const response = helper.getAddressCoords(location);
+      const expected = {location: {}};
+
+      expect(response).resolves.toEqual(expected);
+    })
+
+    it('should throw an error if status code is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 500
+      }));
+
+      const response = helper.getAddressCoords(location);
+      const expected = Error('could not get address coordinates');
+
+      expect(response).rejects.toEqual(expected);
+    })
   })
 
   describe('cleanAddressCoords', () => {
+    it('should take in geocode response and return a clean location object', () => {
+      const expected = mockCleanGeocodeData;
+      const address = mockGeocodeData;
 
+      expect(helper.cleanAddressCoords(address)).toEqual(expected);
+    })
   })
 
   describe('fetchCityData', () => {
@@ -125,6 +216,8 @@ describe('helper', () => {
   })
 
   describe('getCategoryData', () => {
-
+    beforeAll(() => {
+      
+    })
   })
 })
