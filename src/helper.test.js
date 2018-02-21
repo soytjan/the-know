@@ -108,6 +108,30 @@ describe('helper', () => {
     })
   })
 
+  describe('fetchAndCleanGeocodeLocation', () => {
+    let location;
+
+    beforeAll(() => {
+      location = 'Denver';
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve(mockGeocodeData)
+      }));
+    })
+
+    it('should make fetch call', () => {
+      helper.fetchAndCleanGeocodeLocation(location);
+
+      expect(window.fetch).toHaveBeenCalled();
+    });
+
+    it('should return clean data object', async () => {
+      const expected = mockCleanGeocodeData;
+      const received = await helper.fetchAndCleanGeocodeLocation(location)
+      expect(received).toEqual(expected);
+    });
+  })
+
   describe('fetchCityData', () => {
     let location;
 
@@ -167,6 +191,36 @@ describe('helper', () => {
 
       expect(helper.cleanEventData(data, category)).toEqual(expected);
     })
+  })
+
+  describe('fetchAndCleanCityEventData', () => {
+    let location;
+
+    beforeAll(() => {
+      location = {
+        address: "Denver, CO, USA",
+        coordinates: {
+          "lat": 39.7392358,
+          "lng": -104.990251
+        }
+      };
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve(mockEventData)
+      }));
+    })
+
+    it('should make a fetch call', () => {
+      helper.fetchAndCleanCityEventData(location, 'event');
+
+      expect(window.fetch).toHaveBeenCalled();
+    });
+
+    it('should return clean data object', async () => {
+      const expected = mockCleanEventData;
+      const received = await helper.fetchAndCleanCityEventData(location, 'event')
+      expect(received).toEqual(expected);
+    });
   })
 
   describe('genApiUrl', () => {

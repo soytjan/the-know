@@ -28,13 +28,11 @@ export class SearchWelcome extends Component {
     this.setState({ [name]: value });
   }
 
- // look into loading time
-  // -- eventsLoading in Redux? eventsErrored? 
-
+ // look into loading time...put some sort of alert in on button click?
   handleSubmit = async (e) => {
     e.preventDefault();
     const { location } = this.state;
-    const geocodeLocation = await fetchAndCleanGeocodeLocation(location);
+    const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
 
     this.getAndStoreEventsData(geocodeLocation);
   }
@@ -46,7 +44,7 @@ export class SearchWelcome extends Component {
   }
 
   getAndStoreEventsData = async (location) => {
-    const events = await fetchAndCleanCityEventData(location);
+    const events = await fetchAndCleanCityEventData(location, 'event');
 
     this.storeDataAndReroute(events, location);
   }

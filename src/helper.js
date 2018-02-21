@@ -49,9 +49,7 @@ export const cleanAddressCoords = (address) => {
 
 export const fetchAndCleanGeocodeLocation = async (location) => {
   const jsonResponse = await getAddressCoords(location);
-  const geocodeLocation = cleanAddressCoords(jsonResponse);
-
-  return geocodeLocation;
+  return await cleanAddressCoords(jsonResponse);
 } 
 
 export const fetchCityData = async (location) => {
@@ -96,9 +94,9 @@ export const cleanEventData = (cityData, category) => {
   return cleanedEvents;
 }
 
-export const fetchAndCleanCityEventData = async (location) => {
+export const fetchAndCleanCityEventData = async (location, category) => {
   const jsonResponse = await fetchCityData(location);
-  const events = cleanEventData(jsonResponse);
+  const events = cleanEventData(jsonResponse, category);
 
   return events;
 }
