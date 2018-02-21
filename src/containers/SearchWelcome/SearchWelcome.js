@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { 
+import {
+  fetchAndCleanGeocodeLocation,
+  fetchAndCleanCityEventData, 
   cleanEventData, 
   getAddressCoords,
   cleanAddressCoords,
@@ -26,47 +28,25 @@ export class SearchWelcome extends Component {
     this.setState({ [name]: value });
   }
 
-  // look into moving this into the Redux store?
-  // need to come up with a way of handling loading time and error
-  // -- eventsLoading in Redux? eventsErrored? 
-
+ // look into loading time...put some sort of alert in on button click?
   handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { location } = this.state;
-      const { addEvents, addLocation, onReroute } = this.props;
-      const geocodeLocation = await this.fetchGeocodeAddress(location);
-      const events = await this.fetchAndCleanEventData(geocodeLocation);
+    const { location } = this.state;
+    const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
 
-      this.storeDataAndReroute(events, geocodeLocation);
-    } catch (error) {
-      this.setState({ error: true })
-    } 
+    this.getAndStoreEventsData(geocodeLocation);
   }
 
   handleCurrentLocation = async () => {
-    try {
-      const { currentLocation } = this.props;
-      const events = await this.fetchAndCleanEventData(currentLocation);
-
-      this.storeDataAndReroute(events, currentLocation);
-    } catch (error) {
-      this.setState({ error: true })
-    }
+    const { currentLocation } = this.props;
+    
+    this.getAndStoreEventsData(currentLocation)
   }
 
-  fetchGeocodeAddress = async (location) => {
-    const jsonResponse = await getAddressCoords(location);
-    const geocodeLocation = cleanAddressCoords(jsonResponse);
+  getAndStoreEventsData = async (location) => {
+    const events = await fetchAndCleanCityEventData(location, 'event');
 
-    return geocodeLocation;
-  }
-
-  fetchAndCleanEventData = async (location) => {
-    const jsonResponse = await fetchCityData(location);
-    const events = cleanEventData(jsonResponse);
- 
-    return events;
+    this.storeDataAndReroute(events, location);
   }
 
   storeDataAndReroute = (events, location) => {
@@ -105,7 +85,6 @@ SearchWelcome.propTypes = {
   addEvents: PropTypes.func,
   addLocation: PropTypes.func,
   onReroute: PropTypes.func,
-
 };
 
 const mapStateToProps = (state) => ({

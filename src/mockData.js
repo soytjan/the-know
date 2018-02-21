@@ -156,3 +156,11 @@ export const mockCleanGeocodeData = {
     "lng": -104.990251
   }
 }
+
+export const mockGeolocationData = {
+  "location": {
+        "lat": 39.7380371,
+        "lng": -105.02651949999999
+  },
+  "accuracy": 84452
+}
