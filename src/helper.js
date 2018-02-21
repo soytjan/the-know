@@ -14,8 +14,8 @@ export const getGeoLocation = async () => {
       throw new Error('could not get current location coordinates');
     } else {
       const jsonResponse = await response.json();
-      
-      return jsonResponse;
+      const currentLocation = { coordinates: jsonResponse.location }
+      return currentLocation;
     }
   } catch (error) {
     throw (error);
@@ -30,7 +30,7 @@ export const getAddressCoords = async (location) => {
       throw new Error('could not get address coordinates');
     } else {
       const responseJson = await response.json();
-      return responseJson
+      return responseJson;
     }
   } catch (error) {
     throw (error)
@@ -45,6 +45,13 @@ export const cleanAddressCoords = (address) => {
   }
 
   return cleanLocation;
+}
+
+export const fetchAndCleanGeocodeLocation = async (location) => {
+  const jsonResponse = await getAddressCoords(location);
+  const geocodeLocation = cleanAddressCoords(jsonResponse);
+
+  return geocodeLocation;
 } 
 
 export const fetchCityData = async (location) => {
@@ -87,6 +94,13 @@ export const cleanEventData = (cityData, category) => {
   })
 
   return cleanedEvents;
+}
+
+export const fetchAndCleanCityEventData = async (location) => {
+  const jsonResponse = await fetchCityData(location);
+  const events = cleanEventData(jsonResponse);
+
+  return events;
 }
 
 // minimize some of the repetition

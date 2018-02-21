@@ -4,7 +4,8 @@ import {
   mockEventData, 
   mockCleanEventData, 
   mockGeocodeData, 
-  mockCleanGeocodeData 
+  mockCleanGeocodeData,
+  mockGeolocationData 
 } from './mockData';
 
 describe('helper', () => {
@@ -14,9 +15,7 @@ describe('helper', () => {
     beforeAll(() => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 200,
-        json: () => Promise.resolve({
-          location: {}
-        })
+        json: () => Promise.resolve(mockGeolocationData)
       }));
     })
 
@@ -36,7 +35,12 @@ describe('helper', () => {
 
     it('should return an object if status code is ok', () => {
       const response = helper.getGeoLocation(location);
-      const expected = {location: {}};
+      const expected = {
+        coordinates: {
+          "lat": 39.7380371,
+          "lng": -105.02651949999999
+        }
+      };
 
       expect(response).resolves.toEqual(expected);
     });
@@ -59,9 +63,7 @@ describe('helper', () => {
     beforeAll(() => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         status: 200,
-        json: () => Promise.resolve({
-          location: {}
-        })
+        json: () => Promise.resolve(mockGeocodeData)
       }));
 
       location = 'Denver';
@@ -80,7 +82,7 @@ describe('helper', () => {
 
     it('should return an object if status code is ok', () => {
       const response = helper.getAddressCoords(location);
-      const expected = {location: {}};
+      const expected = mockGeocodeData;
 
       expect(response).resolves.toEqual(expected);
     })

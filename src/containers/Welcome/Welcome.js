@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { currentLocationFetchData } from '../../actions/';
+import { getGeoLocation } from '../../helper';
+import { addCurrentLocation, } from '../../actions/';
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
 import './Welcome.css';
 
 export class Welcome extends Component {
-  componentDidMount = () => {
-    const { fetchCurrentLocation } = this.props;
+  componentDidMount = async () => {
+    const { addCurrentLocation } = this.props;
+    const currentLocation = await getGeoLocation();
 
-    fetchCurrentLocation();
+    addCurrentLocation(currentLocation);
   }
 
   handleReroute = () => {
@@ -18,9 +20,6 @@ export class Welcome extends Component {
 
   render() {
     // look into doing some sort of React alert here
-    if (this.props.currentHasErrored) {
-      return alert('There has a been error finding your location!')
-    }
 
     return (
       <section className='Welcome'>
@@ -38,12 +37,8 @@ Welcome.propTypes = {
   history: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  currentHasErrored: state.currentHasErrored
-})
-
 const mapDispatchToProps = (dispatch) => ({
-  fetchCurrentLocation: () => dispatch(currentLocationFetchData())
+  addCurrentLocation: location => dispatch(addCurrentLocation(location))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
+export default connect(null, mapDispatchToProps)(Welcome);
