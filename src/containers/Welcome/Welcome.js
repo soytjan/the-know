@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getGeoLocation } from '../../helper';
 import { addCurrentLocation, } from '../../actions/';
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 import './Welcome.css';
 
 export class Welcome extends Component {
@@ -27,7 +28,9 @@ export class Welcome extends Component {
         </section>
         <section className='half-page'>
         </section>
-        <SearchWelcome onReroute={this.handleReroute} />
+        <ErrorBoundary>
+          <SearchWelcome onReroute={this.handleReroute} />
+        </ErrorBoundary>
       </section>
     )
   }

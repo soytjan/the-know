@@ -60,6 +60,7 @@ class Main extends Component {
     return (
       <section className="Main">
         <h3>{this.props.type}</h3>
+        <Route path='/home' component={NavTime} />
         <Route 
           exact path='/home/' 
           render={() => (<Events 
