@@ -276,7 +276,7 @@ describe('helper', () => {
 
     //need to think about how to do this
     it('should return default url when location does not have coordinates', () => {
-
+      expect(true).toEqual(false);
     })
 
     it('should return music url when type is music', () => {
@@ -402,10 +402,14 @@ describe('helper', () => {
   })
 
   describe('getWhenEventData', () => {
-
+    
   })
 
   describe('fetchAndCleanWhenEventData', () => {
 
+  })
+
+  describe('fetchSearchData', () => {
+    
   })
 })
