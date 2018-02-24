@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { convertObjToArray } from '../../helper';
 import EventCard from '../EventCard/EventCard';
 import './Events.css';
 
@@ -17,15 +18,15 @@ class Events extends Component {
       // }, {});
       // console.log(masterEvents, 'masterEvents')
       return categories.reduce((eventsArr, category) => {
-        const categoryIds = Object.keys(info[category]);
-        const categoryEvents = categoryIds.map(eventId => info[category][eventId]);
+        // const categoryIds = Object.keys(info[category]);
+        // const categoryEvents = categoryIds.map(eventId => info[category][eventId]);
+        const categoryEvents = convertObjToArray(info[category]);
 
         return [...eventsArr, ...categoryEvents]
       }, [])
     } 
       events = info;
-      const categoryIds = Object.keys(events);
-      return categoryIds.map(eventId => events[eventId])
+      return convertObjToArray(events);
   }
 
   render() {
