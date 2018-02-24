@@ -119,17 +119,15 @@ export const cleanEventDataToStore = (info, category) => {
   }, {})
 }
 
-export const fetchAndCleanCityEventData = async (location, category) => {
-  const jsonResponse = await fetchCityData(location);
-  const events = cleanEventDataToStore(jsonResponse, category);
-
-  return events;
-}
+// export const fetchAndCleanCityEventData = async (location, category) => {
+//   const jsonResponse = await fetchCityData(location);
+//   const events = cleanEventDataToStore(jsonResponse, category);
+//   return events;
+// }
 
 export const fetchAndCleanCategoryEventData = async (category, location) => {
   const jsonResponse = await getCategoryData(category, location);
   const events = cleanEventDataToStore(jsonResponse, category);
-
   return events;
 }
 
@@ -245,22 +243,6 @@ export const fetchSearchData = async (keywords, location) => {
 }
 
 
-// export const initialFetchWithCoords = async (coords) => {
-//   try {
-//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-//     const response = await fetch(url, {mode: 'cors'});
-
-//     if (response.status > 226) {
-//       throw new Error('could not get city event data');
-//       // handleError function that handles error
-//     } else {
-//       const responseJson = await response.json();
-//       return responseJson
-//     }
-//   } catch (error) {
-//     throw (error);
-//   }
-// };
 
 
 
