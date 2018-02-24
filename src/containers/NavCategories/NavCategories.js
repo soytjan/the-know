@@ -17,13 +17,13 @@ class NavCategories extends Component {
   getAndStoreEventsData = async (location) => {
     const { addEvents } = this.props;
 
-    const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
+    const musicEvents = await fetchAndCleanCategoryEventData('music', location);
     addEvents(musicEvents, 'music')
-    const foodEvents = await fetchAndCleanCategoryEventData(location, 'food');
+    const foodEvents = await fetchAndCleanCategoryEventData('food', location);
     addEvents(foodEvents, 'food');
-    const cultureEvents = await fetchAndCleanCategoryEventData(location, 'culture');
+    const cultureEvents = await fetchAndCleanCategoryEventData('culture', location);
     addEvents(cultureEvents, 'culture');
-    const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
+    const nightlifeEvents = await fetchAndCleanCategoryEventData('nightlife', location);
     addEvents(nightlifeEvents, 'nightlife');
   }
 
