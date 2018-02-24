@@ -19,7 +19,7 @@ import './Main.css';
 
 class Main extends Component {
   // componentWillUpdate to check for favorites?
-  
+
 
   handleFavorites = (event, category) => {
     const { favorites } = this.props;
@@ -39,24 +39,12 @@ class Main extends Component {
 
   componentDidMount = async () => {
     const { location } = this.props;
-    console.log('mounting component')
-    await this.getAndStoreEventsData(location);
-    this.setState({isLoading: false});
+
+    // await this.getAndStoreEventsData(location);
+    // this.setState({isLoading: false});
   }
 
-  getAndStoreEventsData = async (location) => {
-    console.log('in get and store')
-    const { addEvents } = this.props;
-
-    const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
-    addEvents(musicEvents, 'music')
-    const foodEvents = await fetchAndCleanCategoryEventData(location, 'food');
-    addEvents(foodEvents, 'food');
-    const cultureEvents = await fetchAndCleanCategoryEventData(location, 'culture');
-    addEvents(cultureEvents, 'culture');
-    const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
-    addEvents(nightlifeEvents, 'nightlife');
-  }
+  
 
   handleUpdateEvents = (category, event) => {
     const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
@@ -102,9 +90,9 @@ class Main extends Component {
   } 
 
   render() {
-    const { events, music, food, culture, nightlife, favorites } = this.props;
+    const { events, favorites } = this.props;
 
-    if(this.state.isLoading) {
+    if(!events.music) {
       return (
         <div>
           I'm still loading! 

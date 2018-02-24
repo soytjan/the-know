@@ -2,17 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchAndCleanCityEventData } from '../../helper';
+import { fetchAndCleanCategoryEventData } from '../../helper';
 import { addEvents } from '../../actions/';
 import './NavCategories.css';
 
 class NavCategories extends Component {
-  componentDidMount() {
+  componentDidMount = async () => {
     // check for location in localStorage if there is no location in this.props
-    // this.getAndStoreMusic();
-    // this.getAndStoreFood();
-    // this.getAndStoreCulture();
-    // this.getAndStoreNightlife(); 
+    const { location } = this.props;
+
+    await this.getAndStoreEventsData(location);
+  }
+
+  getAndStoreEventsData = async (location) => {
+    console.log('in get and store')
+    const { addEvents } = this.props;
+
+    const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
+    addEvents(musicEvents, 'music')
+    const foodEvents = await fetchAndCleanCategoryEventData(location, 'food');
+    addEvents(foodEvents, 'food');
+    const cultureEvents = await fetchAndCleanCategoryEventData(location, 'culture');
+    addEvents(cultureEvents, 'culture');
+    const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
+    addEvents(nightlifeEvents, 'nightlife');
   }
 
   // getAndStoreMusic = async () => {
@@ -84,7 +97,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
- 
+  addEvents: (events, category) => dispatch(addEvents(events, category)),
 })
 
-export default connect(mapStateToProps, null)(NavCategories);
+export default connect(mapStateToProps, mapDispatchToProps)(NavCategories);
