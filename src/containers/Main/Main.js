@@ -19,8 +19,6 @@ import './Main.css';
 
 class Main extends Component {
   // componentWillUpdate to check for favorites?
-
-
   handleFavorites = (event, category) => {
     const { favorites } = this.props;
     const isDuplicated = favorites.some(fav => fav.title === event.title);
@@ -28,13 +26,6 @@ class Main extends Component {
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
     this.handleUpdateEvents(category, favEvent);
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      isLoading: true
-    }
   }
 
   handleUpdateEvents = (category, event) => {
@@ -65,20 +56,6 @@ class Main extends Component {
 
     removeFavorite(event);
   }
-
-  genEventsArray = () => {
-    const { events } = this.props;
-    const categories = Object.keys(events);
-    const array =  categories.reduce((eventsArr, category) => {
-      const categoryIds = Object.keys(events[category]);
-      const categoryEvents = categoryIds.map(event => events[category][categoryIds]);
-
-      return [...eventsArr, ...categoryEvents]
-    }, [])
-
-    console.log(array)
-    return array;
-  } 
 
   render() {
     const { events, favorites } = this.props;
