@@ -11,9 +11,11 @@ class Events extends Component {
     let events;
     if (type === 'event') {
       const categories = Object.keys(info);
-      // events = categories.reduce((obj, category) => {
-      //   return {...obj, ...info[category]}
+      //think about a refactor here
+      // const masterEvents = categories.reduce((obj, key) => {
+      //   console.log('category objects', info[key])
       // }, {});
+      // console.log(masterEvents, 'masterEvents')
       return categories.reduce((eventsArr, category) => {
         const categoryIds = Object.keys(info[category]);
         const categoryEvents = categoryIds.map(eventId => info[category][eventId]);
@@ -24,7 +26,6 @@ class Events extends Component {
       events = info;
       const categoryIds = Object.keys(events);
       return categoryIds.map(eventId => events[eventId])
-    
   }
 
   render() {
