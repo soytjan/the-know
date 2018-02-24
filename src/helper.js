@@ -161,7 +161,7 @@ export const genApiUrl = (type, location) => {
       category = '';
   }
 
-  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}${category}`
+  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20${category}`
 }
 
 export const getCategoryData = async (category, location) => {
