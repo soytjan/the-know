@@ -30,7 +30,8 @@ class Events extends Component {
 
   render() {
     const { info, type, onFavorite } = this.props;
-    const eventArray = this.genEventsArray()
+    const eventArray = this.genEventsArray();
+    console.log('events array', eventArray)
     const renderedEvents = eventArray.map(event => {
       return <EventCard event={event} type={type} onFavorite={onFavorite} /> 
     })

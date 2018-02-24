@@ -20,7 +20,7 @@ export const eventsReducer = (state = {}, action) => {
     case 'ADD_EVENTS':
       return {...state, [action.category]: action.events };
     case 'UPDATE_EVENTS':
-      return {...state, [action.event.id]: action.event };
+      return {...state, [action.event.category]: {...state[action.event.category], [action.event.id]: action.event}}
     default: 
       return state;
   }

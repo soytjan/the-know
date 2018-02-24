@@ -6,10 +6,6 @@ import { fetchAndCleanCategoryEventData } from '../../helper';
 import {
   addEvents,
   updateEvents,
-  updateMusic,
-  updateFood,
-  updateCulture,
-  updateNightlife,
   addFavorite,
   removeFavorite
  } from '../../actions/';
@@ -19,30 +15,17 @@ import './Main.css';
 
 class Main extends Component {
   // componentWillUpdate to check for favorites?
-  handleFavorites = (event, category) => {
-    const { favorites } = this.props;
-    const isDuplicated = favorites.some(fav => fav.title === event.title);
+  handleFavorites = (event) => {
+    console.log(event);
+    const { favorites, updateEvents } = this.props;
+    const favIds = Object.keys(favorites);
+    const isDuplicated = favIds.some(id => id === event.id);
+    // const isDuplicated = favorites.some(fav => fav.id === event.id);
     const favEvent = {...event, isFavorited: !event.isFavorited };
+    console.log(favEvent)
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
-    this.handleUpdateEvents(category, favEvent);
-  }
-
-  handleUpdateEvents = (category, event) => {
-    const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
-
-    switch (category) {
-      case 'music':
-        return updateMusic(event);
-      case 'food':
-        return updateFood(event);
-      case 'culture':
-        return updateCulture(event);
-      case 'nightlife':
-        return updateNightlife(event);
-      default:
-        return updateEvents(event);
-    }
+    updateEvents(favEvent);
   }
 
   addFavEvent = (event) => {
@@ -56,6 +39,15 @@ class Main extends Component {
 
     removeFavorite(event);
   }
+
+  // findFavorites = () => {
+  //   const { events } = this.props;
+  //   const categories = Object.keys(events);
+  //   categories.reduce((favArray, category) => {
+  //     const categoryIds = Object.keys(events[category]);
+  //     const favEvents = categoryIds
+  //   }, [])
+  // }
 
   render() {
     const { events, favorites } = this.props;
@@ -122,10 +114,6 @@ class Main extends Component {
 Main.propTypes = {
   location: PropTypes.object,
   events: PropTypes.object,
-  music: PropTypes.array,
-  food: PropTypes.array,
-  culture: PropTypes.array,
-  nightlife: PropTypes.array,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func
 };
@@ -133,22 +121,14 @@ Main.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   location: state.location,
-  music: state.music,
-  food: state.food,
-  culture: state.culture,
-  nightlife: state.nightlife,
   favorites: state.favorites
 })
 
 const mapDispatchToProps = (dispatch) => ({
   addEvents: (events, category) => dispatch(addEvents(events, category)),
-  // updateEvents: event => dispatch(updateEvents(event)),
-  // updateMusic: event => dispatch(updateMusic(event)),
-  // updateFood: event => dispatch(updateFood(event)),
-  // updateCulture: event => dispatch(updateCulture(event)),
-  // updateNightlife: event => dispatch(updateNightlife(event)),
-  // addFavorite: event => dispatch(addFavorite(event)),
-  // removeFavorite: event => dispatch(removeFavorite(event))
+  updateEvents: event => dispatch(updateEvents(event)),
+  addFavorite: event => dispatch(addFavorite(event)),
+  removeFavorite: event => dispatch(removeFavorite(event))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
