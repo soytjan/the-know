@@ -37,15 +37,6 @@ class Main extends Component {
     }
   }
 
-  componentDidMount = async () => {
-    const { location } = this.props;
-
-    // await this.getAndStoreEventsData(location);
-    // this.setState({isLoading: false});
-  }
-
-  
-
   handleUpdateEvents = (category, event) => {
     const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
 

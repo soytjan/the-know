@@ -15,7 +15,6 @@ class NavCategories extends Component {
   }
 
   getAndStoreEventsData = async (location) => {
-    console.log('in get and store')
     const { addEvents } = this.props;
 
     const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
@@ -27,38 +26,6 @@ class NavCategories extends Component {
     const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
     addEvents(nightlifeEvents, 'nightlife');
   }
-
-  // getAndStoreMusic = async () => {
-  //   const { location, addMusic } = this.props;
-  //   const musicData = await getCategoryData('music', location);
-  //   const cleanMusicData = cleanEventData(musicData, 'music');
-
-  //   addMusic(cleanMusicData);    
-  // }
-
-  // getAndStoreFood = async () => {
-  //   const { location, addFood } = this.props;
-  //   const foodData = await getCategoryData('food', location);
-  //   const cleanFoodData = cleanEventData(foodData, 'food');
-
-  //   addFood(cleanFoodData);
-  // }
-
-  // getAndStoreCulture = async () => {
-  //   const { location, addCulture } = this.props;
-  //   const cultureData = await getCategoryData('culture', location);
-  //   const cleanCultureData = cleanEventData(cultureData, 'culture');
-
-  //   addCulture(cleanCultureData);
-  // }
-
-  // getAndStoreNightlife = async () => {
-  //   const { location, addNightlife } = this.props;
-  //   const nightlifeData = await getCategoryData('nightlife', location)
-  //   const cleanNightlifeData = cleanEventData(nightlifeData, 'nightlife');
-
-  //   addNightlife(cleanNightlifeData);
-  // } 
 
   render() {
     return (
