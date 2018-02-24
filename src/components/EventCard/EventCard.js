@@ -12,7 +12,7 @@ const EventCard = (props) => {
   const favorited = event.isFavorited ? 'favorited' : '';
   const img = event.image ? 
     <img className='img-event' src={event.image.medium.url} alt={event.title} /> 
-    : <div className={`img-event ${type}`}></div>;
+    : <div className={`img-event ${event.category}`}></div>;
 
   return (
     <article className={`EventCard ${favorited}`}>
