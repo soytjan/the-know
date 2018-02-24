@@ -6,6 +6,11 @@ import EventCard from '../EventCard/EventCard';
 import './Events.css';
 
 class Events extends Component {
+  renderEvents = () => {
+    const { info, type, onFavorite } = this.props;
+    const keys = Object.keys(info);
+  }
+
   render() {
     const { info, type, onFavorite } = this.props;
     const renderedEvents = info.map(event => {
