@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { convertObjToArray } from '../../helper';
+import { convertObjToArray, setTimeLimit } from '../../helper';
 import EventCard from '../EventCard/EventCard';
 import './Events.css';
 
@@ -41,26 +41,13 @@ class Events extends Component {
   filterEvents(eventArray, time) {
     // move this to helper function
     // in a month
-    const timeLimit = this.setTimeLimit(time);
+    const timeLimit = setTimeLimit(time);
     const filtered = eventArray.filter(event => {
       const eventDate = new Date(event.startTime);
       return eventDate < timeLimit;
     })
 
     return filtered
-  }
-
-  setTimeLimit(time) {
-    const today = new Date();
-
-    switch(time) {
-      case 'week':
-        return today.setDate(today.getDate() + 7)
-      case 'month':
-        return (today.setMonth(today.getMonth() + 1))
-      default: 
-        return new Date(today.setFullYear(today.getFullYear() + 1))
-    }
   }
 
   getFilteredEventsArray = (time) => {

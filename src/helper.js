@@ -203,8 +203,18 @@ export const convertObjToArray = (obj) => {
   return keys.map(key => obj[key])
 }
 
+export const setTimeLimit = (time) => {
+  const today = new Date();
 
-
+  switch(time) {
+    case 'week':
+      return today.setDate(today.getDate() + 7)
+    case 'month':
+      return (today.setMonth(today.getMonth() + 1))
+    default: 
+      return new Date(today.setFullYear(today.getFullYear() + 1))
+  }
+}
 
 
  
