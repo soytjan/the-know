@@ -52,24 +52,24 @@ export const fetchAndCleanGeocodeLocation = async (location) => {
   return await cleanAddressCoords(jsonResponse);
 } 
 
-export const fetchCityData = async (location) => {
-  const coords = location.coordinates;
+// export const fetchCityData = async (location) => {
+//   const coords = location.coordinates;
   
-  try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-    const response = await fetch(url, {mode: 'cors'});
+//   try {
+//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+//     const response = await fetch(url, {mode: 'cors'});
 
-    if (response.status > 226) {
-      throw new Error('could not get city event data');
-      // handleError function that handles error
-    } else {
-      const responseJson = await response.json();
-      return responseJson
-    }
-  } catch (error) {
-    throw (error)
-  }
-}
+//     if (response.status > 226) {
+//       throw new Error('could not get city event data');
+//       // handleError function that handles error
+//     } else {
+//       const responseJson = await response.json();
+//       return responseJson
+//     }
+//   } catch (error) {
+//     throw (error)
+//   }
+// }
 
 // export const cleanEventData = (cityData, category) => {
 //   const events = cityData.events.event;
@@ -218,7 +218,7 @@ export const getWhenEventData = async (time, location) => {
   }
 }
 
-export const fetchandCleanWhenEventData = async (time, location) => {
+export const fetchAndCleanWhenEventData = async (time, location) => {
   const jsonResponse = await getWhenEventData(time, location);
   const cleanEvents = cleanEventDataToStore(jsonResponse);
 

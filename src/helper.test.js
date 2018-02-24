@@ -132,56 +132,56 @@ describe('helper', () => {
     });
   })
 
-  describe('fetchCityData', () => {
-    let location;
+  // describe('fetchCityData', () => {
+  //   let location;
 
-    beforeAll(() => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        status: 200,
-        json: () => Promise.resolve({
-          events: 'array of events'
-        })
-      }));
+  //   beforeAll(() => {
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       status: 200,
+  //       json: () => Promise.resolve({
+  //         events: 'array of events'
+  //       })
+  //     }));
 
-      location = {
-        coordinates: {
-          lat: 1234,
-          lng: 1234
-        }
-      }
-    })
+  //     location = {
+  //       coordinates: {
+  //         lat: 1234,
+  //         lng: 1234
+  //       }
+  //     }
+  //   })
 
-    it('should call fetch with the expected params', () => {
-      const coords = location.coordinates;
+  //   it('should call fetch with the expected params', () => {
+  //     const coords = location.coordinates;
   
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-      const init = {mode: 'cors'};
+  //     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+  //     const init = {mode: 'cors'};
 
-      expect(window.fetch).not.toHaveBeenCalled();
+  //     expect(window.fetch).not.toHaveBeenCalled();
 
-      helper.fetchCityData(location);
+  //     helper.fetchCityData(location);
 
-      expect(window.fetch).toHaveBeenCalledWith(url, init);
-    });
+  //     expect(window.fetch).toHaveBeenCalledWith(url, init);
+  //   });
 
-    it('should return an object if status code is okay', () => {
-      const response = helper.fetchCityData(location);
-      const expected = {events: 'array of events'};
+  //   it('should return an object if status code is okay', () => {
+  //     const response = helper.fetchCityData(location);
+  //     const expected = {events: 'array of events'};
 
-      expect(response).resolves.toEqual(expected);
-    });
+  //     expect(response).resolves.toEqual(expected);
+  //   });
 
-    it('should throw an error if status code is not okay', () => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        status: 500
-      }));
+  //   it('should throw an error if status code is not okay', () => {
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       status: 500
+  //     }));
 
-      const response = helper.fetchCityData(location);
-      const expected = Error('could not get city event data');
+  //     const response = helper.fetchCityData(location);
+  //     const expected = Error('could not get city event data');
 
-      expect(response).rejects.toEqual(expected);
-    })
-  })
+  //     expect(response).rejects.toEqual(expected);
+  //   })
+  // })
 
   // describe('cleanEventData', () => {
   //   it('should return clean data when event data and event category is passed in', () => {
@@ -202,7 +202,37 @@ describe('helper', () => {
     })
   })
 
-  describe('fetchAndCleanCityEventData', () => {
+  // describe('fetchAndCleanCityEventData', () => {
+  //   let location;
+
+  //   beforeAll(() => {
+  //     location = {
+  //       address: "Denver, CO, USA",
+  //       coordinates: {
+  //         "lat": 39.7392358,
+  //         "lng": -104.990251
+  //       }
+  //     };
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       status: 200,
+  //       json: () => Promise.resolve(mockEventData)
+  //     }));
+  //   })
+
+  //   it('should make a fetch call', () => {
+  //     helper.fetchAndCleanCityEventData(location, 'music');
+
+  //     expect(window.fetch).toHaveBeenCalled();
+  //   });
+
+  //   it('should return clean data object', async () => {
+  //     const expected = mockCleanEventData;
+  //     const received = await helper.fetchAndCleanCityEventData(location, 'music')
+  //     expect(received).toEqual(expected);
+  //   });
+  // })
+
+  describe('fetchAndCleanCategoryEventData', () => {
     let location;
 
     beforeAll(() => {
@@ -220,14 +250,14 @@ describe('helper', () => {
     })
 
     it('should make a fetch call', () => {
-      helper.fetchAndCleanCityEventData(location, 'music');
+      helper.fetchAndCleanCategoryEventData('music', location);
 
       expect(window.fetch).toHaveBeenCalled();
     });
 
     it('should return clean data object', async () => {
       const expected = mockCleanEventData;
-      const received = await helper.fetchAndCleanCityEventData(location, 'music')
+      const received = await helper.fetchAndCleanCategoryEventData('music', location)
       expect(received).toEqual(expected);
     });
   })
@@ -369,5 +399,13 @@ describe('helper', () => {
 
       expect(response).rejects.toEqual(expected);
     })
+  })
+
+  describe('getWhenEventData', () => {
+
+  })
+
+  describe('fetchAndCleanWhenEventData', () => {
+
   })
 })

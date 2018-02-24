@@ -20,7 +20,6 @@ class Main extends Component {
     const { favorites, updateEvents } = this.props;
     const favIds = Object.keys(favorites);
     const isDuplicated = favIds.some(id => id === event.id);
-    // const isDuplicated = favorites.some(fav => fav.id === event.id);
     const favEvent = {...event, isFavorited: !event.isFavorited };
     console.log(favEvent)
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
