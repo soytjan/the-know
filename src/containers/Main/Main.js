@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchAndCleanCategoryEventData } from '../../helper';
 import {
   addEvents,
   updateEvents,
@@ -24,6 +23,7 @@ class Main extends Component {
     updateEvents(favEvent);
   }
 
+  // look at this for a refactor 
   addFavEvent = (event) => {
     const { addFavorite } = this.props;
 

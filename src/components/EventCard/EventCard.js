@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import './EventCard.css';
 
 const EventCard = (props) => {
-  const { event, type, onFavorite } = props;
+  const { event, onFavorite } = props;
   const favorited = event.isFavorited ? 'favorited' : '';
   const img = event.image ? 
     <img className='img-event' src={event.image.medium.url} alt={event.title} /> 
@@ -39,7 +39,6 @@ const EventCard = (props) => {
 
 EventCard.propTypes = {
   event: PropTypes.object,
-  type: PropTypes.string,
   onFavorite: PropTypes.func
 };
 

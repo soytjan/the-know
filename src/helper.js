@@ -52,48 +52,6 @@ export const fetchAndCleanGeocodeLocation = async (location) => {
   return await cleanAddressCoords(jsonResponse);
 } 
 
-// export const fetchCityData = async (location) => {
-//   const coords = location.coordinates;
-  
-//   try {
-//     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-//     const response = await fetch(url, {mode: 'cors'});
-
-//     if (response.status > 226) {
-//       throw new Error('could not get city event data');
-//       // handleError function that handles error
-//     } else {
-//       const responseJson = await response.json();
-//       return responseJson
-//     }
-//   } catch (error) {
-//     throw (error)
-//   }
-// }
-
-// export const cleanEventData = (cityData, category) => {
-//   const events = cityData.events.event;
-
-//   const cleanedEvents = events.map(event => {
-//     return {
-//       title: event.title,
-//       description: event.description,
-//       category: category,
-//       venueName: event.venue_name,
-//       region: event.region_abbr,
-//       postalCode: event.postal_code,
-//       city: event.city_name,
-//       startTime: event.start_time,
-//       venueAddress: event.venue_address,
-//       image: event.image,
-//       url: event.url,
-//       id: event.id,
-//     }
-//   })
-
-//   return cleanedEvents;
-// }
-
 export const cleanEventDataToStore = (info, category) => {
   const events = info.events.event;
 
@@ -118,12 +76,6 @@ export const cleanEventDataToStore = (info, category) => {
     return {...eventsObj, ...obj};
   }, {})
 }
-
-// export const fetchAndCleanCityEventData = async (location, category) => {
-//   const jsonResponse = await fetchCityData(location);
-//   const events = cleanEventDataToStore(jsonResponse, category);
-//   return events;
-// }
 
 export const fetchAndCleanCategoryEventData = async (category, location) => {
   const jsonResponse = await getCategoryData(category, location);
@@ -188,12 +140,16 @@ export const genWhenApiUrl = (time, location) => {
   switch(time) {
     case 'today':
       when = 'today';
+      break;
     case 'week':
       when = 'this+week';
+      break;
     case 'weekend':
       when = 'this+weekend';
+      break;
     case 'month': 
       when='next+30+days';
+      break;
     default:
       when='future'
   }
