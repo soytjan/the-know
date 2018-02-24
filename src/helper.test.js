@@ -2,7 +2,8 @@ import * as helper from './helper';
 import keys from './api/keys';
 import { 
   mockEventData, 
-  mockCleanEventData, 
+  mockCleanEventData,
+  mockEventDataArray, 
   mockGeocodeData, 
   mockCleanGeocodeData,
   mockGeolocationData 
@@ -132,68 +133,107 @@ describe('helper', () => {
     });
   })
 
-  describe('fetchCityData', () => {
-    let location;
+  // describe('fetchCityData', () => {
+  //   let location;
 
-    beforeAll(() => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        status: 200,
-        json: () => Promise.resolve({
-          events: 'array of events'
-        })
-      }));
+  //   beforeAll(() => {
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       status: 200,
+  //       json: () => Promise.resolve({
+  //         events: 'array of events'
+  //       })
+  //     }));
 
-      location = {
-        coordinates: {
-          lat: 1234,
-          lng: 1234
-        }
-      }
-    })
+  //     location = {
+  //       coordinates: {
+  //         lat: 1234,
+  //         lng: 1234
+  //       }
+  //     }
+  //   })
 
-    it('should call fetch with the expected params', () => {
-      const coords = location.coordinates;
+  //   it('should call fetch with the expected params', () => {
+  //     const coords = location.coordinates;
   
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
-      const init = {mode: 'cors'};
+  //     const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}`;
+  //     const init = {mode: 'cors'};
 
-      expect(window.fetch).not.toHaveBeenCalled();
+  //     expect(window.fetch).not.toHaveBeenCalled();
 
-      helper.fetchCityData(location);
+  //     helper.fetchCityData(location);
 
-      expect(window.fetch).toHaveBeenCalledWith(url, init);
-    });
+  //     expect(window.fetch).toHaveBeenCalledWith(url, init);
+  //   });
 
-    it('should return an object if status code is okay', () => {
-      const response = helper.fetchCityData(location);
-      const expected = {events: 'array of events'};
+  //   it('should return an object if status code is okay', () => {
+  //     const response = helper.fetchCityData(location);
+  //     const expected = {events: 'array of events'};
 
-      expect(response).resolves.toEqual(expected);
-    });
+  //     expect(response).resolves.toEqual(expected);
+  //   });
 
-    it('should throw an error if status code is not okay', () => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        status: 500
-      }));
+  //   it('should throw an error if status code is not okay', () => {
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       status: 500
+  //     }));
 
-      const response = helper.fetchCityData(location);
-      const expected = Error('could not get city event data');
+  //     const response = helper.fetchCityData(location);
+  //     const expected = Error('could not get city event data');
 
-      expect(response).rejects.toEqual(expected);
-    })
-  })
+  //     expect(response).rejects.toEqual(expected);
+  //   })
+  // })
 
-  describe('cleanEventData', () => {
-    it('should return clean data when event data and event category is passed in', () => {
-      const expected = mockCleanEventData;
+  // describe('cleanEventData', () => {
+  //   it('should return clean data when event data and event category is passed in', () => {
+  //     const expected = mockCleanEventData;
+  //     const data = mockEventData;
+  //     const category = 'event';
+
+  //     expect(helper.cleanEventData(data, category)).toEqual(expected);
+  //   })
+  // })
+
+  describe('cleanEventDataToStore', () => {
+    it('should return clean data when event datas and event category is passed in', () => {
       const data = mockEventData;
-      const category = 'event';
-
-      expect(helper.cleanEventData(data, category)).toEqual(expected);
+      const category = 'music';
+      const expected = mockCleanEventData;
+      expect(helper.cleanEventDataToStore(data, category)).toEqual(expected)
     })
   })
 
-  describe('fetchAndCleanCityEventData', () => {
+  // describe('fetchAndCleanCityEventData', () => {
+  //   let location;
+
+  //   beforeAll(() => {
+  //     location = {
+  //       address: "Denver, CO, USA",
+  //       coordinates: {
+  //         "lat": 39.7392358,
+  //         "lng": -104.990251
+  //       }
+  //     };
+  //     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+  //       status: 200,
+  //       json: () => Promise.resolve(mockEventData)
+  //     }));
+  //   })
+
+  //   it('should make a fetch call', () => {
+  //     helper.fetchAndCleanCityEventData(location, 'music');
+
+  //     expect(window.fetch).toHaveBeenCalled();
+  //   });
+
+  //   it('should return clean data object', async () => {
+  //     const expected = mockCleanEventData;
+  //     const received = await helper.fetchAndCleanCityEventData(location, 'music')
+  //     expect(received).toEqual(expected);
+  //   });
+  // })
+
+  describe('fetchAndCleanCategoryEventData', () => {
     let location;
 
     beforeAll(() => {
@@ -211,14 +251,14 @@ describe('helper', () => {
     })
 
     it('should make a fetch call', () => {
-      helper.fetchAndCleanCityEventData(location, 'event');
+      helper.fetchAndCleanCategoryEventData('music', location);
 
       expect(window.fetch).toHaveBeenCalled();
     });
 
     it('should return clean data object', async () => {
       const expected = mockCleanEventData;
-      const received = await helper.fetchAndCleanCityEventData(location, 'event')
+      const received = await helper.fetchAndCleanCategoryEventData('music', location)
       expect(received).toEqual(expected);
     });
   })
@@ -237,32 +277,32 @@ describe('helper', () => {
 
     //need to think about how to do this
     it('should return default url when location does not have coordinates', () => {
-
+      expect(true).toEqual(false);
     })
 
     it('should return music url when type is music', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&category=music`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=music`;
       const type = 'music';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
     });
 
     it('should return food url when type is food', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&category=food`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=food`;
       const type = 'food';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
     });
 
     it('should return culture url when type is culture', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&category=attractions`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=attractions`;
       const type = 'culture';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
     });
 
     it('should return nightlife url when type is nightlife', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&category=singles_social`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=singles_social`;
       const type = 'nightlife';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
@@ -293,7 +333,7 @@ describe('helper', () => {
 
     it('should call fetch with expected music params when the type is music', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=music`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=music`;
       const init = {mode: 'cors'};
       const type = 'music';
 
@@ -306,7 +346,7 @@ describe('helper', () => {
 
     it('should call fetch with expected food params when the type is food', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=food`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=food`;
       const init = {mode: 'cors'};
       const type = 'food';
 
@@ -319,7 +359,7 @@ describe('helper', () => {
 
     it('should call fetch with expected culture params when the type is culture', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=attractions`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=attractions`;
       const init = {mode: 'cors'};
       const type = 'culture';
 
@@ -332,7 +372,7 @@ describe('helper', () => {
 
     it('should call fetch with expected nightlife params when the type is nightlife', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&category=singles_social`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=singles_social`;
       const init = {mode: 'cors'};
       const type = 'nightlife';
 
@@ -359,6 +399,27 @@ describe('helper', () => {
       const expected = Error('could not get city event data');
 
       expect(response).rejects.toEqual(expected);
+    })
+  })
+
+  describe('getWhenEventData', () => {
+    
+  })
+
+  describe('fetchAndCleanWhenEventData', () => {
+
+  })
+
+  describe('fetchSearchData', () => {
+    
+  })
+
+  describe('convertObjToArray', () => {
+    it('should convert an object passed in to an array', () => {
+      const obj = mockCleanEventData;
+      const expected = mockEventDataArray;
+
+      expect(helper.convertObjToArray(obj)).toEqual(expected);
     })
   })
 })

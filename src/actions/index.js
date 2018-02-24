@@ -1,80 +1,21 @@
-import { getGeoLocation } from '../helper';
-
 export const addCurrentLocation = coordinates => ({
   type: 'ADD_CURRENT_LOCATION',
   coordinates
 });
-
-export const currentLocationFetchData = () => {
-  return async (dispatch) => {
-    try {
-      const jsonResponse = await getGeoLocation();
-      const currentLocation = { coordinates: jsonResponse.location }
-      dispatch(addCurrentLocation(currentLocation));
-    } catch (err) {
-      dispatch(currentHasErrored(true));
-      throw err;
-    }  
-  }
-};
-
-export const currentHasErrored = (bool) => ({
-  type: 'CURRENT_HAS_ERRORED',
-  hasErrored: bool
-})
 
 export const addLocation = location => ({
   type: 'ADD_LOCATION',
   location
 });
 
-export const addEvents = events => ({
+export const addEvents = (events, category) => ({
   type: 'ADD_EVENTS',
-  events
-});
+  events,
+  category
+})
 
 export const updateEvents = event => ({
   type: 'UPDATE_EVENTS',
-  event
-});
-
-export const addMusic = events => ({
-  type: 'ADD_MUSIC',
-  events
-});
-
-export const updateMusic = event => ({
-  type: 'UPDATE_MUSIC',
-  event
-});
-
-export const addFood = events => ({
-  type: 'ADD_FOOD',
-  events
-});
-
-export const updateFood = event => ({
-  type: 'UPDATE_FOOD',
-  event
-});
-
-export const addCulture = events => ({
-  type: 'ADD_CULTURE',
-  events
-});
-
-export const updateCulture = event => ({
-  type: 'UPDATE_CULTURE',
-  event
-});
-
-export const addNightlife = events => ({
-  type: 'ADD_NIGHTLIFE',
-  events
-});
-
-export const updateNightlife = event => ({
-  type: 'UPDATE_NIGHTLIFE',
   event
 });
 
@@ -87,3 +28,8 @@ export const removeFavorite = event => ({
   type: 'REMOVE_FAVORITE',
   event
 })
+
+// export const updateFavorites = event => ({
+//   type: 'UPDATE_FAVORITES',
+//   event
+// })

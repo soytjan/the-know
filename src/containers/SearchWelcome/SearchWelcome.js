@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  fetchAndCleanGeocodeLocation,
-  fetchAndCleanCityEventData, 
-  cleanEventData, 
-  getAddressCoords,
-  cleanAddressCoords,
-  fetchCityData } from '../../helper';
+import { fetchAndCleanGeocodeLocation } from '../../helper';
 import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 
@@ -20,44 +14,29 @@ export class SearchWelcome extends Component {
     }
   }
 
-  // componentDidMount -- check and see if there is anything in localStorage and check for geobase location
-
   handleChange = (e) => {
     const { value, name } = e.target;
 
     this.setState({ [name]: value });
   }
 
- // look into loading time...put some sort of alert in on button click?
   handleSubmit = async (e) => {
     e.preventDefault();
     const { location } = this.state;
+    const { addLocation, onReroute } = this.props;
     const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
-
-    this.getAndStoreEventsData(geocodeLocation);
-  }
-
-  handleCurrentLocation = async () => {
-    const { currentLocation } = this.props;
-    
-    this.getAndStoreEventsData(currentLocation)
-  }
-
-  getAndStoreEventsData = async (location) => {
-    const events = await fetchAndCleanCityEventData(location, 'event');
-
-    this.storeDataAndReroute(events, location);
-  }
-
-  storeDataAndReroute = (events, location) => {
-    const { addEvents, addLocation, onReroute } = this.props;
-
-    addEvents(events);
-    addLocation(location);
-    localStorage.setItem('location', location.address);
+    addLocation(geocodeLocation);
+    localStorage.setItem('location', geocodeLocation.address);
     onReroute();
   }
 
+  handleCurrentLocation = async () => {
+    const { currentLocation, addLocation, onReroute } = this.props;
+    
+    addLocation(currentLocation);
+    localStorage.setItem('location', currentLocation)
+    onReroute();  
+  }
 
   render() {
     return (

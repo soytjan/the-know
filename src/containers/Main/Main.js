@@ -3,45 +3,26 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
+  addEvents,
   updateEvents,
-  updateMusic,
-  updateFood,
-  updateCulture,
-  updateNightlife,
   addFavorite,
   removeFavorite
  } from '../../actions/';
 import Events from '../../components/Events/Events';
-import NavTime from '../NavTime/NavTime';
 import './Main.css';
 
 class Main extends Component {
-  handleFavorites = (event, category) => {
-    const { favorites } = this.props;
-    const isDuplicated = favorites.some(fav => fav.title === event.title);
+  handleFavorites = (event) => {
+    const { favorites, updateEvents } = this.props;
+    const favIds = Object.keys(favorites);
+    const isDuplicated = favIds.some(id => id === event.id);
     const favEvent = {...event, isFavorited: !event.isFavorited };
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
-    this.handleUpdateEvents(category, favEvent);
+    updateEvents(favEvent);
   }
 
-  handleUpdateEvents = (category, event) => {
-    const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
-
-    switch (category) {
-      case 'music':
-        return updateMusic(event);
-      case 'food':
-        return updateFood(event);
-      case 'culture':
-        return updateCulture(event);
-      case 'nightlife':
-        return updateNightlife(event);
-      default:
-        return updateEvents(event);
-    }
-  }
-
+  // look at this for a refactor 
   addFavEvent = (event) => {
     const { addFavorite } = this.props;
 
@@ -52,15 +33,22 @@ class Main extends Component {
     const { removeFavorite } = this.props;
 
     removeFavorite(event);
-  } 
+  }
 
   render() {
-    const { events, music, food, culture, nightlife, favorites } = this.props;
+    const { events, favorites } = this.props;
+
+    if(!events.music) {
+      return (
+        <div>
+          I'm still loading! 
+        </div>
+      )
+    }
 
     return (
       <section className="Main">
         <h3>{this.props.type}</h3>
-        <Route path='/home' component={NavTime} />
         <Route 
           exact path='/home/' 
           render={() => (<Events 
@@ -71,28 +59,28 @@ class Main extends Component {
         <Route 
           exact path='/home/music' 
           render={() => (<Events 
-            info={music} 
+            info={events.music} 
             type='music' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/food' 
           render={() => (<Events 
-            info={food} 
+            info={events.food} 
             type='food' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/culture' 
           render={() => (<Events 
-            info={culture} 
+            info={events.culture} 
             type='culture' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/nightlife' 
           render={() => (<Events 
-            info={nightlife} 
+            info={events.nightlife} 
             type='nightlife' 
             onFavorite={this.handleFavorites} />)}
         />
@@ -110,11 +98,7 @@ class Main extends Component {
 
 Main.propTypes = {
   location: PropTypes.object,
-  events: PropTypes.array,
-  music: PropTypes.array,
-  food: PropTypes.array,
-  culture: PropTypes.array,
-  nightlife: PropTypes.array,
+  events: PropTypes.object,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func
 };
@@ -122,19 +106,12 @@ Main.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   location: state.location,
-  music: state.music,
-  food: state.food,
-  culture: state.culture,
-  nightlife: state.nightlife,
   favorites: state.favorites
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  addEvents: (events, category) => dispatch(addEvents(events, category)),
   updateEvents: event => dispatch(updateEvents(event)),
-  updateMusic: event => dispatch(updateMusic(event)),
-  updateFood: event => dispatch(updateFood(event)),
-  updateCulture: event => dispatch(updateCulture(event)),
-  updateNightlife: event => dispatch(updateNightlife(event)),
   addFavorite: event => dispatch(addFavorite(event)),
   removeFavorite: event => dispatch(removeFavorite(event))
 })

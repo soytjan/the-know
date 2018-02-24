@@ -2,54 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { cleanEventData, getCategoryData } from '../../helper';
-import { addMusic,
-  addFood,
-  addCulture,
-  addNightlife
- } from '../../actions/';
+import { fetchAndCleanCategoryEventData } from '../../helper';
+import { addEvents } from '../../actions/';
 import './NavCategories.css';
 
 class NavCategories extends Component {
-  componentDidMount() {
+  componentDidMount = async () => {
     // check for location in localStorage if there is no location in this.props
-    this.getAndStoreMusic();
-    this.getAndStoreFood();
-    this.getAndStoreCulture();
-    this.getAndStoreNightlife(); 
+    const { location } = this.props;
+    
+    await this.getAndStoreEventsData(location);
   }
 
-  getAndStoreMusic = async () => {
-    const { location, addMusic } = this.props;
-    const musicData = await getCategoryData('music', location);
-    const cleanMusicData = cleanEventData(musicData, 'music');
+  getAndStoreEventsData = async (location) => {
+    const { addEvents } = this.props;
 
-    addMusic(cleanMusicData);    
+    const musicEvents = await fetchAndCleanCategoryEventData('music', location);
+    addEvents(musicEvents, 'music')
+    const foodEvents = await fetchAndCleanCategoryEventData('food', location);
+    addEvents(foodEvents, 'food');
+    const cultureEvents = await fetchAndCleanCategoryEventData('culture', location);
+    addEvents(cultureEvents, 'culture');
+    const nightlifeEvents = await fetchAndCleanCategoryEventData('nightlife', location);
+    addEvents(nightlifeEvents, 'nightlife');
   }
-
-  getAndStoreFood = async () => {
-    const { location, addFood } = this.props;
-    const foodData = await getCategoryData('food', location);
-    const cleanFoodData = cleanEventData(foodData, 'food');
-
-    addFood(cleanFoodData);
-  }
-
-  getAndStoreCulture = async () => {
-    const { location, addCulture } = this.props;
-    const cultureData = await getCategoryData('culture', location);
-    const cleanCultureData = cleanEventData(cultureData, 'culture');
-
-    addCulture(cleanCultureData);
-  }
-
-  getAndStoreNightlife = async () => {
-    const { location, addNightlife } = this.props;
-    const nightlifeData = await getCategoryData('nightlife', location)
-    const cleanNightlifeData = cleanEventData(nightlifeData, 'nightlife');
-
-    addNightlife(cleanNightlifeData);
-  } 
 
   render() {
     return (
@@ -81,10 +57,6 @@ class NavCategories extends Component {
 
 NavCategories.propTypes = {
   location: PropTypes.object,
-  addMusic: PropTypes.func,
-  addFood: PropTypes.func,
-  addCulture: PropTypes.func,
-  addNightlife: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -92,10 +64,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addMusic: events => dispatch(addMusic(events)),
-  addFood: events => dispatch(addFood(events)),
-  addCulture: events => dispatch(addCulture(events)),
-  addNightlife: events => dispatch(addNightlife(events))
+  addEvents: (events, category) => dispatch(addEvents(events, category)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavCategories);

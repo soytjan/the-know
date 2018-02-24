@@ -8,4 +8,10 @@ describe('Main', () => {
 
     expect(renderedComponent).toMatchSnapshot();
   })
+
+  describe('genEventsArray', () => {
+    it('should generate an array of all the events', () => {
+      
+    })
+  })
 })

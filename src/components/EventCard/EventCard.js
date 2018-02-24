@@ -8,11 +8,11 @@ import PropTypes from 'prop-types';
 import './EventCard.css';
 
 const EventCard = (props) => {
-  const { event, type, onFavorite } = props;
+  const { event, onFavorite } = props;
   const favorited = event.isFavorited ? 'favorited' : '';
   const img = event.image ? 
     <img className='img-event' src={event.image.medium.url} alt={event.title} /> 
-    : <div className={`img-event ${type}`}></div>;
+    : <div className={`img-event ${event.category}`}></div>;
 
   return (
     <article className={`EventCard ${favorited}`}>
@@ -26,7 +26,7 @@ const EventCard = (props) => {
         <div className='btn-cont'>
           <button 
             className='btn-fav'
-            onClick={() => onFavorite(event, event.category)}
+            onClick={() => onFavorite(event)}
           >
             <i className="far fa-heart"></i>
           </button>
@@ -39,7 +39,6 @@ const EventCard = (props) => {
 
 EventCard.propTypes = {
   event: PropTypes.object,
-  type: PropTypes.string,
   onFavorite: PropTypes.func
 };
 

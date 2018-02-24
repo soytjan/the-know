@@ -1,9 +1,10 @@
-export const favoritesReducer = (state = [], action) => {
+export const favoritesReducer = (state = {}, action) => {
   switch(action.type) {
     case 'ADD_FAVORITE':
-      return [...state, action.event];
+      return {...state, [action.event.id]: action.event};
     case 'REMOVE_FAVORITE':
-      return state.filter(event => event.title !== action.event.title);
+      delete state[action.event.id];
+      return state;
     default:
       return state;
   }
