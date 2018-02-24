@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  fetchAndCleanGeocodeLocation,
-  fetchAndCleanCityEventData, 
-  cleanEventData, 
-  getAddressCoords,
-  cleanAddressCoords,
-  fetchCityData } from '../../helper';
+import { fetchAndCleanGeocodeLocation } from '../../helper';
 import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 
