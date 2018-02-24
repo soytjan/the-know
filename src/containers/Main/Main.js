@@ -18,14 +18,17 @@ import NavTime from '../NavTime/NavTime';
 import './Main.css';
 
 class Main extends Component {
-  // handleFavorites = (event, category) => {
-  //   const { favorites } = this.props;
-  //   const isDuplicated = favorites.some(fav => fav.title === event.title);
-  //   const favEvent = {...event, isFavorited: !event.isFavorited };
-  //   isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
+  // componentWillUpdate to check for favorites?
+  
 
-  //   this.handleUpdateEvents(category, favEvent);
-  // }
+  handleFavorites = (event, category) => {
+    const { favorites } = this.props;
+    const isDuplicated = favorites.some(fav => fav.title === event.title);
+    const favEvent = {...event, isFavorited: !event.isFavorited };
+    isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
+
+    this.handleUpdateEvents(category, favEvent);
+  }
 
   constructor() {
     super();
@@ -87,12 +90,15 @@ class Main extends Component {
   genEventsArray = () => {
     const { events } = this.props;
     const categories = Object.keys(events);
-    return categories.reduce((eventsArr, category) => {
+    const array =  categories.reduce((eventsArr, category) => {
       const categoryIds = Object.keys(events[category]);
       const categoryEvents = categoryIds.map(event => events[category][categoryIds]);
 
       return [...eventsArr, ...categoryEvents]
     }, [])
+
+    console.log(array)
+    return array;
   } 
 
   render() {
@@ -113,35 +119,35 @@ class Main extends Component {
         <Route 
           exact path='/home/' 
           render={() => (<Events 
-            info={this.genEventsArray()} 
+            info={events} 
             type='event' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/music' 
           render={() => (<Events 
-            info={music} 
+            info={events.music} 
             type='music' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/food' 
           render={() => (<Events 
-            info={food} 
+            info={events.food} 
             type='food' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/culture' 
           render={() => (<Events 
-            info={culture} 
+            info={events.culture} 
             type='culture' 
             onFavorite={this.handleFavorites} />)}
         />
         <Route 
           exact path='/home/nightlife' 
           render={() => (<Events 
-            info={nightlife} 
+            info={events.nightlife} 
             type='nightlife' 
             onFavorite={this.handleFavorites} />)}
         />

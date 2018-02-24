@@ -8,12 +8,24 @@ import './Events.css';
 class Events extends Component {
   renderEvents = () => {
     const { info, type, onFavorite } = this.props;
-    const keys = Object.keys(info);
+    if (type === 'event') {
+      const categories = Object.keys(info);
+      return categories.reduce((eventsArr, category) => {
+        const categoryIds = Object.keys(info[category]);
+        const categoryEvents = categoryIds.map(eventId => info[category][eventId]);
+
+        return [...eventsArr, ...categoryEvents]
+      }, [])
+    } else {
+      const categoryIds = Object.keys(info);
+      return categoryIds.map(eventId => info[eventId])
+    }
   }
 
   render() {
     const { info, type, onFavorite } = this.props;
-    const renderedEvents = info.map(event => {
+    const eventArray = this.renderEvents()
+    const renderedEvents = eventArray.map(event => {
       return <EventCard event={event} type={type} onFavorite={onFavorite} /> 
     })
 
