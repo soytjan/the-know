@@ -82,15 +82,29 @@ describe('actions', () => {
     })
   })
 
+  // describe('addEvents', () => {
+  //   it('should return a type of ADD_EVENTS with an array of events', () => {
+  //     const events = [{title: 'fun'}, {title: 'times'}, {title: 'woot'}];
+  //     const expected = {
+  //       type: 'ADD_EVENTS',
+  //       events
+  //     }
+
+  //     expect(actions.addEvents(events)).toEqual(expected);
+  //   })
+  // })
+
   describe('addEvents', () => {
     it('should return a type of ADD_EVENTS with an array of events', () => {
-      const events = [{title: 'fun'}, {title: 'times'}, {title: 'woot'}];
+      const events = {'12234': {}, '5678': {}};
+      const category = 'music';
       const expected = {
         type: 'ADD_EVENTS',
-        events
+        events,
+        category
       }
 
-      expect(actions.addEvents(events)).toEqual(expected);
+      expect(actions.addEvents(events, category)).toEqual(expected);
     })
   })
 

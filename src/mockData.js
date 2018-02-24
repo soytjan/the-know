@@ -57,11 +57,11 @@ export const mockEventData = {
   }
 }
 
-export const mockCleanEventData = [
-  {
+export const mockCleanEventData = {
+  "E0-001-111209195-8": {
     title: "Thursday Work Day, July 5 - Multiple Neighborhoods",
     description: " <strong>Sponsored by:</strong> Extreme Community Makeover<br> <strong>Minimum age:</strong> 14<br> Extreme Community Makeover (ECM) is designed to invite volunteers into a partnership with residents of specific Denver neighborhoods to complete home and neighborhood improvement projects. These projects include graffiti removal, landscaping, painting, yard work, or other projects identified by the . . .",
-    category: "event",
+    category: "music",
     venueName: "Denver, Colorado, United States", 
     region: "CO",
     postalCode: null,
@@ -72,7 +72,7 @@ export const mockCleanEventData = [
     url: "http://denver.eventful.com/events/thursday-work-day-july-5-multiple-neighborhoods-/E0-001-111209195-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
     id: "E0-001-111209195-8"
   }
-];
+};
 
 export const mockGeocodeData = {
   "results": [

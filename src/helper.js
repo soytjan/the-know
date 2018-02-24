@@ -71,32 +71,57 @@ export const fetchCityData = async (location) => {
   }
 }
 
-export const cleanEventData = (cityData, category) => {
-  const events = cityData.events.event;
+// export const cleanEventData = (cityData, category) => {
+//   const events = cityData.events.event;
 
-  const cleanedEvents = events.map(event => {
-    return {
-      title: event.title,
-      description: event.description,
-      category: category,
-      venueName: event.venue_name,
-      region: event.region_abbr,
-      postalCode: event.postal_code,
-      city: event.city_name,
-      startTime: event.start_time,
-      venueAddress: event.venue_address,
-      image: event.image,
-      url: event.url,
-      id: event.id,
+//   const cleanedEvents = events.map(event => {
+//     return {
+//       title: event.title,
+//       description: event.description,
+//       category: category,
+//       venueName: event.venue_name,
+//       region: event.region_abbr,
+//       postalCode: event.postal_code,
+//       city: event.city_name,
+//       startTime: event.start_time,
+//       venueAddress: event.venue_address,
+//       image: event.image,
+//       url: event.url,
+//       id: event.id,
+//     }
+//   })
+
+//   return cleanedEvents;
+// }
+
+export const cleanEventDataToStore = (info, category) => {
+  const events = info.events.event;
+
+  return events.reduce((eventsObj, event) => {
+    const obj = {
+      [event.id]: {
+        title: event.title,
+        description: event.description,
+        category: category,
+        venueName: event.venue_name,
+        region: event.region_abbr,
+        postalCode: event.postal_code,
+        city: event.city_name,
+        startTime: event.start_time,
+        venueAddress: event.venue_address,
+        image: event.image,
+        url: event.url,
+        id: event.id,
+      }
     }
-  })
 
-  return cleanedEvents;
+    return {...eventsObj, ...obj};
+  }, {})
 }
 
 export const fetchAndCleanCityEventData = async (location, category) => {
   const jsonResponse = await fetchCityData(location);
-  const events = cleanEventData(jsonResponse, category);
+  const events = cleanEventDataToStore(jsonResponse, category);
 
   return events;
 }

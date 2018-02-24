@@ -28,10 +28,16 @@ export const addLocation = location => ({
   location
 });
 
-export const addEvents = events => ({
+// export const addEvents = events => ({
+//   type: 'ADD_EVENTS',
+//   events
+// });
+
+export const addEvents = (events, category) => ({
   type: 'ADD_EVENTS',
-  events
-});
+  events,
+  category
+})
 
 export const updateEvents = event => ({
   type: 'UPDATE_EVENTS',

@@ -183,13 +183,22 @@ describe('helper', () => {
     })
   })
 
-  describe('cleanEventData', () => {
-    it('should return clean data when event data and event category is passed in', () => {
-      const expected = mockCleanEventData;
-      const data = mockEventData;
-      const category = 'event';
+  // describe('cleanEventData', () => {
+  //   it('should return clean data when event data and event category is passed in', () => {
+  //     const expected = mockCleanEventData;
+  //     const data = mockEventData;
+  //     const category = 'event';
 
-      expect(helper.cleanEventData(data, category)).toEqual(expected);
+  //     expect(helper.cleanEventData(data, category)).toEqual(expected);
+  //   })
+  // })
+
+  describe('cleanEventDataToStore', () => {
+    it('should return clean data when event datas and event category is passed in', () => {
+      const data = mockEventData;
+      const category = 'music';
+      const expected = mockCleanEventData;
+      expect(helper.cleanEventDataToStore(data, category)).toEqual(expected)
     })
   })
 
@@ -211,14 +220,14 @@ describe('helper', () => {
     })
 
     it('should make a fetch call', () => {
-      helper.fetchAndCleanCityEventData(location, 'event');
+      helper.fetchAndCleanCityEventData(location, 'music');
 
       expect(window.fetch).toHaveBeenCalled();
     });
 
     it('should return clean data object', async () => {
       const expected = mockCleanEventData;
-      const received = await helper.fetchAndCleanCityEventData(location, 'event')
+      const received = await helper.fetchAndCleanCityEventData(location, 'music')
       expect(received).toEqual(expected);
     });
   })

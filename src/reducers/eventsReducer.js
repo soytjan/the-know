@@ -17,8 +17,8 @@
 
 export const eventsReducer = (state = {}, action) => {
   switch(action.type) {
-    case 'ADD_MUSIC':
-      return {...state, music: }
+    case 'ADD_EVENTS':
+      return {...state, [action.category]: action.events }
     default: 
       return state;
   }
