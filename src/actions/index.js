@@ -29,7 +29,7 @@ export const removeFavorite = event => ({
   event
 })
 
-export const updateFavorites = event => ({
-  type: 'UPDATE_FAVORITES',
-  event
-})
+// export const updateFavorites = event => ({
+//   type: 'UPDATE_FAVORITES',
+//   event
+// })

@@ -16,4 +16,21 @@ describe('eventsReducer', () => {
 
     expect(eventsReducer(undefined, action)).toEqual(expected);
   });
+
+  it('UPDATE_EVENTS should return the state with an updated favorited event', () => {
+    const event = {title: 'hi', isFavorited: true, category: 'music', id: '1234'}
+    const action = actions.updateEvents(event);
+    const state = {
+      music: {
+        '1234': {title: 'hi', category: 'music', id: '1234'}
+      }
+    }
+    const expected = {
+      music: {
+        '1234': {title: 'hi', isFavorited: true, category: 'music', id: '1234'}
+      }
+    }
+
+    expect(eventsReducer(state, action)).toEqual(expected);
+  })
 })
