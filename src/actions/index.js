@@ -3,11 +3,6 @@ export const addCurrentLocation = coordinates => ({
   coordinates
 });
 
-export const currentHasErrored = (bool) => ({
-  type: 'CURRENT_HAS_ERRORED',
-  hasErrored: bool
-})
-
 export const addLocation = location => ({
   type: 'ADD_LOCATION',
   location
