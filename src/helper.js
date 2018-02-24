@@ -195,6 +195,23 @@ export const fetchandCleanWhenEventData = async (time, location) => {
   return cleanEvents;
 }
 
+// need to test this
+export const fetchSearchData = async (keywords, location) => {
+  const coords = location.coordinates;
+  try {
+    const url = `http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${key}&keywords=${keywords}`;
+    const response = fetch(url);
+    if (response.status > 226) {
+      throw new Error('could not find what you are looking for');
+    } else {
+      const jsonResponse = await response.json();
+      return jsonResponse;
+    }
+  } catch (error) {
+    throw error
+  }
+}
+
 
 // export const initialFetchWithCoords = async (coords) => {
 //   try {
