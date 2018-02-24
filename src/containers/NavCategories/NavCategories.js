@@ -77,10 +77,6 @@ class NavCategories extends Component {
 
 NavCategories.propTypes = {
   location: PropTypes.object,
-  addMusic: PropTypes.func,
-  addFood: PropTypes.func,
-  addCulture: PropTypes.func,
-  addNightlife: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -88,10 +84,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addMusic: events => dispatch(addMusic(events)),
-  addFood: events => dispatch(addFood(events)),
-  addCulture: events => dispatch(addCulture(events)),
-  addNightlife: events => dispatch(addNightlife(events))
+ 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavCategories);
+export default connect(mapStateToProps, null)(NavCategories);

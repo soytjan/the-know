@@ -32,31 +32,40 @@ export class SearchWelcome extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { location } = this.state;
+    const { addLocation, onReroute } = this.props;
     const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
-
-    this.getAndStoreEventsData(geocodeLocation);
+    addLocation(geocodeLocation);
+    localStorage.setItem('location', geocodeLocation.address);
+    onReroute();
   }
 
   handleCurrentLocation = async () => {
-    const { currentLocation } = this.props;
+    const { currentLocation, onReroute } = this.props;
     
-    this.getAndStoreEventsData(currentLocation)
+    addLocation(currentLocation);
+    localStorage.setItem('location', currentLocation)
+    onReroute();  
   }
 
-  getAndStoreEventsData = async (location) => {
-    const events = await fetchAndCleanCityEventData(location, 'event');
+  // getAndStoreEventsData = async (location) => {
+  //   const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
+  //   addEvents(musicEvents, 'music');
+  //   const foodEvents = await fetchAndCleanCategoryEventData(location, 'food');
+  //   addEvents(foodEvents, 'food');
+  //   const cultureEvents = await fetchAndCleanCategoryEventData(location, 'culture');
+  //   addEvents(cultureEvents, 'culture');
+  //   const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
+  //   addEvents(nightlifeEvents, 'nightlife');
+  // }
 
-    this.storeDataAndReroute(events, location);
-  }
+  // storeDataAndReroute = (events, location) => {
+  //   const { addEvents, addLocation, onReroute } = this.props;
 
-  storeDataAndReroute = (events, location) => {
-    const { addEvents, addLocation, onReroute } = this.props;
-
-    addEvents(events);
-    addLocation(location);
-    localStorage.setItem('location', location.address);
-    onReroute();
-  }
+  //   addEvents(events);
+  //   addLocation(location);
+  //   localStorage.setItem('location', location.address);
+  //   onReroute();
+  // }
 
 
   render() {

@@ -129,6 +129,8 @@ export const fetchAndCleanCityEventData = async (location, category) => {
 export const fetchAndCleanCategoryEventData = async (category, location) => {
   const jsonResponse = await getCategoryData(category, location);
   const events = cleanEventDataToStore(jsonResponse, category);
+
+  return events;
 }
 
 // minimize some of the repetition

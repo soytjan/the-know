@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchAndCleanCategoryEventData } from '../../helper';
 import {
+  addEvents,
   updateEvents,
   updateMusic,
   updateFood,
@@ -24,6 +26,34 @@ class Main extends Component {
 
   //   this.handleUpdateEvents(category, favEvent);
   // }
+
+  constructor() {
+    super();
+    this.state = {
+      isLoading: true
+    }
+  }
+
+  componentDidMount = async () => {
+    const { location } = this.props;
+    console.log('mounting component')
+    await this.getAndStoreEventsData(location);
+    this.setState({isLoading: false});
+  }
+
+  getAndStoreEventsData = async (location) => {
+    console.log('in get and store')
+    const { addEvents } = this.props;
+
+    const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
+    addEvents(musicEvents, 'music')
+    const foodEvents = await fetchAndCleanCategoryEventData(location, 'food');
+    addEvents(foodEvents, 'food');
+    const cultureEvents = await fetchAndCleanCategoryEventData(location, 'culture');
+    addEvents(cultureEvents, 'culture');
+    const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
+    addEvents(nightlifeEvents, 'nightlife');
+  }
 
   handleUpdateEvents = (category, event) => {
     const { updateMusic, updateFood, updateCulture, updateNightlife, updateEvents } = this.props;
@@ -52,10 +82,29 @@ class Main extends Component {
     const { removeFavorite } = this.props;
 
     removeFavorite(event);
+  }
+
+  genEventsArray = () => {
+    const { events } = this.props;
+    const categories = Object.keys(events);
+    return categories.reduce((eventsArr, category) => {
+      const categoryIds = Object.keys(events[category]);
+      const categoryEvents = categoryIds.map(event => events[category][categoryIds]);
+
+      return [...eventsArr, ...categoryEvents]
+    }, [])
   } 
 
   render() {
     const { events, music, food, culture, nightlife, favorites } = this.props;
+
+    if(this.state.isLoading) {
+      return (
+        <div>
+          I'm still loading! 
+        </div>
+      )
+    }
 
     return (
       <section className="Main">
@@ -64,7 +113,7 @@ class Main extends Component {
         <Route 
           exact path='/home/' 
           render={() => (<Events 
-            info={events} 
+            info={this.genEventsArray()} 
             type='event' 
             onFavorite={this.handleFavorites} />)}
         />
@@ -110,7 +159,7 @@ class Main extends Component {
 
 Main.propTypes = {
   location: PropTypes.object,
-  events: PropTypes.array,
+  events: PropTypes.object,
   music: PropTypes.array,
   food: PropTypes.array,
   culture: PropTypes.array,
@@ -130,13 +179,14 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  updateEvents: event => dispatch(updateEvents(event)),
-  updateMusic: event => dispatch(updateMusic(event)),
-  updateFood: event => dispatch(updateFood(event)),
-  updateCulture: event => dispatch(updateCulture(event)),
-  updateNightlife: event => dispatch(updateNightlife(event)),
-  addFavorite: event => dispatch(addFavorite(event)),
-  removeFavorite: event => dispatch(removeFavorite(event))
+  addEvents: (events, category) => dispatch(addEvents(events, category)),
+  // updateEvents: event => dispatch(updateEvents(event)),
+  // updateMusic: event => dispatch(updateMusic(event)),
+  // updateFood: event => dispatch(updateFood(event)),
+  // updateCulture: event => dispatch(updateCulture(event)),
+  // updateNightlife: event => dispatch(updateNightlife(event)),
+  // addFavorite: event => dispatch(addFavorite(event)),
+  // removeFavorite: event => dispatch(removeFavorite(event))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
