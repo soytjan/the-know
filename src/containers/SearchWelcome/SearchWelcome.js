@@ -31,7 +31,7 @@ export class SearchWelcome extends Component {
   }
 
   handleCurrentLocation = async () => {
-    const { currentLocation, onReroute } = this.props;
+    const { currentLocation, addLocation, onReroute } = this.props;
     
     addLocation(currentLocation);
     localStorage.setItem('location', currentLocation)

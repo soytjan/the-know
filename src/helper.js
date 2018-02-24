@@ -87,13 +87,6 @@ export const fetchAndCleanCategoryEventData = async (category, location) => {
 // handleError and pass in error as an argument
 export const genApiUrl = (type, location) => {
   const coords = location.coordinates;
-  
-  if (!coords) {
-    // need to figure out a better way to handle this
-    // default returns url for denver
-    // look into pulling in the localstorage  or current location address 
-    return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&location=Denver&date=Future&app_key=${keys.eventfulKey}`
-  }
 
   let category; 
   switch(type) {
@@ -133,53 +126,53 @@ export const getCategoryData = async (category, location) => {
   }
 }
 
-export const genWhenApiUrl = (time, location) => {
-  const coords = location.coordinates;
-  let when;
+// export const genWhenApiUrl = (time, location) => {
+//   const coords = location.coordinates;
+//   let when;
 
-  switch(time) {
-    case 'today':
-      when = 'today';
-      break;
-    case 'week':
-      when = 'this+week';
-      break;
-    case 'weekend':
-      when = 'this+weekend';
-      break;
-    case 'month': 
-      when='next+30+days';
-      break;
-    default:
-      when='future'
-  }
+//   switch(time) {
+//     case 'today':
+//       when = 'today';
+//       break;
+//     case 'week':
+//       when = 'this+week';
+//       break;
+//     case 'weekend':
+//       when = 'this+weekend';
+//       break;
+//     case 'month': 
+//       when='next+30+days';
+//       break;
+//     default:
+//       when='future'
+//   }
 
-  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=qg9B9xnpPW5JQvXm&t=${when}`
-}
+//   return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=qg9B9xnpPW5JQvXm&t=${when}`
+// }
 
-export const getWhenEventData = async (time, location) => {
-  try {
-    const url = this.genWhenApiUrl(time, location);
-    const response = await fetch(url);
+// export const getWhenEventData = async (time, location) => {
+//   try {
+//     const url = this.genWhenApiUrl(time, location);
+//     const response = await fetch(url);
 
-    if (response.status > 226) {
-      throw new Error('could not get when city event data');
-      // handleError function that handles error
-    } else {
-      const responseJson = await response.json();
-      return responseJson
-    }
-  } catch (error) {
-    throw error;
-  }
-}
+//     if (response.status > 226) {
+//       throw new Error('could not get when city event data');
+//       // handleError function that handles error
+//     } else {
+//       const responseJson = await response.json();
+//       return responseJson
+//     }
+//   } catch (error) {
+//     throw error;
+//   }
+// }
 
-export const fetchAndCleanWhenEventData = async (time, location) => {
-  const jsonResponse = await getWhenEventData(time, location);
-  const cleanEvents = cleanEventDataToStore(jsonResponse);
+// export const fetchAndCleanWhenEventData = async (time, location) => {
+//   const jsonResponse = await getWhenEventData(time, location);
+//   const cleanEvents = cleanEventDataToStore(jsonResponse);
 
-  return cleanEvents;
-}
+//   return cleanEvents;
+// }
 
 // need to test this
 export const fetchSearchData = async (keywords, location) => {
@@ -208,9 +201,9 @@ export const setTimeLimit = (time) => {
 
   switch(time) {
     case 'week':
-      return today.setDate(today.getDate() + 7)
+      return new Date (today.setDate(today.getDate() + 7))
     case 'month':
-      return (today.setMonth(today.getMonth() + 1))
+      return new Date (today.setMonth(today.getMonth() + 1))
     default: 
       return new Date(today.setFullYear(today.getFullYear() + 1))
   }
