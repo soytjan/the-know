@@ -1,5 +1,3 @@
-import { getGeoLocation } from '../helper';
-
 export const addCurrentLocation = coordinates => ({
   type: 'ADD_CURRENT_LOCATION',
   coordinates
@@ -23,27 +21,6 @@ export const addEvents = (events, category) => ({
 
 export const updateEvents = event => ({
   type: 'UPDATE_EVENTS',
-  event
-});
-
-export const updateMusic = event => ({
-  type: 'UPDATE_MUSIC',
-  event
-});
-
-export const updateFood = event => ({
-  type: 'UPDATE_FOOD',
-  event
-});
-
-export const updateCulture = event => ({
-  type: 'UPDATE_CULTURE',
-  event
-});
-
-
-export const updateNightlife = event => ({
-  type: 'UPDATE_NIGHTLIFE',
   event
 });
 
