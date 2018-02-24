@@ -242,6 +242,11 @@ export const fetchSearchData = async (keywords, location) => {
   }
 }
 
+export const convertObjToArray = (obj) => {
+  const keys = Object.keys(obj);
+  return keys.map(key => obj[key])
+}
+
 
 
 
