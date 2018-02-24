@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { cleanEventData, getCategoryData } from '../../helper';
+import { getCategoryData } from '../../helper';
 import { addMusic,
   addFood,
   addCulture,

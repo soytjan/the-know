@@ -126,6 +126,11 @@ export const fetchAndCleanCityEventData = async (location, category) => {
   return events;
 }
 
+export const fetchAndCleanCategoryEventData = async (category, location) => {
+  const jsonResponse = await getCategoryData(category, location);
+  const events = cleanEventDataToStore(jsonResponse, category);
+}
+
 // minimize some of the repetition
 // handleError and pass in error as an argument
 export const genApiUrl = (type, location) => {
@@ -159,9 +164,9 @@ export const genApiUrl = (type, location) => {
   return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}${category}`
 }
 
-export const getCategoryData = async (type, location) => {
+export const getCategoryData = async (category, location) => {
   try {
-    const url = genApiUrl(type, location);
+    const url = genApiUrl(category, location);
     const response = await fetch(url, {mode: 'cors'});
 
     if (response.status > 226) {
@@ -215,7 +220,7 @@ export const getWhenEventData = async (time, location) => {
 
 export const fetchandCleanWhenEventData = async (time, location) => {
   const jsonResponse = await getWhenEventData(time, location);
-  const cleanEvents = cleanEventData(jsonResponse);
+  const cleanEvents = cleanEventDataToStore(jsonResponse);
 
   return cleanEvents;
 }
