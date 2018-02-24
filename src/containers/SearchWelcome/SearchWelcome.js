@@ -14,15 +14,12 @@ export class SearchWelcome extends Component {
     }
   }
 
-  // componentDidMount -- check and see if there is anything in localStorage and check for geobase location
-
   handleChange = (e) => {
     const { value, name } = e.target;
 
     this.setState({ [name]: value });
   }
 
- // look into loading time...put some sort of alert in on button click?
   handleSubmit = async (e) => {
     e.preventDefault();
     const { location } = this.state;
@@ -40,27 +37,6 @@ export class SearchWelcome extends Component {
     localStorage.setItem('location', currentLocation)
     onReroute();  
   }
-
-  // getAndStoreEventsData = async (location) => {
-  //   const musicEvents = await fetchAndCleanCategoryEventData(location, 'music');
-  //   addEvents(musicEvents, 'music');
-  //   const foodEvents = await fetchAndCleanCategoryEventData(location, 'food');
-  //   addEvents(foodEvents, 'food');
-  //   const cultureEvents = await fetchAndCleanCategoryEventData(location, 'culture');
-  //   addEvents(cultureEvents, 'culture');
-  //   const nightlifeEvents = await fetchAndCleanCategoryEventData(location, 'nightlife');
-  //   addEvents(nightlifeEvents, 'nightlife');
-  // }
-
-  // storeDataAndReroute = (events, location) => {
-  //   const { addEvents, addLocation, onReroute } = this.props;
-
-  //   addEvents(events);
-  //   addLocation(location);
-  //   localStorage.setItem('location', location.address);
-  //   onReroute();
-  // }
-
 
   render() {
     return (

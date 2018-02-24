@@ -14,14 +14,11 @@ import NavTime from '../NavTime/NavTime';
 import './Main.css';
 
 class Main extends Component {
-  // componentWillUpdate to check for favorites?
   handleFavorites = (event) => {
-    console.log(event);
     const { favorites, updateEvents } = this.props;
     const favIds = Object.keys(favorites);
     const isDuplicated = favIds.some(id => id === event.id);
     const favEvent = {...event, isFavorited: !event.isFavorited };
-    console.log(favEvent)
     isDuplicated ? this.removeFavEvent(favEvent) : this.addFavEvent(favEvent);
 
     updateEvents(favEvent);
@@ -38,15 +35,6 @@ class Main extends Component {
 
     removeFavorite(event);
   }
-
-  // findFavorites = () => {
-  //   const { events } = this.props;
-  //   const categories = Object.keys(events);
-  //   categories.reduce((favArray, category) => {
-  //     const categoryIds = Object.keys(events[category]);
-  //     const favEvents = categoryIds
-  //   }, [])
-  // }
 
   render() {
     const { events, favorites } = this.props;

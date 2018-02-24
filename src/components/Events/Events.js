@@ -18,8 +18,6 @@ class Events extends Component {
       // }, {});
       // console.log(masterEvents, 'masterEvents')
       return categories.reduce((eventsArr, category) => {
-        // const categoryIds = Object.keys(info[category]);
-        // const categoryEvents = categoryIds.map(eventId => info[category][eventId]);
         const categoryEvents = convertObjToArray(info[category]);
 
         return [...eventsArr, ...categoryEvents]
