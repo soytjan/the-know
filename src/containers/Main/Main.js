@@ -91,6 +91,13 @@ class Main extends Component {
             type='favorites' 
             onFavorite={this.handleFavorites} />)}
         />
+        <Route 
+          exact path='/home/search' 
+          render={() => (<Events 
+            info={events.search} 
+            type='search' 
+            onFavorite={this.handleFavorites} />)}
+        />
       </section>
     )
   }
@@ -106,7 +113,7 @@ Main.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   location: state.location,
-  favorites: state.favorites
+  favorites: state.favorites,
 })
 
 const mapDispatchToProps = (dispatch) => ({

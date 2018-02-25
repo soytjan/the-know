@@ -3,6 +3,7 @@ import { eventsReducer } from './eventsReducer';
 import { locationReducer } from './locationReducer';
 import { currentLocationReducer } from './currentLocationReducer';
 import { favoritesReducer } from './favoritesReducer';
+import { searchReducer } from './searchReducer';
 
 const rootReducer = combineReducers({
   currentLocation: currentLocationReducer,

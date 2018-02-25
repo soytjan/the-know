@@ -21,6 +21,7 @@ class App extends Component {
         <Route exact path='/home/culture' render={() => (<Main type='CULTURE'/>)} />
         <Route exact path='/home/nightlife' render={() => (<Main type='NIGHTLIFE'/>)} />
         <Route exact path='/home/favorites' render={() => (<Main type='FAVORITES'/>)} />
+        <Route exact path='/home/search' render={() => (<Main type='SEARCH' />)} />
       </div>
     );
   }
