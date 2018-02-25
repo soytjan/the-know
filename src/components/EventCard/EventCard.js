@@ -1,10 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import event from '../../assets/event.jpg';
-// import food from '../../assets/food.jpg';
-// import music from '../../assets/music.jpg';
-// import culture from '../../assets/culture.jpg';
-// import nightlife from '../../assets/nightlife.jpg';
 import './EventCard.css';
 
 const EventCard = (props) => {
