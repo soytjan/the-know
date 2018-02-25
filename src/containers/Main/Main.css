@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 .Main {
-  background-color: #ECF0F1; }
+  background-color: #ECF0F1;
+  padding: 0 30px; }
   .Main h3 {
     font-size: 1.5em;
-    padding: 25px;
+    font-weight: 400;
+    padding: 35px;
     text-transform: uppercase; }

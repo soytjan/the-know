@@ -7,10 +7,14 @@
 .a-category button {
   color: #4ECDC4;
   font-size: 1.2em;
+  font-weight: 400;
   width: 160px;
   padding: 5px;
   border: 2px solid #979797;
   background-color: #FBFCFC; }
+  .a-category button:hover {
+    background-color: #BEECE9;
+    cursor: pointer; }
 
 .a-category.active button {
   color: #383838;

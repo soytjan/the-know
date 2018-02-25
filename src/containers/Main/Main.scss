@@ -2,10 +2,12 @@
 
 .Main {
   background-color: $main-bg;
+  padding: 0 30px;
 
   h3 {
     font-size: 1.5em;
-    padding: 25px;
+    font-weight: 400;
+    padding: 35px;
     text-transform: uppercase;
   }
 }
