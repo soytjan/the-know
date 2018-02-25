@@ -30,7 +30,7 @@ const EventCard = (props) => {
           >
             <i className="far fa-heart"></i>
           </button>
-          <button className='btn-see-more'>SEE MORE</button>
+          <a href={event.url} target='_blank'>SEE MORE</a>
         </div>
       </div>
     </article>
