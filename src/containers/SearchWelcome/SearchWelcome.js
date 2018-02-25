@@ -42,7 +42,12 @@ export class SearchWelcome extends Component {
     return (
       <article className='SearchWel'>
         <h2>Discover your city</h2>
-        <button onClick={this.handleCurrentLocation}>Use my current location</button>
+        <button 
+          className='current-btn'
+          onClick={this.handleCurrentLocation}
+        >
+          Use My Current Location
+        </button>
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
