@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+
+.Main {
+  background-color: $main-bg;
+
+  h3 {
+    font-size: 1.5em;
+    padding: 25px;
+    text-transform: uppercase;
+  }
+}

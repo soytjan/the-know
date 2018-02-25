@@ -1,0 +1,26 @@
+@import "../../variables.scss";
+
+.events-cont {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 15px;
+}
+
+.time-btn {
+  border: none;
+  color: $nav-time-font-color;
+  font-size: 1em;
+  background-color: $main-bg;
+
+  &:hover {
+    color: $nav-time-font-hover-color;
+  }
+}
+
+.nav-time-container {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 0 0 18px;
+}

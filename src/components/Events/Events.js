@@ -47,17 +47,27 @@ class Events extends Component {
       <section className='Events'>
         <nav className='nav-time-container'> 
           <button 
-            onClick={() => this.setState({ time: 'week' })}>This Week
+            onClick={() => this.setState({ time: 'week' })}
+            className='time-btn'
+          >
+            THIS WEEK
           </button>
           <button 
-            onClick={() => this.setState({ time: 'month' })}>
-            This Month
+            onClick={() => this.setState({ time: 'month' })}
+            className='time-btn'
+          >
+            THIS MONTH
           </button>
           <button 
-            onClick={() => this.setState({ time: 'all' })}>All Upcoming
+            onClick={() => this.setState({ time: 'all' })}
+            className='time-btn'
+          >
+            ALL UPCOMING
           </button>
         </nav>
-        { renderedEvents }
+        <section className='events-cont'>
+          { renderedEvents }
+        </section>
       </section>
     )
   }

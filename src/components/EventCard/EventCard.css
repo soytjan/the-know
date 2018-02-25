@@ -1,9 +1,39 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 .EventCard {
-  border: 1px solid turquoise; }
+  max-width: 280px;
+  min-height: 450px;
+  background-color: #FBFCFC;
+  line-height: 140%;
+  display: flex;
+  flex-direction: column; }
+  .EventCard a {
+    text-decoration: none;
+    border: 1px solid #ECF0F1;
+    padding: 5px 8px;
+    color: #EC5078;
+    border-radius: 10px; }
+    .EventCard a:hover {
+      background-color: #BEECE9; }
 
-.favorited {
-  background-color: magenta; }
+.btn-cont {
+  padding: 5px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  margin: 0 auto; }
+
+.btn-fav {
+  font-size: 1.3em;
+  border: 1px solid #ECF0F1;
+  color: #EC5078;
+  border-radius: 10px; }
+  .btn-fav:hover {
+    background-color: #BEECE9; }
+
+.favorited button {
+  background-color: #F8BFCD; }
 
 .img-event {
   height: 128px;
@@ -11,11 +41,19 @@
 
 .img-box {
   background-color: #BEECE9;
-  height: 230px;
-  width: 230px;
+  height: 280px;
+  width: 280px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  border-bottom: 5px solid #4ECDC4; }
+
+.event-info {
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
 
 .event {
   background: center/contain no-repeat url("../../assets/event.jpg"); }

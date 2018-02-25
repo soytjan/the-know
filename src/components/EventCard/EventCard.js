@@ -14,10 +14,12 @@ const EventCard = (props) => {
       <div className={`img-box`}>
         {img}
       </div>
-      <div>
-        <h4>{event.title}</h4>
-        <p>{event.venueName}</p>
-        <p>{event.startTime}</p>
+      <div className='event-info'>
+        <div className='event-info-text'>
+          <h4>{event.title}</h4>
+          <p>{event.venueName}</p>
+          <p>{event.startTime}</p>
+        </div>
         <div className='btn-cont'>
           <button 
             className='btn-fav'
