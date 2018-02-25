@@ -178,8 +178,8 @@ export const getCategoryData = async (category, location) => {
 export const fetchSearchData = async (keywords, location) => {
   const coords = location.coordinates;
   try {
-    const url = `http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}`;
-    const response = fetch(url);
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}`;
+    const response = await fetch(url);
     if (response.status > 226) {
       throw new Error('could not find what you are looking for');
     } else {
@@ -189,6 +189,11 @@ export const fetchSearchData = async (keywords, location) => {
   } catch (error) {
     throw error
   }
+}
+
+export const fetchAndCleanSearchData = async (keywords, location) => {
+  const jsonResponse = await fetchSearchData(keywords, location);
+  return cleanEventDataToStore(jsonResponse, 'search')
 }
 
 export const convertObjToArray = (obj) => {

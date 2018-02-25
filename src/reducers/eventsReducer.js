@@ -4,7 +4,9 @@ export const eventsReducer = (state = {}, action) => {
       return {...state, [action.category]: action.events };
     case 'UPDATE_EVENTS':
       const { category, id } = action.event;
-      return {...state, [category]: {...state[category], [id]: action.event}}
+      return {...state, [category]: {...state[category], [id]: action.event}};
+    case 'REMOVE_SEARCH': 
+      return {...state, search: {}}
     default: 
       return state;
   }

@@ -1,0 +1,34 @@
+@import "../../variables.scss";
+
+.Main {
+  background-color: $main-bg;
+  padding: 0 30px 30px;
+
+  h3 {
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 35px;
+    text-transform: uppercase;
+  }
+}
+
+.main-footer {
+  background-color: $turq;
+  color: $white;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 1.2em;
+  }
+}
+
+.loading {
+  background-image: url('../../assets/loading.gif');
+  height: 250px;
+  width: 320px;
+  margin: auto;
+  margin-top: 50px;
+}

@@ -40,58 +40,68 @@ class Main extends Component {
 
     if(!events.music) {
       return (
-        <div>
-          I'm still loading! 
-        </div>
+        <div className='loading'></div>
       )
     }
 
     return (
-      <section className="Main">
-        <h3>{this.props.type}</h3>
-        <Route 
-          exact path='/home/' 
-          render={() => (<Events 
-            info={events} 
-            type='event' 
-            onFavorite={this.handleFavorites} />)}
-        />
-        <Route 
-          exact path='/home/music' 
-          render={() => (<Events 
-            info={events.music} 
-            type='music' 
-            onFavorite={this.handleFavorites} />)}
-        />
-        <Route 
-          exact path='/home/food' 
-          render={() => (<Events 
-            info={events.food} 
-            type='food' 
-            onFavorite={this.handleFavorites} />)}
-        />
-        <Route 
-          exact path='/home/culture' 
-          render={() => (<Events 
-            info={events.culture} 
-            type='culture' 
-            onFavorite={this.handleFavorites} />)}
-        />
-        <Route 
-          exact path='/home/nightlife' 
-          render={() => (<Events 
-            info={events.nightlife} 
-            type='nightlife' 
-            onFavorite={this.handleFavorites} />)}
-        />
-        <Route 
-          exact path='/home/favorites' 
-          render={() => (<Events 
-            info={favorites} 
-            type='favorites' 
-            onFavorite={this.handleFavorites} />)}
-        />
-      </section>
+      <div>
+        <section className="Main">
+          <h3>{this.props.type}</h3>
+          <Route 
+            exact path='/home/' 
+            render={() => (<Events 
+              info={events} 
+              type='event' 
+              onFavorite={this.handleFavorites} />)}
+          />
+          <Route 
+            exact path='/home/music' 
+            render={() => (<Events 
+              info={events.music} 
+              type='music' 
+              onFavorite={this.handleFavorites} />)}
+          />
+          <Route 
+            exact path='/home/food' 
+            render={() => (<Events 
+              info={events.food} 
+              type='food' 
+              onFavorite={this.handleFavorites} />)}
+          />
+          <Route 
+            exact path='/home/culture' 
+            render={() => (<Events 
+              info={events.culture} 
+              type='culture' 
+              onFavorite={this.handleFavorites} />)}
+          />
+          <Route 
+            exact path='/home/nightlife' 
+            render={() => (<Events 
+              info={events.nightlife} 
+              type='nightlife' 
+              onFavorite={this.handleFavorites} />)}
+          />
+          <Route 
+            exact path='/home/favorites' 
+            render={() => (<Events 
+              info={favorites} 
+              type='favorites' 
+              onFavorite={this.handleFavorites} />)}
+          />
+          <Route 
+            exact path='/home/search' 
+            render={() => (<Events 
+              info={events.search} 
+              type='search' 
+              onFavorite={this.handleFavorites} />)}
+          />
+        </section>
+        <footer className='main-footer'>
+          <p>&copy; Amanda Tjan</p>
+        </footer>
+      </div>
     )
   }
 }
@@ -106,7 +116,7 @@ Main.propTypes = {
 const mapStateToProps = (state) => ({
   events: state.events,
   location: state.location,
-  favorites: state.favorites
+  favorites: state.favorites,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,10 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import event from '../../assets/event.jpg';
-// import food from '../../assets/food.jpg';
-// import music from '../../assets/music.jpg';
-// import culture from '../../assets/culture.jpg';
-// import nightlife from '../../assets/nightlife.jpg';
 import './EventCard.css';
 
 const EventCard = (props) => {
@@ -19,10 +14,12 @@ const EventCard = (props) => {
       <div className={`img-box`}>
         {img}
       </div>
-      <div>
-        <h4>{event.title}</h4>
-        <p>{event.venueName}</p>
-        <p>{event.startTime}</p>
+      <div className='event-info'>
+        <div className='event-info-text'>
+          <h4>{event.title}</h4>
+          <p>{event.venueName}</p>
+          <p>{event.startTime}</p>
+        </div>
         <div className='btn-cont'>
           <button 
             className='btn-fav'
@@ -30,7 +27,7 @@ const EventCard = (props) => {
           >
             <i className="far fa-heart"></i>
           </button>
-          <button className='btn-see-more'>SEE MORE</button>
+          <a href={event.url} target='_blank'>SEE MORE</a>
         </div>
       </div>
     </article>

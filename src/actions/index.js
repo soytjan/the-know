@@ -27,9 +27,8 @@ export const addFavorite = event => ({
 export const removeFavorite = event => ({
   type: 'REMOVE_FAVORITE',
   event
-})
+});
 
-// export const updateFavorites = event => ({
-//   type: 'UPDATE_FAVORITES',
-//   event
-// })
+export const removeSearch = () => ({
+  type: 'REMOVE_SEARCH'
+});

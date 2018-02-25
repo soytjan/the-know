@@ -1,21 +1,64 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 .EventCard {
-  border: 1px solid turquoise; }
+  max-width: 280px;
+  min-height: 450px;
+  background-color: #FBFCFC;
+  line-height: 140%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 4px #979797; }
+  .EventCard h4 {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    padding-bottom: 5px; }
+  .EventCard a {
+    text-decoration: none;
+    border: 1px solid #C6C6C6;
+    padding: 5px 8px;
+    color: #EC5078;
+    border-radius: 10px; }
+    .EventCard a:hover {
+      background-color: #BEECE9; }
 
-.favorited {
-  background-color: magenta; }
+.btn-cont {
+  padding: 5px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 170px;
+  margin: 0 auto; }
+
+.btn-fav {
+  font-size: 1.3em;
+  border: 1px solid #C6C6C6;
+  color: #EC5078;
+  border-radius: 10px; }
+  .btn-fav:hover {
+    background-color: #BEECE9; }
+
+.favorited button {
+  background-color: #F8BFCD; }
 
 .img-event {
-  height: 128px;
-  width: 128px; }
+  height: 200px;
+  width: 200px; }
 
 .img-box {
   background-color: #BEECE9;
-  height: 230px;
-  width: 230px;
+  height: 280px;
+  width: 280px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  border-bottom: 5px solid #4ECDC4; }
+
+.event-info {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
 
 .event {
   background: center/contain no-repeat url("../../assets/event.jpg"); }
@@ -31,3 +74,6 @@
 
 .nightlife {
   background: center/contain no-repeat url("../../assets/nightlife.jpg"); }
+
+.search {
+  background: center/contain no-repeat url("../../assets/event.jpg"); }

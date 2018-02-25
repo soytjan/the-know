@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
+.Main {
+  background-color: #ECF0F1;
+  padding: 0 30px 30px; }
+  .Main h3 {
+    font-size: 1.5em;
+    font-weight: 400;
+    padding: 35px;
+    text-transform: uppercase; }
+
+.main-footer {
+  background-color: #4ECDC4;
+  color: #FBFCFC;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .main-footer p {
+    font-size: 1.2em; }
+
+.loading {
+  background-image: url("../../assets/loading.gif");
+  height: 250px;
+  width: 320px;
+  margin: auto;
+  margin-top: 50px; }

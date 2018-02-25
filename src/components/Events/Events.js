@@ -8,16 +8,13 @@ class Events extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      events: []
-    }
+      time: 'all'
+    } 
   }
 
-  componentDidMount() {
-    this.getFilteredEventsArray('all');
-  }
-
-  genEventsArray = () => {
+  convertEvents = () => {
     const { info, type } = this.props;
+
     if (type === 'event') {
       const categories = Object.keys(info);
       return categories.reduce((eventsArr, category) => {
@@ -29,44 +26,48 @@ class Events extends Component {
       return convertObjToArray(info);
   }
 
-  filterEvents(eventArray, time) {
+  filterEvents() {
+    const { time } = this.state;
     const timeLimit = setTimeLimit(time);
-    const filtered = eventArray.filter(event => {
+    const events = this.convertEvents();
+
+    return events.filter(event => {
       const eventDate = new Date(event.startTime);
       return eventDate < timeLimit;
     })
-
-    return filtered
-  }
-
-  getFilteredEventsArray = (time) => {
-    const eventArray = this.genEventsArray();
-    const filteredEvents = this.filterEvents(eventArray, time);
-
-    this.setState({events: filteredEvents})
   }
 
   render() {
     const { onFavorite } = this.props;
-    const renderedEvents = this.state.events.map(event => {
-      return <EventCard event={event} onFavorite={onFavorite} /> 
-    })
+    const events = this.filterEvents();
+    const renderedEvents = events.map(event => <EventCard event={event} onFavorite={onFavorite} key={event.id}/> )
+
 
     return (
       <section className='Events'>
-        <nav className='nav-time-container'>
+        <nav className='nav-time-container'> 
           <button 
-            onClick={() => this.getFilteredEventsArray('week')}>This Week
+            onClick={() => this.setState({ time: 'week' })}
+            className='time-btn'
+          >
+            THIS WEEK
           </button>
           <button 
-            onClick={() => this.getFilteredEventsArray('month')}>
-            This Month
+            onClick={() => this.setState({ time: 'month' })}
+            className='time-btn'
+          >
+            THIS MONTH
           </button>
           <button 
-            onClick={() => this.getFilteredEventsArray('all')}>All Upcoming
+            onClick={() => this.setState({ time: 'all' })}
+            className='time-btn'
+          >
+            ALL UPCOMING
           </button>
         </nav>
-        { renderedEvents }
+        <section className='events-cont'>
+          { renderedEvents }
+        </section>
       </section>
     )
   }

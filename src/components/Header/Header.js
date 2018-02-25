@@ -11,12 +11,6 @@ const Header = () => {
         <div className='header-link-box'>
           <NavLink to='/home/favorites'>FAVORITES</NavLink>
         </div>
-        <div className='header-link-box'>
-          <NavLink to='/signup'>SIGN UP</NavLink>
-        </div>
-        <div className='header-link-box'>
-          <NavLink to='/login'>LOGIN</NavLink>
-        </div>
       </div>
     </header>
   )

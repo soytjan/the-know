@@ -1,9 +1,33 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 .SearchWel {
-  background-color: #FBFCFC; }
+  background-color: #FBFCFC;
+  border: 2px solid #979797;
+  padding: 50px 70px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -40px 0 0 -320px; }
   .SearchWel h2 {
     font-size: 1.5em; }
+  .SearchWel button {
+    font-size: 1.2em;
+    padding: 5px 25px;
+    border: 2px solid #4ECDC4; }
+    .SearchWel button:hover {
+      cursor: pointer;
+      background-color: #F8BFCD; }
 
 .input-wel {
   font-size: 1.2em;
-  width: 350px; }
+  width: 370px;
+  height: 42px;
+  padding: 5px; }
+
+.current-btn {
+  margin: 30px 0; }
+
+.btn-wel-search {
+  height: 42px;
+  background-color: #BEECE9; }
+  .btn-wel-search:hover {
+    cursor: pointer; }

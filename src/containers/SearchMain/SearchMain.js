@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchAndCleanSearchData } from '../../helper';
+import { addEvents, removeSearch } from '../../actions/';
 import PropTypes from 'prop-types';
 import './SearchMain.css';
 
@@ -24,8 +26,16 @@ export class SearchMain extends Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = () => {
-    // will need to make another API call and get back information
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    const {eventSearch} = this.state;
+    const { location, removeSearch, addEvents } = this.props;
+
+    const searchedEvents = await fetchAndCleanSearchData(eventSearch, location);
+    console.log(searchedEvents)
+    removeSearch();
+    addEvents(searchedEvents, 'search');
+    this.props.onSearch();
     // clean information from API
     // clear out storage
     // then put in something new
@@ -36,23 +46,25 @@ export class SearchMain extends Component {
   render() {
     return (
       <div className='SearchMain'>
-        <input
-          onChange={this.handleChange}
-          name='eventSearch'
-          value={this.state.eventSearch}
-          placeholder='Find events in your area'
-          className='input-search' 
-          type="text"
-        />
-        <input 
-          onChange={this.handleChange}
-          name='location'
-          value={this.state.location}
-          placeholder='Where?' 
-          className='input-location'
-          type="text"
-        />
-        <button>SEARCH</button>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleChange}
+            name='eventSearch'
+            value={this.state.eventSearch}
+            placeholder='Find events in your area'
+            className='input-search' 
+            type="text"
+          />
+          <input 
+            onChange={this.handleChange}
+            name='location'
+            value={this.state.location}
+            placeholder='Where?' 
+            className='input-location'
+            type="text"
+          />
+          <button>SEARCH</button>
+        </form>
       </div>
     )
   }
@@ -66,4 +78,9 @@ const mapStateToProps = state => ({
   location: state.location
 })
 
-export default connect(mapStateToProps)(SearchMain);
+const mapDispatchToProps = dispatch => ({
+  addEvents: (events, category) => dispatch(addEvents(events, category)),
+  removeSearch: () => dispatch(removeSearch())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchMain);
