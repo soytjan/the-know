@@ -40,9 +40,7 @@ class Main extends Component {
 
     if(!events.music) {
       return (
-        <div>
-          I'm still loading! 
-        </div>
+        <div className='loading'></div>
       )
     }
 
