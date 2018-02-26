@@ -186,28 +186,28 @@ describe('helper', () => {
     })
 
     it('should return music url when type is music', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=music`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=music&date=Future`;
       const type = 'music';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
     });
 
     it('should return food url when type is food', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=food`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=food&date=Future`;
       const type = 'food';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
     });
 
     it('should return culture url when type is culture', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=attractions`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=attractions&date=Future`;
       const type = 'culture';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
     });
 
     it('should return nightlife url when type is nightlife', () => {
-      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=singles_social`;
+      const expected = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=1234,1234&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=singles_social&date=Future`;
       const type = 'nightlife';
 
       expect(helper.genApiUrl(type, location)).toEqual(expected);
@@ -238,7 +238,7 @@ describe('helper', () => {
 
     it('should call fetch with expected music params when the type is music', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=music`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=music&date=Future`;
       const init = {mode: 'cors'};
       const type = 'music';
 
@@ -251,7 +251,7 @@ describe('helper', () => {
 
     it('should call fetch with expected food params when the type is food', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=food`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=food&date=Future`;
       const init = {mode: 'cors'};
       const type = 'food';
 
@@ -264,7 +264,7 @@ describe('helper', () => {
 
     it('should call fetch with expected culture params when the type is culture', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=attractions`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=attractions&date=Future`;
       const init = {mode: 'cors'};
       const type = 'culture';
 
@@ -277,7 +277,7 @@ describe('helper', () => {
 
     it('should call fetch with expected nightlife params when the type is nightlife', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=singles_social`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20&category=singles_social&date=Future`;
       const init = {mode: 'cors'};
       const type = 'nightlife';
 
@@ -325,7 +325,7 @@ describe('helper', () => {
 
     it('should call fetch with the expected params', () => {
       const coords = location.coordinates;
-      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}`;
+      const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}&date=Future`;
       
       helper.fetchSearchData(keywords, location)
 

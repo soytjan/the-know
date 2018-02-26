@@ -105,7 +105,7 @@ export const genApiUrl = (type, location) => {
       category = '';
   }
 
-  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20${category}`
+  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20${category}&date=Future`
 }
 
 export const getCategoryData = async (category, location) => {
@@ -127,7 +127,7 @@ export const getCategoryData = async (category, location) => {
 export const fetchSearchData = async (keywords, location) => {
   const coords = location.coordinates;
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}&date=Future`;
     const response = await fetch(url);
     if (response.status > 226) {
       throw new Error('could not find what you are looking for');
