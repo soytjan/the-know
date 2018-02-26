@@ -8,7 +8,6 @@ import './NavCategories.css';
 
 class NavCategories extends Component {
   componentDidMount = async () => {
-    // check for location in localStorage if there is no location in this.props
     const { location } = this.props;
     
     await this.getAndStoreEventsData(location);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchMain from '../../containers/SearchMain/SearchMain';
 import NavCategories from '../../containers/NavCategories/NavCategories';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import './Banner.css';
 
 class Banner extends Component {
@@ -11,8 +12,10 @@ class Banner extends Component {
   render() {
     return (
       <section className="Banner">
-        <SearchMain onSearch={this.handleSearchRoute} /> 
-        <NavCategories /> 
+        <SearchMain onSearch={this.handleSearchRoute} />
+        <ErrorBoundary> 
+          <NavCategories /> 
+        </ErrorBoundary>
       </section>
     )
   }

@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  addEvents,
   updateEvents,
   addFavorite,
   removeFavorite
@@ -107,20 +106,18 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-  location: PropTypes.object,
   events: PropTypes.object,
+  updateEvents: PropTypes.func,
   addFavorite: PropTypes.func,
-  removeFavorite: PropTypes.func
+  removeFavorite: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   events: state.events,
-  location: state.location,
   favorites: state.favorites,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addEvents: (events, category) => dispatch(addEvents(events, category)),
   updateEvents: event => dispatch(updateEvents(event)),
   addFavorite: event => dispatch(addFavorite(event)),
   removeFavorite: event => dispatch(removeFavorite(event))

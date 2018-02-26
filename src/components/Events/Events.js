@@ -23,7 +23,8 @@ class Events extends Component {
         return [...eventsArr, ...categoryEvents]
       }, [])
     } 
-      return convertObjToArray(info);
+    
+    return convertObjToArray(info);
   }
 
   filterEvents() {
@@ -37,6 +38,10 @@ class Events extends Component {
     })
   }
 
+  handleClick = (time) => {
+    this.setState({time});
+  }
+
   render() {
     const { onFavorite } = this.props;
     const events = this.filterEvents();
@@ -47,19 +52,19 @@ class Events extends Component {
       <section className='Events'>
         <nav className='nav-time-container'> 
           <button 
-            onClick={() => this.setState({ time: 'week' })}
+            onClick={() => this.handleClick('week')}
             className='time-btn'
           >
             THIS WEEK
           </button>
           <button 
-            onClick={() => this.setState({ time: 'month' })}
+            onClick={() => this.handleClick('month')}
             className='time-btn'
           >
             THIS MONTH
           </button>
           <button 
-            onClick={() => this.setState({ time: 'all' })}
+            onClick={() => this.handleClick('all')}
             className='time-btn'
           >
             ALL UPCOMING
