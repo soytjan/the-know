@@ -36,7 +36,7 @@ describe('NavCategories', () => {
     expect(mapped.location).toEqual(mockCleanGeocodeData);
   })
 
-  it('should call the dispatch function when updateEvents from MDTP', () => {
+  it('should call the dispatch function when addEvents is called from MDTP', () => {
     const mockDispatch = jest.fn()
     const mapped = mapDispatchToProps(mockDispatch);
     mapped.addEvents();
