@@ -21,6 +21,10 @@ export class SearchMain extends Component {
     this.setState({ [name]: value });
   }
 
+  // need to also check for if the location address typed in is different from the location that is in props
+  // if it is different, then update location
+  // need to pull in the get geocode location 
+  // need to pull in addLocation action
   handleSubmit = async (event) => {
     event.preventDefault();
     const { eventSearch } = this.state;

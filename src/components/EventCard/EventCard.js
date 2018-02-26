@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './EventCard.css';
 
+// need to figure out regex and getting the date to look like a normal one
 const EventCard = (props) => {
   const { event, onFavorite } = props;
   const favorited = event.isFavorited ? 'favorited' : '';
