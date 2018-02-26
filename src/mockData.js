@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const mockEventData = {
   "last_item": null,
   "total_items": "9621",
