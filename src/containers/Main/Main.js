@@ -10,7 +10,7 @@ import {
 import Events from '../../components/Events/Events';
 import './Main.css';
 
-class Main extends Component {
+export class Main extends Component {
   handleFavorites = (event) => {
     const { favorites, updateEvents } = this.props;
     const favIds = Object.keys(favorites);
@@ -107,17 +107,18 @@ class Main extends Component {
 
 Main.propTypes = {
   events: PropTypes.object,
+  favorites: PropTypes.object,
   updateEvents: PropTypes.func,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   events: state.events,
   favorites: state.favorites,
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   updateEvents: event => dispatch(updateEvents(event)),
   addFavorite: event => dispatch(addFavorite(event)),
   removeFavorite: event => dispatch(removeFavorite(event))
