@@ -6,10 +6,10 @@ import './Events.css';
 
 class Events extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       time: 'all'
-    } 
+    }; 
   }
 
   convertEvents = () => {
@@ -20,10 +20,11 @@ class Events extends Component {
       return categories.reduce((eventsArr, category) => {
         const categoryEvents = convertObjToArray(info[category]);
 
-        return [...eventsArr, ...categoryEvents]
-      }, [])
+        return [...eventsArr, ...categoryEvents];
+      }, []);
     } 
-      return convertObjToArray(info);
+    
+    return convertObjToArray(info);
   }
 
   filterEvents() {
@@ -34,32 +35,36 @@ class Events extends Component {
     return events.filter(event => {
       const eventDate = new Date(event.startTime);
       return eventDate < timeLimit;
-    })
+    });
+  }
+
+  handleClick = (time) => {
+    this.setState({time});
   }
 
   render() {
     const { onFavorite } = this.props;
     const events = this.filterEvents();
-    const renderedEvents = events.map(event => <EventCard event={event} onFavorite={onFavorite} key={event.id}/> )
+    const renderedEvents = events.map(event => <EventCard event={event} onFavorite={onFavorite} key={event.id}/>);
 
 
     return (
       <section className='Events'>
         <nav className='nav-time-container'> 
           <button 
-            onClick={() => this.setState({ time: 'week' })}
+            onClick={() => this.handleClick('week')}
             className='time-btn'
           >
             THIS WEEK
           </button>
           <button 
-            onClick={() => this.setState({ time: 'month' })}
+            onClick={() => this.handleClick('month')}
             className='time-btn'
           >
             THIS MONTH
           </button>
           <button 
-            onClick={() => this.setState({ time: 'all' })}
+            onClick={() => this.handleClick('all')}
             className='time-btn'
           >
             ALL UPCOMING
@@ -69,7 +74,7 @@ class Events extends Component {
           { renderedEvents }
         </section>
       </section>
-    )
+    );
   }
 }
 

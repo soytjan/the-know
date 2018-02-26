@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from './Header';
+import ErrorBoundary from './ErrorBoundary';
 
-describe('Header', () => {
+describe('ErrorBoundary', () => {
   it('should match snapshot', () => {
-    const renderedComponent = shallow(<Header />);
+    const renderedComponent = shallow(<ErrorBoundary />);
 
     expect(renderedComponent).toMatchSnapshot();
   });

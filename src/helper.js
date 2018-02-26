@@ -1,7 +1,6 @@
 import keys from './api/keys.js';
 const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 
-// if this gets really big think about organize api calls into their own api files
 export const getGeoLocation = async () => {
   try {
     const url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${keys.googleMapsApiKey}`
@@ -106,7 +105,7 @@ export const genApiUrl = (type, location) => {
       category = '';
   }
 
-  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20${category}`
+  return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?......&where=${coords.lat},${coords.lng}&within=25&&app_key=${keys.eventfulKey}&page_size=20${category}&date=Future`
 }
 
 export const getCategoryData = async (category, location) => {
@@ -116,7 +115,6 @@ export const getCategoryData = async (category, location) => {
 
     if (response.status > 226) {
       throw new Error('could not get city event data');
-      // handleError function that handles error
     } else {
       const responseJson = await response.json();
       return responseJson
@@ -126,59 +124,10 @@ export const getCategoryData = async (category, location) => {
   }
 }
 
-// export const genWhenApiUrl = (time, location) => {
-//   const coords = location.coordinates;
-//   let when;
-
-//   switch(time) {
-//     case 'today':
-//       when = 'today';
-//       break;
-//     case 'week':
-//       when = 'this+week';
-//       break;
-//     case 'weekend':
-//       when = 'this+weekend';
-//       break;
-//     case 'month': 
-//       when='next+30+days';
-//       break;
-//     default:
-//       when='future'
-//   }
-
-//   return `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=qg9B9xnpPW5JQvXm&t=${when}`
-// }
-
-// export const getWhenEventData = async (time, location) => {
-//   try {
-//     const url = this.genWhenApiUrl(time, location);
-//     const response = await fetch(url);
-
-//     if (response.status > 226) {
-//       throw new Error('could not get when city event data');
-//       // handleError function that handles error
-//     } else {
-//       const responseJson = await response.json();
-//       return responseJson
-//     }
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-// export const fetchAndCleanWhenEventData = async (time, location) => {
-//   const jsonResponse = await getWhenEventData(time, location);
-//   const cleanEvents = cleanEventDataToStore(jsonResponse);
-
-//   return cleanEvents;
-// }
-
-// need to test this
 export const fetchSearchData = async (keywords, location) => {
   const coords = location.coordinates;
   try {
-    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}`;
+    const url = `${corsAnywhereUrl}http://api.eventful.com/json/events/search?...&where=${coords.lat},${coords.lng}&within=25&app_key=${keys.eventfulKey}&keywords=${keywords}&date=Future`;
     const response = await fetch(url);
     if (response.status > 226) {
       throw new Error('could not find what you are looking for');

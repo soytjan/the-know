@@ -1,0 +1,534 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Events should match snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Events
+    info={
+        Object {
+            "1": Object {
+              "category": "music",
+              "id": "1",
+              "startTime": "2018-07-05 09:00:00",
+              "title": "event1",
+            },
+            "2": Object {
+              "category": "food",
+              "id": "2",
+              "startTime": "2018-02-28 09:00:00",
+              "title": "event2",
+            },
+            "3": Object {
+              "category": "culture",
+              "id": "3",
+              "startTime": "2018-03-20 09:00:00",
+              "title": "event3",
+            },
+          }
+    }
+    onFavorite={[Function]}
+    type="music"
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <nav
+          className="nav-time-container"
+>
+          <button
+                    className="time-btn"
+                    onClick={[Function]}
+          >
+                    THIS WEEK
+          </button>
+          <button
+                    className="time-btn"
+                    onClick={[Function]}
+          >
+                    THIS MONTH
+          </button>
+          <button
+                    className="time-btn"
+                    onClick={[Function]}
+          >
+                    ALL UPCOMING
+          </button>
+</nav>,
+        <section
+          className="events-cont"
+>
+          <EventCard
+                    event={
+                              Object {
+                                        "category": "music",
+                                        "id": "1",
+                                        "startTime": "2018-07-05 09:00:00",
+                                        "title": "event1",
+                                      }
+                    }
+                    onFavorite={[Function]}
+          />
+          <EventCard
+                    event={
+                              Object {
+                                        "category": "food",
+                                        "id": "2",
+                                        "startTime": "2018-02-28 09:00:00",
+                                        "title": "event2",
+                                      }
+                    }
+                    onFavorite={[Function]}
+          />
+          <EventCard
+                    event={
+                              Object {
+                                        "category": "culture",
+                                        "id": "3",
+                                        "startTime": "2018-03-20 09:00:00",
+                                        "title": "event3",
+                                      }
+                    }
+                    onFavorite={[Function]}
+          />
+</section>,
+      ],
+      "className": "Events",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <button
+              className="time-btn"
+              onClick={[Function]}
+>
+              THIS WEEK
+</button>,
+            <button
+              className="time-btn"
+              onClick={[Function]}
+>
+              THIS MONTH
+</button>,
+            <button
+              className="time-btn"
+              onClick={[Function]}
+>
+              ALL UPCOMING
+</button>,
+          ],
+          "className": "nav-time-container",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "THIS WEEK",
+              "className": "time-btn",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "THIS WEEK",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "THIS MONTH",
+              "className": "time-btn",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "THIS MONTH",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "ALL UPCOMING",
+              "className": "time-btn",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "ALL UPCOMING",
+            "type": "button",
+          },
+        ],
+        "type": "nav",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <EventCard
+              event={
+                            Object {
+                                          "category": "music",
+                                          "id": "1",
+                                          "startTime": "2018-07-05 09:00:00",
+                                          "title": "event1",
+                                        }
+              }
+              onFavorite={[Function]}
+/>,
+            <EventCard
+              event={
+                            Object {
+                                          "category": "food",
+                                          "id": "2",
+                                          "startTime": "2018-02-28 09:00:00",
+                                          "title": "event2",
+                                        }
+              }
+              onFavorite={[Function]}
+/>,
+            <EventCard
+              event={
+                            Object {
+                                          "category": "culture",
+                                          "id": "3",
+                                          "startTime": "2018-03-20 09:00:00",
+                                          "title": "event3",
+                                        }
+              }
+              onFavorite={[Function]}
+/>,
+          ],
+          "className": "events-cont",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "event": Object {
+                "category": "music",
+                "id": "1",
+                "startTime": "2018-07-05 09:00:00",
+                "title": "event1",
+              },
+              "onFavorite": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "function",
+            "props": Object {
+              "event": Object {
+                "category": "food",
+                "id": "2",
+                "startTime": "2018-02-28 09:00:00",
+                "title": "event2",
+              },
+              "onFavorite": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "3",
+            "nodeType": "function",
+            "props": Object {
+              "event": Object {
+                "category": "culture",
+                "id": "3",
+                "startTime": "2018-03-20 09:00:00",
+                "title": "event3",
+              },
+              "onFavorite": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "section",
+      },
+    ],
+    "type": "section",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <nav
+            className="nav-time-container"
+>
+            <button
+                        className="time-btn"
+                        onClick={[Function]}
+            >
+                        THIS WEEK
+            </button>
+            <button
+                        className="time-btn"
+                        onClick={[Function]}
+            >
+                        THIS MONTH
+            </button>
+            <button
+                        className="time-btn"
+                        onClick={[Function]}
+            >
+                        ALL UPCOMING
+            </button>
+</nav>,
+          <section
+            className="events-cont"
+>
+            <EventCard
+                        event={
+                                    Object {
+                                                "category": "music",
+                                                "id": "1",
+                                                "startTime": "2018-07-05 09:00:00",
+                                                "title": "event1",
+                                              }
+                        }
+                        onFavorite={[Function]}
+            />
+            <EventCard
+                        event={
+                                    Object {
+                                                "category": "food",
+                                                "id": "2",
+                                                "startTime": "2018-02-28 09:00:00",
+                                                "title": "event2",
+                                              }
+                        }
+                        onFavorite={[Function]}
+            />
+            <EventCard
+                        event={
+                                    Object {
+                                                "category": "culture",
+                                                "id": "3",
+                                                "startTime": "2018-03-20 09:00:00",
+                                                "title": "event3",
+                                              }
+                        }
+                        onFavorite={[Function]}
+            />
+</section>,
+        ],
+        "className": "Events",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <button
+                className="time-btn"
+                onClick={[Function]}
+>
+                THIS WEEK
+</button>,
+              <button
+                className="time-btn"
+                onClick={[Function]}
+>
+                THIS MONTH
+</button>,
+              <button
+                className="time-btn"
+                onClick={[Function]}
+>
+                ALL UPCOMING
+</button>,
+            ],
+            "className": "nav-time-container",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "THIS WEEK",
+                "className": "time-btn",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "THIS WEEK",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "THIS MONTH",
+                "className": "time-btn",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "THIS MONTH",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "ALL UPCOMING",
+                "className": "time-btn",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "ALL UPCOMING",
+              "type": "button",
+            },
+          ],
+          "type": "nav",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <EventCard
+                event={
+                                Object {
+                                                "category": "music",
+                                                "id": "1",
+                                                "startTime": "2018-07-05 09:00:00",
+                                                "title": "event1",
+                                              }
+                }
+                onFavorite={[Function]}
+/>,
+              <EventCard
+                event={
+                                Object {
+                                                "category": "food",
+                                                "id": "2",
+                                                "startTime": "2018-02-28 09:00:00",
+                                                "title": "event2",
+                                              }
+                }
+                onFavorite={[Function]}
+/>,
+              <EventCard
+                event={
+                                Object {
+                                                "category": "culture",
+                                                "id": "3",
+                                                "startTime": "2018-03-20 09:00:00",
+                                                "title": "event3",
+                                              }
+                }
+                onFavorite={[Function]}
+/>,
+            ],
+            "className": "events-cont",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "function",
+              "props": Object {
+                "event": Object {
+                  "category": "music",
+                  "id": "1",
+                  "startTime": "2018-07-05 09:00:00",
+                  "title": "event1",
+                },
+                "onFavorite": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "2",
+              "nodeType": "function",
+              "props": Object {
+                "event": Object {
+                  "category": "food",
+                  "id": "2",
+                  "startTime": "2018-02-28 09:00:00",
+                  "title": "event2",
+                },
+                "onFavorite": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "3",
+              "nodeType": "function",
+              "props": Object {
+                "event": Object {
+                  "category": "culture",
+                  "id": "3",
+                  "startTime": "2018-03-20 09:00:00",
+                  "title": "event3",
+                },
+                "onFavorite": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "section",
+        },
+      ],
+      "type": "section",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

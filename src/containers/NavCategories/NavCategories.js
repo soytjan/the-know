@@ -6,9 +6,8 @@ import { fetchAndCleanCategoryEventData } from '../../helper';
 import { addEvents } from '../../actions/';
 import './NavCategories.css';
 
-class NavCategories extends Component {
+export class NavCategories extends Component {
   componentDidMount = async () => {
-    // check for location in localStorage if there is no location in this.props
     const { location } = this.props;
     
     await this.getAndStoreEventsData(location);
@@ -18,7 +17,7 @@ class NavCategories extends Component {
     const { addEvents } = this.props;
 
     const musicEvents = await fetchAndCleanCategoryEventData('music', location);
-    addEvents(musicEvents, 'music')
+    addEvents(musicEvents, 'music');
     const foodEvents = await fetchAndCleanCategoryEventData('food', location);
     addEvents(foodEvents, 'food');
     const cultureEvents = await fetchAndCleanCategoryEventData('culture', location);
@@ -51,20 +50,21 @@ class NavCategories extends Component {
           </button>
         </NavLink>
       </nav>
-    )
+    );
   }
 }
 
 NavCategories.propTypes = {
   location: PropTypes.object,
+  addEvents: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   location: state.location
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  addEvents: (events, category) => dispatch(addEvents(events, category)),
-})
+export const mapDispatchToProps = (dispatch) => ({
+  addEvents: (events, category) => dispatch(addEvents(events, category))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavCategories);

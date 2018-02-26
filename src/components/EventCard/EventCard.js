@@ -31,8 +31,8 @@ const EventCard = (props) => {
         </div>
       </div>
     </article>
-  )
-}
+  );
+};
 
 EventCard.propTypes = {
   event: PropTypes.object,

@@ -3,15 +3,14 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  addEvents,
   updateEvents,
   addFavorite,
   removeFavorite
- } from '../../actions/';
+} from '../../actions/';
 import Events from '../../components/Events/Events';
 import './Main.css';
 
-class Main extends Component {
+export class Main extends Component {
   handleFavorites = (event) => {
     const { favorites, updateEvents } = this.props;
     const favIds = Object.keys(favorites);
@@ -38,10 +37,10 @@ class Main extends Component {
   render() {
     const { events, favorites } = this.props;
 
-    if(!events.music) {
+    if (!events.music) {
       return (
         <div className='loading'></div>
-      )
+      );
     }
 
     return (
@@ -102,29 +101,29 @@ class Main extends Component {
           <p>&copy; Amanda Tjan</p>
         </footer>
       </div>
-    )
+    );
   }
 }
 
 Main.propTypes = {
-  location: PropTypes.object,
   events: PropTypes.object,
+  favorites: PropTypes.object,
+  updateEvents: PropTypes.func,
   addFavorite: PropTypes.func,
-  removeFavorite: PropTypes.func
+  removeFavorite: PropTypes.func,
+  type: PropTypes.string
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   events: state.events,
-  location: state.location,
-  favorites: state.favorites,
-})
+  favorites: state.favorites
+});
 
-const mapDispatchToProps = (dispatch) => ({
-  addEvents: (events, category) => dispatch(addEvents(events, category)),
+export const mapDispatchToProps = (dispatch) => ({
   updateEvents: event => dispatch(updateEvents(event)),
   addFavorite: event => dispatch(addFavorite(event)),
   removeFavorite: event => dispatch(removeFavorite(event))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
 

@@ -33,4 +33,24 @@ describe('eventsReducer', () => {
 
     expect(eventsReducer(state, action)).toEqual(expected);
   })
+
+  it('REMOVE_SEARCH should return state and the key search with an empty object value', () => {
+    const state = {
+      music: {
+        '1234': {title: 'hi', category: 'music', id: '1234'}
+      },
+      search: {
+        '456': {title: 'hi', category: 'search', id: '456'}
+      }
+    };
+    const expected = {
+      music: {
+        '1234': {title: 'hi', category: 'music', id: '1234'}
+      },
+      search: {}
+    };
+    const action = actions.removeSearch();
+
+    expect(eventsReducer(state, action)).toEqual(expected);
+  })
 })

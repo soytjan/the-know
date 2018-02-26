@@ -7,40 +7,29 @@ import './SearchMain.css';
 
 
 export class SearchMain extends Component {
-  // for local state location need to check for local storage
   constructor(props) {
     super(props);
     this.state = {
       eventSearch: '',
       location: this.props.location.address || ''
-    }
+    };
   }
 
-  componentDidMount() {
-    
-  }
-
-  handleChange = (e) => {
-    const { value, name } = e.target;
+  handleChange = (event) => {
+    const { value, name } = event.target;
 
     this.setState({ [name]: value });
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
-    const {eventSearch} = this.state;
-    const { location, removeSearch, addEvents } = this.props;
-
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { eventSearch } = this.state;
+    const { location, removeSearch, addEvents, onSearch } = this.props;
     const searchedEvents = await fetchAndCleanSearchData(eventSearch, location);
-    console.log(searchedEvents)
+
     removeSearch();
     addEvents(searchedEvents, 'search');
-    this.props.onSearch();
-    // clean information from API
-    // clear out storage
-    // then put in something new
-    // change the location in store
-    // change the location in localStorage
+    onSearch();
   }
 
   render() {
@@ -66,21 +55,24 @@ export class SearchMain extends Component {
           <button>SEARCH</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
 SearchMain.propTypes = {
   location: PropTypes.object,
+  addEvents: PropTypes.func,
+  removeSearch: PropTypes.func,
+  onSearch: PropTypes.func
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   location: state.location
-})
+});
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addEvents: (events, category) => dispatch(addEvents(events, category)),
   removeSearch: () => dispatch(removeSearch())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchMain);

@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchWelcome should match snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SearchWelcome
+    addEvents={[Function]}
+    addLocation={[Function]}
+    currentLocation={
+        Object {
+            "coordinates": Object {
+              "lat": 39.7380371,
+              "lng": -105.02651949999999,
+            },
+          }
+    }
+    onReroute={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h2>
+          Discover your city
+</h2>,
+        <button
+          className="current-btn"
+          onClick={[Function]}
+>
+          Use My Current Location
+</button>,
+        <form
+          onSubmit={[Function]}
+>
+          <input
+                    className="input-wel"
+                    name="location"
+                    onChange={[Function]}
+                    placeholder="Enter your city or location"
+                    type="text"
+                    value=""
+          />
+          <button
+                    className="btn-wel-search"
+          >
+                    SEARCH
+          </button>
+</form>,
+      ],
+      "className": "SearchWel",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Discover your city",
+        },
+        "ref": null,
+        "rendered": "Discover your city",
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Use My Current Location",
+          "className": "current-btn",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "Use My Current Location",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="input-wel"
+              name="location"
+              onChange={[Function]}
+              placeholder="Enter your city or location"
+              type="text"
+              value=""
+/>,
+            <button
+              className="btn-wel-search"
+>
+              SEARCH
+</button>,
+          ],
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "input-wel",
+              "name": "location",
+              "onChange": [Function],
+              "placeholder": "Enter your city or location",
+              "type": "text",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "SEARCH",
+              "className": "btn-wel-search",
+            },
+            "ref": null,
+            "rendered": "SEARCH",
+            "type": "button",
+          },
+        ],
+        "type": "form",
+      },
+    ],
+    "type": "article",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2>
+            Discover your city
+</h2>,
+          <button
+            className="current-btn"
+            onClick={[Function]}
+>
+            Use My Current Location
+</button>,
+          <form
+            onSubmit={[Function]}
+>
+            <input
+                        className="input-wel"
+                        name="location"
+                        onChange={[Function]}
+                        placeholder="Enter your city or location"
+                        type="text"
+                        value=""
+            />
+            <button
+                        className="btn-wel-search"
+            >
+                        SEARCH
+            </button>
+</form>,
+        ],
+        "className": "SearchWel",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Discover your city",
+          },
+          "ref": null,
+          "rendered": "Discover your city",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Use My Current Location",
+            "className": "current-btn",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "Use My Current Location",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="input-wel"
+                name="location"
+                onChange={[Function]}
+                placeholder="Enter your city or location"
+                type="text"
+                value=""
+/>,
+              <button
+                className="btn-wel-search"
+>
+                SEARCH
+</button>,
+            ],
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "input-wel",
+                "name": "location",
+                "onChange": [Function],
+                "placeholder": "Enter your city or location",
+                "type": "text",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "SEARCH",
+                "className": "btn-wel-search",
+              },
+              "ref": null,
+              "rendered": "SEARCH",
+              "type": "button",
+            },
+          ],
+          "type": "form",
+        },
+      ],
+      "type": "article",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

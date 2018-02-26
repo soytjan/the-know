@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should match snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Main
+    addFavorite={[Function]}
+    events={
+        Object {
+            "123": Object {
+              "category": "food",
+              "id": "123",
+              "title": "hi",
+            },
+            "E0-001-111209195-8": Object {
+              "category": "music",
+              "city": "Denver",
+              "description": " <strong>Sponsored by:</strong> Extreme Community Makeover<br> <strong>Minimum age:</strong> 14<br> Extreme Community Makeover (ECM) is designed to invite volunteers into a partnership with residents of specific Denver neighborhoods to complete home and neighborhood improvement projects. These projects include graffiti removal, landscaping, painting, yard work, or other projects identified by the . . .",
+              "id": "E0-001-111209195-8",
+              "image": null,
+              "postalCode": null,
+              "region": "CO",
+              "startTime": "2018-07-05 09:00:00",
+              "title": "Thursday Work Day, July 5 - Multiple Neighborhoods",
+              "url": "http://denver.eventful.com/events/thursday-work-day-july-5-multiple-neighborhoods-/E0-001-111209195-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+              "venueAddress": "Denver, Colorado, United States",
+              "venueName": "Denver, Colorado, United States",
+            },
+          }
+    }
+    favorites={
+        Object {
+            "E0-001-111209195-8": Object {
+              "category": "music",
+              "city": "Denver",
+              "description": " <strong>Sponsored by:</strong> Extreme Community Makeover<br> <strong>Minimum age:</strong> 14<br> Extreme Community Makeover (ECM) is designed to invite volunteers into a partnership with residents of specific Denver neighborhoods to complete home and neighborhood improvement projects. These projects include graffiti removal, landscaping, painting, yard work, or other projects identified by the . . .",
+              "id": "E0-001-111209195-8",
+              "image": null,
+              "isFavorited": true,
+              "postalCode": null,
+              "region": "CO",
+              "startTime": "2018-07-05 09:00:00",
+              "title": "Thursday Work Day, July 5 - Multiple Neighborhoods",
+              "url": "http://denver.eventful.com/events/thursday-work-day-july-5-multiple-neighborhoods-/E0-001-111209195-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+              "venueAddress": "Denver, Colorado, United States",
+              "venueName": "Denver, Colorado, United States",
+            },
+          }
+    }
+    removeFavorite={[Function]}
+    type="MUSIC"
+    updateEvents={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "loading",
+    },
+    "ref": null,
+    "rendered": null,
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "loading",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

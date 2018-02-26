@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const mockEventData = {
   "last_item": null,
   "total_items": "9621",
@@ -73,6 +75,38 @@ export const mockCleanEventData = {
     id: "E0-001-111209195-8"
   }
 };
+
+export const mockCleanSearchData = {
+  "E0-001-111209195-8": {
+    title: "Thursday Work Day, July 5 - Multiple Neighborhoods",
+    description: " <strong>Sponsored by:</strong> Extreme Community Makeover<br> <strong>Minimum age:</strong> 14<br> Extreme Community Makeover (ECM) is designed to invite volunteers into a partnership with residents of specific Denver neighborhoods to complete home and neighborhood improvement projects. These projects include graffiti removal, landscaping, painting, yard work, or other projects identified by the . . .",
+    category: "search",
+    venueName: "Denver, Colorado, United States", 
+    region: "CO",
+    postalCode: null,
+    city: "Denver",
+    startTime: "2018-07-05 09:00:00",
+    venueAddress: "Denver, Colorado, United States",
+    image: null,
+    url: "http://denver.eventful.com/events/thursday-work-day-july-5-multiple-neighborhoods-/E0-001-111209195-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+    id: "E0-001-111209195-8"
+  }
+};
+
+export const mockSingleEvent = {
+    title: "Thursday Work Day, July 5 - Multiple Neighborhoods",
+    description: " <strong>Sponsored by:</strong> Extreme Community Makeover<br> <strong>Minimum age:</strong> 14<br> Extreme Community Makeover (ECM) is designed to invite volunteers into a partnership with residents of specific Denver neighborhoods to complete home and neighborhood improvement projects. These projects include graffiti removal, landscaping, painting, yard work, or other projects identified by the . . .",
+    category: "music",
+    venueName: "Denver, Colorado, United States", 
+    region: "CO",
+    postalCode: null,
+    city: "Denver",
+    startTime: "2018-07-05 09:00:00",
+    venueAddress: "Denver, Colorado, United States",
+    image: null,
+    url: "http://denver.eventful.com/events/thursday-work-day-july-5-multiple-neighborhoods-/E0-001-111209195-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
+    id: "E0-001-111209195-8"
+  }
 
 export const mockEventDataArray = [
   {
