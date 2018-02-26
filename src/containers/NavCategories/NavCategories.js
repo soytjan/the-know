@@ -6,7 +6,7 @@ import { fetchAndCleanCategoryEventData } from '../../helper';
 import { addEvents } from '../../actions/';
 import './NavCategories.css';
 
-class NavCategories extends Component {
+export class NavCategories extends Component {
   componentDidMount = async () => {
     const { location } = this.props;
     
@@ -56,13 +56,14 @@ class NavCategories extends Component {
 
 NavCategories.propTypes = {
   location: PropTypes.object,
+  addEvents: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   location: state.location
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addEvents: (events, category) => dispatch(addEvents(events, category)),
 })
 
