@@ -34,6 +34,9 @@ export class Main extends Component {
     removeFavorite(event);
   }
 
+  // to make it so that we can click on an event and get more info, need to set up the routes over here
+  // look at react router example
+
   render() {
     const { events, favorites } = this.props;
 
