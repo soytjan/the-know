@@ -80,4 +80,14 @@ describe('actions', () => {
       expect(actions.removeFavorite(event)).toEqual(expected);
     })
   })
+
+  describe('removeSearch', () => {
+    it('should return a type of REMOVE_SEARCH', () => {
+      const expected = {
+        type: 'REMOVE_SEARCH'
+      }
+
+      expect(actions.removeSearch()).toEqual(expected);
+    })
+  })
 })
