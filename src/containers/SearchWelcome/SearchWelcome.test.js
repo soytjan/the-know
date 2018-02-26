@@ -20,8 +20,8 @@ describe('SearchWelcome', () => {
         "lat": 39.7380371,
         "lng": -105.02651949999999
       }
-    }
-  })
+    };
+  });
 
   beforeEach(() => {
     mockAddEvents = jest.fn();
@@ -35,7 +35,7 @@ describe('SearchWelcome', () => {
         onReroute={mockOnReroute}
       />
     );
-  })
+  });
 
   it('should match snapshot', () => {
     expect(renderedComponent).toMatchSnapshot();
@@ -43,8 +43,8 @@ describe('SearchWelcome', () => {
 
   it('should map to the store correctly', () => {
     const mockStore = {
-      currentLocation: mockCurrentLocation,
-    }
+      currentLocation: mockCurrentLocation
+    };
     const mapped = mapStateToProps(mockStore);
 
     expect(mapped).toEqual(mockStore);
@@ -52,7 +52,7 @@ describe('SearchWelcome', () => {
   });
 
   it('should call the dispatch function when addEvents is called from MDTP', () => {
-    const mockDispatch = jest.fn()
+    const mockDispatch = jest.fn();
     const mapped = mapDispatchToProps(mockDispatch);
     mapped.addEvents();
 
@@ -60,7 +60,7 @@ describe('SearchWelcome', () => {
   });
 
   it('should call the dispatch function when addLocation is called from MDTP', () => {
-    const mockDispatch = jest.fn()
+    const mockDispatch = jest.fn();
     const mapped = mapDispatchToProps(mockDispatch);
     mapped.addLocation();
 
@@ -78,14 +78,14 @@ describe('SearchWelcome', () => {
 
       expect(renderedComponent.state().location).toEqual(expected);
     });
-  })
+  });
 
   describe('handleSubmit', () => {
     let mockEvent;
 
     beforeAll(() => {
-      mockEvent = { preventDefault: jest.fn() }
-    })
+      mockEvent = { preventDefault: jest.fn() };
+    });
 
     it('should call fetch', () => {
       renderedComponent.instance().handleSubmit(mockEvent);
@@ -106,19 +106,19 @@ describe('SearchWelcome', () => {
 
       expect(mockOnReroute).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('handleCurrentLocation', () => {
     it('should call addLocation with the expected params', () => {
       renderedComponent.instance().handleCurrentLocation();
 
       expect(mockAddLocation).toHaveBeenCalledWith(mockCurrentLocation);
-    })
+    });
 
     it('should call onReroute', () => {
       renderedComponent.instance().handleCurrentLocation();
       
       expect(mockOnReroute).toHaveBeenCalled();
-    })
-  })
-})
+    });
+  });
+});

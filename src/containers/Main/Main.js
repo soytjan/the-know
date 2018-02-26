@@ -6,7 +6,7 @@ import {
   updateEvents,
   addFavorite,
   removeFavorite
- } from '../../actions/';
+} from '../../actions/';
 import Events from '../../components/Events/Events';
 import './Main.css';
 
@@ -37,10 +37,10 @@ export class Main extends Component {
   render() {
     const { events, favorites } = this.props;
 
-    if(!events.music) {
+    if (!events.music) {
       return (
         <div className='loading'></div>
-      )
+      );
     }
 
     return (
@@ -101,7 +101,7 @@ export class Main extends Component {
           <p>&copy; Amanda Tjan</p>
         </footer>
       </div>
-    )
+    );
   }
 }
 
@@ -111,18 +111,19 @@ Main.propTypes = {
   updateEvents: PropTypes.func,
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func,
+  type: PropTypes.string
 };
 
 export const mapStateToProps = (state) => ({
   events: state.events,
-  favorites: state.favorites,
-})
+  favorites: state.favorites
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   updateEvents: event => dispatch(updateEvents(event)),
   addFavorite: event => dispatch(addFavorite(event)),
   removeFavorite: event => dispatch(removeFavorite(event))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
 

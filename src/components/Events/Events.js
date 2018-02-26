@@ -6,10 +6,10 @@ import './Events.css';
 
 class Events extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       time: 'all'
-    } 
+    }; 
   }
 
   convertEvents = () => {
@@ -20,8 +20,8 @@ class Events extends Component {
       return categories.reduce((eventsArr, category) => {
         const categoryEvents = convertObjToArray(info[category]);
 
-        return [...eventsArr, ...categoryEvents]
-      }, [])
+        return [...eventsArr, ...categoryEvents];
+      }, []);
     } 
     
     return convertObjToArray(info);
@@ -35,7 +35,7 @@ class Events extends Component {
     return events.filter(event => {
       const eventDate = new Date(event.startTime);
       return eventDate < timeLimit;
-    })
+    });
   }
 
   handleClick = (time) => {
@@ -45,7 +45,7 @@ class Events extends Component {
   render() {
     const { onFavorite } = this.props;
     const events = this.filterEvents();
-    const renderedEvents = events.map(event => <EventCard event={event} onFavorite={onFavorite} key={event.id}/> )
+    const renderedEvents = events.map(event => <EventCard event={event} onFavorite={onFavorite} key={event.id}/>);
 
 
     return (
@@ -74,7 +74,7 @@ class Events extends Component {
           { renderedEvents }
         </section>
       </section>
-    )
+    );
   }
 }
 

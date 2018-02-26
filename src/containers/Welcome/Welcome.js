@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getGeoLocation } from '../../helper';
-import { addCurrentLocation, } from '../../actions/';
+import { addCurrentLocation } from '../../actions/';
 import SearchWelcome from '../SearchWelcome/SearchWelcome';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 import './Welcome.css';
@@ -30,7 +30,7 @@ export class Welcome extends Component {
           <SearchWelcome onReroute={this.handleReroute} />
         </ErrorBoundary>
       </section>
-    )
+    );
   }
 }
 
@@ -41,6 +41,6 @@ Welcome.propTypes = {
 
 export const mapDispatchToProps = (dispatch) => ({
   addCurrentLocation: location => dispatch(addCurrentLocation(location))
-})
+});
 
 export default connect(null, mapDispatchToProps)(Welcome);

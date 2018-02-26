@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { mockCleanEventData, mockEventDataArray, mockSingleEvent } from '../../mockData';
+import { mockCleanEventData, mockSingleEvent } from '../../mockData';
 import { Main, mapStateToProps, mapDispatchToProps } from './Main';
 
 describe('Main', () => {
@@ -14,7 +14,7 @@ describe('Main', () => {
   beforeAll(() => {
     mockEvents = {...mockCleanEventData, '123': {id: '123', category: 'food', title: 'hi'}};
     mockFavorites = {"E0-001-111209195-8": {...mockSingleEvent, isFavorited: true}};
-  })
+  });
 
   beforeEach(() => {
     mockUpdateEvents = jest.fn();
@@ -30,23 +30,23 @@ describe('Main', () => {
         removeFavorite={mockRemoveFavorite}
       />
     );
-  })
+  });
 
   it('should match snapshot', () => {
     expect(renderedComponent).toMatchSnapshot();
-  })
+  });
 
   it('should map to the store correctly', () => {
     const mockStore = {
       events: mockEvents,
       favorites: mockFavorites
-    }
+    };
     const mapped = mapStateToProps(mockStore);
 
     expect(mapped).toEqual(mockStore);
     expect(mapped.events).toEqual(mockEvents);
     expect(mapped.favorites).toEqual(mockFavorites);
-  })
+  });
 
   describe('mapDispatchToProps', () => {
     let mockDispatch;
@@ -55,7 +55,7 @@ describe('Main', () => {
     beforeEach(() => {
       mockDispatch = jest.fn();
       mapped = mapDispatchToProps(mockDispatch);
-    })
+    });
 
     it('should call the dispatch function when updateEvents from MDTP', () => {
       mapped.updateEvents();
@@ -74,11 +74,11 @@ describe('Main', () => {
 
       expect(mockDispatch).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('handleFavorites', () => {
     it('should check to see if an event in the favorites array, and add it if it is not', () => {
-      const mockEvent = {'123': {id: '123', category: 'food', title: 'hi'}}
+      const mockEvent = {'123': {id: '123', category: 'food', title: 'hi'}};
 
       renderedComponent.instance().handleFavorites(mockEvent);
 
@@ -96,21 +96,21 @@ describe('Main', () => {
 
       expect(mockUpdateEvents).toHaveBeenCalled();
     });
-  })
+  });
 
   describe('addFavEvent', () => {
     it('should call addFavorite from store', () => {
       renderedComponent.instance().addFavEvent();
 
       expect(mockAddFavorite).toHaveBeenCalled();
-    })
-  })
+    });
+  });
 
   describe('removeFavEvent', () => {
     it('should call removeFavorite from store', () => {
       renderedComponent.instance().removeFavEvent();
 
       expect(mockRemoveFavorite).toHaveBeenCalled();
-    })
-  })
-})
+    });
+  });
+});

@@ -9,18 +9,18 @@ export class SearchWelcome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: '',
-    }
+      location: ''
+    };
   }
 
-  handleChange = (e) => {
-    const { value, name } = e.target;
+  handleChange = (event) => {
+    const { value, name } = event.target;
 
     this.setState({ [name]: value });
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
+  handleSubmit = async (event) => {
+    event.preventDefault();
     const { location } = this.state;
     const { addLocation, onReroute } = this.props;
     const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
@@ -57,7 +57,7 @@ export class SearchWelcome extends Component {
           <button className='btn-wel-search'>SEARCH</button>
         </form>
       </article>
-    )
+    );
   }
 }
 
@@ -65,7 +65,7 @@ SearchWelcome.propTypes = {
   currentLocation: PropTypes.object,
   addEvents: PropTypes.func,
   addLocation: PropTypes.func,
-  onReroute: PropTypes.func,
+  onReroute: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({
@@ -75,6 +75,6 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   addEvents: events => dispatch(addEvents(events)),
   addLocation: location => dispatch(addLocation(location))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchWelcome);

@@ -7,5 +7,5 @@ describe('Header', () => {
     const renderedComponent = shallow(<Header />);
 
     expect(renderedComponent).toMatchSnapshot();
-  })
-})
+  });
+});

@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { mockCleanEventData, mockEventDataArray } from '../../mockData';
-import { convertObjToArray, setTimeLimit } from '../../helper';
 import Events from './Events';
 
 describe('Events', () => {
@@ -15,7 +14,7 @@ describe('Events', () => {
       '2': {title: 'event2', category: 'food', startTime: "2018-02-28 09:00:00", id: '2'}, 
       '3': {title: 'event3', category: 'culture', startTime: "2018-03-20 09:00:00", id: '3'}
     };
-  })
+  });
 
   beforeEach(() => {
     mockOnFavorite = jest.fn();
@@ -26,11 +25,11 @@ describe('Events', () => {
         onFavorite={mockOnFavorite}
       />
     );
-  })
+  });
 
   it('should match snapshot', () => {
     expect(renderedComponent).toMatchSnapshot();
-  })
+  });
   
   describe('convertEvents', () => {
     it('should return an array of objects with all the event objects', () => {
@@ -51,8 +50,10 @@ describe('Events', () => {
       );
       const result = renderedComponent.instance().convertEvents();
       const expected = mockEventDataArray;
+
+      expect(result).toEqual(expected);
     });
-  })
+  });
 
   describe('filterEvents', () => {
     it('should return only events that are this week when time state is week', () => {
@@ -66,11 +67,11 @@ describe('Events', () => {
       const expected = [
         {title: 'event2', category: 'food', startTime: "2018-02-28 09:00:00", id: '2'}, 
         {title: 'event3', category: 'culture', startTime: "2018-03-20 09:00:00", id: '3'}
-      ]
+      ];
 
-      renderedComponent.setState({ time: 'month' })
+      renderedComponent.setState({ time: 'month' });
 
-      expect(renderedComponent.instance().filterEvents()).toEqual(expected)
+      expect(renderedComponent.instance().filterEvents()).toEqual(expected);
     });
 
     it('should return all events when time state is all', () => {
@@ -78,11 +79,11 @@ describe('Events', () => {
         {title: 'event1', category: 'music', startTime: "2018-07-05 09:00:00", id: '1'}, 
         {title: 'event2', category: 'food', startTime: "2018-02-28 09:00:00", id: '2'}, 
         {title: 'event3', category: 'culture', startTime: "2018-03-20 09:00:00", id: '3'}
-      ]
+      ];
       
-      expect(renderedComponent.instance().filterEvents()).toEqual(expected)
-    })
-  })
+      expect(renderedComponent.instance().filterEvents()).toEqual(expected);
+    });
+  });
 
   describe('handleClick', () => {
     it('should set time state to week when THIS WEEK button is clicked', () => {
@@ -108,5 +109,5 @@ describe('Events', () => {
 
       expect(renderedComponent.state('time')).toEqual('all');
     });
-  })
-})
+  });
+});

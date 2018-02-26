@@ -12,17 +12,17 @@ export class SearchMain extends Component {
     this.state = {
       eventSearch: '',
       location: this.props.location.address || ''
-    }
+    };
   }
 
-  handleChange = (e) => {
-    const { value, name } = e.target;
+  handleChange = (event) => {
+    const { value, name } = event.target;
 
     this.setState({ [name]: value });
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
+  handleSubmit = async (event) => {
+    event.preventDefault();
     const { eventSearch } = this.state;
     const { location, removeSearch, addEvents, onSearch } = this.props;
     const searchedEvents = await fetchAndCleanSearchData(eventSearch, location);
@@ -55,7 +55,7 @@ export class SearchMain extends Component {
           <button>SEARCH</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
@@ -68,11 +68,11 @@ SearchMain.propTypes = {
 
 export const mapStateToProps = state => ({
   location: state.location
-})
+});
 
 export const mapDispatchToProps = dispatch => ({
   addEvents: (events, category) => dispatch(addEvents(events, category)),
   removeSearch: () => dispatch(removeSearch())
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchMain);

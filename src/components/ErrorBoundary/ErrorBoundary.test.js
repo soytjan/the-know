@@ -7,6 +7,5 @@ describe('ErrorBoundary', () => {
     const renderedComponent = shallow(<ErrorBoundary />);
 
     expect(renderedComponent).toMatchSnapshot();
-  })
-
-})
+  });
+});

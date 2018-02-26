@@ -17,7 +17,7 @@ export class NavCategories extends Component {
     const { addEvents } = this.props;
 
     const musicEvents = await fetchAndCleanCategoryEventData('music', location);
-    addEvents(musicEvents, 'music')
+    addEvents(musicEvents, 'music');
     const foodEvents = await fetchAndCleanCategoryEventData('food', location);
     addEvents(foodEvents, 'food');
     const cultureEvents = await fetchAndCleanCategoryEventData('culture', location);
@@ -50,21 +50,21 @@ export class NavCategories extends Component {
           </button>
         </NavLink>
       </nav>
-    )
+    );
   }
 }
 
 NavCategories.propTypes = {
   location: PropTypes.object,
-  addEvents: PropTypes.func,
+  addEvents: PropTypes.func
 };
 
 export const mapStateToProps = (state) => ({
   location: state.location
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
-  addEvents: (events, category) => dispatch(addEvents(events, category)),
-})
+  addEvents: (events, category) => dispatch(addEvents(events, category))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavCategories);

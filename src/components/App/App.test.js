@@ -7,5 +7,5 @@ describe('App', () => {
     const renderedComponent = shallow(<App />);
 
     expect(renderedComponent).toMatchSnapshot();
-  })
-})
+  });
+});

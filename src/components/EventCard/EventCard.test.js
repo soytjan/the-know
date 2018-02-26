@@ -15,19 +15,19 @@ describe('EventCard', () => {
       image: null,
       url: "fake.com",
       id: "E0-001-111209195-8"
-    }
-  })
+    };
+  });
 
   beforeEach(() => {
-    mockOnFavorite = jest.fn()
+    mockOnFavorite = jest.fn();
     renderedComponent = shallow(
       <EventCard
         event={mockEvent}
         onFavorite={mockOnFavorite}
         key={1}
       />
-    )
-  })
+    );
+  });
 
   it('should match snapshot', () => {
     expect(renderedComponent).toMatchSnapshot();
@@ -42,14 +42,14 @@ describe('EventCard', () => {
       url: "fake.com",
       id: "E0-001-111209195-8",
       isFavorited: true
-    }
+    };
     const renderedComponent = shallow(
       <EventCard
         event={mockEvent}
         onFavorite={mockOnFavorite}
         key={1}
       />
-    )
+    );
 
     expect(renderedComponent).toMatchSnapshot();
   });
@@ -57,6 +57,6 @@ describe('EventCard', () => {
   it('should call onFavorite from props when button is clicked', () => {
     renderedComponent.find('button').simulate('click');
 
-    expect(mockOnFavorite).toHaveBeenCalled()
-  })
-})
+    expect(mockOnFavorite).toHaveBeenCalled();
+  });
+});
