@@ -10,7 +10,6 @@ export class SearchWelcome extends Component {
     super(props);
     this.state = {
       location: '',
-      error: false,
     }
   }
 
@@ -26,7 +25,6 @@ export class SearchWelcome extends Component {
     const { addLocation, onReroute } = this.props;
     const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
     addLocation(geocodeLocation);
-    localStorage.setItem('location', geocodeLocation.address);
     onReroute();
   }
 
@@ -34,7 +32,6 @@ export class SearchWelcome extends Component {
     const { currentLocation, addLocation, onReroute } = this.props;
     
     addLocation(currentLocation);
-    localStorage.setItem('location', currentLocation)
     onReroute();  
   }
 
@@ -71,11 +68,11 @@ SearchWelcome.propTypes = {
   onReroute: PropTypes.func,
 };
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   currentLocation: state.currentLocation
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addEvents: events => dispatch(addEvents(events)),
   addLocation: location => dispatch(addLocation(location))
 })

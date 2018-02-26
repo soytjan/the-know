@@ -20,8 +20,6 @@ export class Welcome extends Component {
   }
 
   render() {
-    // look into doing some sort of React alert here
-
     return (
       <section className='Welcome'>
         <section className='bg-img half-page'>
@@ -38,9 +36,10 @@ export class Welcome extends Component {
 
 Welcome.propTypes = {
   history: PropTypes.object,
+  addCurrentLocation: PropTypes.func
 };
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addCurrentLocation: location => dispatch(addCurrentLocation(location))
 })
 
