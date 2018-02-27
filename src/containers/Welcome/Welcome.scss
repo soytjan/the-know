@@ -3,14 +3,16 @@
 .Welcome {
   height: 100%;
   postion: relative;
-}
-
-.bg-img {
-  background-image: url('../../assets/city-bg.jpg');
+  background-image: url('../../assets/city-bg-welcome.jpg');
   background-size: cover;
 }
 
-.half-page {
-  height: 50%;
-  background-color: $main-bg; 
-}
+// .bg-img {
+//   background-image: url('../../assets/city-bg.jpg');
+//   background-size: cover;
+// }
+
+// .half-page {
+//   height: 50%;
+//   background-color: $main-bg; 
+// }
