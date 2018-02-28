@@ -17,6 +17,13 @@ a {
 
 button {
   border: 2px solid $search-btn-border-color;
+  color: $btn-font-color;
+
+  &:hover {
+    background-color: $btn-hover-color;
+    cursor: pointer;
+    color: $btn-hover-font-color;
+  }
 }
 
 .App {

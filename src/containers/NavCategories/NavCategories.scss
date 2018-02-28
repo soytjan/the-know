@@ -8,18 +8,11 @@
 
 .a-category {
   button {
-    color: $nav-font-btn-color;
     font-size: 1.2em;
     font-weight: 400;
     width: 160px;
     padding: 5px;
-    border: 2px solid $nav-border-color;
     background-color: $white;
-
-    &:hover {
-      background-color: $nav-category-hover-bg;
-      cursor: pointer;
-    }
   }
 }
 
