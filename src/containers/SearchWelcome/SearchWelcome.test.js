@@ -109,14 +109,18 @@ describe('SearchWelcome', () => {
   });
 
   describe('handleCurrentLocation', () => {
-    it('should call addLocation with the expected params', () => {
-      renderedComponent.instance().handleCurrentLocation();
+    it('should call fetch', () => {
+      expect(window.fetch).toHaveBeenCalled();
+    })
 
-      expect(mockAddLocation).toHaveBeenCalledWith(mockCurrentLocation);
+    it('should call addLocation with the expected params', async () => {
+      await renderedComponent.instance().handleCurrentLocation();
+
+      expect(mockAddLocation).toHaveBeenCalledWith(mockCleanGeocodeData);
     });
 
-    it('should call onReroute', () => {
-      renderedComponent.instance().handleCurrentLocation();
+    it('should call onReroute', async () => {
+      await renderedComponent.instance().handleCurrentLocation();
       
       expect(mockOnReroute).toHaveBeenCalled();
     });
