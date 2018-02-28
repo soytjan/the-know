@@ -8,8 +8,9 @@
   font-size: 1.2em;
   font-weight: 400;
   width: 160px;
-  padding: 5px;
-  background-color: #FBFCFC; }
+  padding: 5px; }
+  .a-category button:hover {
+    background-color: #7848b5; }
 
 .a-category.active button {
   color: #383838;

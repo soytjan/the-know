@@ -2,7 +2,13 @@
 
 .Events {
   margin: 0 auto;
-  max-width: 1760px; 
+  max-width: 1760px;
+
+  button {
+    &:hover {
+      background-color: red;
+    }
+  } 
 }
 
 .events-cont {

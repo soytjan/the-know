@@ -48,7 +48,7 @@ export class NavCategories extends Component {
           <button>
             NIGHTLIFE
           </button>
-        </NavLink>
+        </NavLink>  
       </nav>
     );
   }

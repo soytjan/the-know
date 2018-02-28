@@ -12,7 +12,10 @@
     font-weight: 400;
     width: 160px;
     padding: 5px;
-    background-color: $white;
+
+    &:hover {
+      background-color: $btn-hover-color;
+    }
   }
 }
 

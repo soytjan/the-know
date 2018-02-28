@@ -13,9 +13,9 @@ a {
 
 button {
   border: 2px solid #4ECDC4;
-  color: #383838; }
+  color: #383838;
+  background-color: #BEECE9; }
   button:hover {
-    background-color: #7848b5;
     cursor: pointer;
     color: #FBFCFC; }
 
