@@ -10,13 +10,28 @@
   margin: -40px 0 0 -320px;
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.8em;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  h3, 
+  p {
+    color: $gray;
+  }
+
+  h3 {
+    font-size: 1.3em;
+  }
+
+  p {
+    padding-bottom: 30px;
   }
 
   button {
     font-size: 1.2em;
     padding: 5px 25px;
-    border: 2px solid $search-btn-border-color;
+    background-color: $search-welcome-btn-bg;
 
     &:hover {
       cursor: pointer;
@@ -33,12 +48,11 @@
 }
 
 .current-btn {
-  margin: 30px 0;
+  margin: 20px 0 30px;
 }
 
 .btn-wel-search {
   height: 42px;
-  background-color: $search-welcome-btn-bg;
 
   &:hover {
     cursor: pointer;

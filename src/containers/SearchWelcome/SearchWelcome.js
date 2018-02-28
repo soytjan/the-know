@@ -38,13 +38,15 @@ export class SearchWelcome extends Component {
   render() {
     return (
       <article className='SearchWel'>
-        <h2>Discover your city</h2>
+        <h2>What's going on in...</h2>
+        <h3>(Where ya at?)</h3>
         <button 
           className='current-btn'
           onClick={this.handleCurrentLocation}
         >
-          Use My Current Location
+          USE MY CURRENT LOCATION
         </button>
+        <p>- OR -</p>
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}

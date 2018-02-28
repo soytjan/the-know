@@ -8,11 +8,20 @@
   left: 50%;
   margin: -40px 0 0 -320px; }
   .SearchWel h2 {
-    font-size: 1.5em; }
+    font-size: 1.8em;
+    padding-bottom: 20px;
+    text-transform: uppercase; }
+  .SearchWel h3,
+  .SearchWel p {
+    color: #979797; }
+  .SearchWel h3 {
+    font-size: 1.3em; }
+  .SearchWel p {
+    padding-bottom: 30px; }
   .SearchWel button {
     font-size: 1.2em;
     padding: 5px 25px;
-    border: 2px solid #4ECDC4; }
+    background-color: #BEECE9; }
     .SearchWel button:hover {
       cursor: pointer;
       background-color: #F8BFCD; }
@@ -24,10 +33,9 @@
   padding: 5px; }
 
 .current-btn {
-  margin: 30px 0; }
+  margin: 20px 0 30px; }
 
 .btn-wel-search {
-  height: 42px;
-  background-color: #BEECE9; }
+  height: 42px; }
   .btn-wel-search:hover {
     cursor: pointer; }
