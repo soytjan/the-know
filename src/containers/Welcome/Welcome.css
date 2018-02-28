@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 .Welcome {
   height: 100%;
-  postion: relative; }
-
-.bg-img {
-  background-image: url("../../assets/city-bg.jpg");
+  postion: relative;
+  background-image: url("../../assets/concert.jpg");
   background-size: cover; }
-
-.half-page {
-  height: 50%;
-  background-color: #ECF0F1; }

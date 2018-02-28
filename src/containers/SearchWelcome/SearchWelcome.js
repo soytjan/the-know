@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchAndCleanGeocodeLocation } from '../../helper';
+import { fetchAndCleanGeocodeLocation, fetchAndCleanReverseGeocodeLocation } from '../../helper';
 import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 
@@ -23,28 +23,31 @@ export class SearchWelcome extends Component {
     event.preventDefault();
     const { location } = this.state;
     const { addLocation, onReroute } = this.props;
-    const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
+    const geocodeLocation = await fetchAndCleanGeocodeLocation(location);
     addLocation(geocodeLocation);
     onReroute();
   }
 
   handleCurrentLocation = async () => {
     const { currentLocation, addLocation, onReroute } = this.props;
+    const updatedLocation = await fetchAndCleanReverseGeocodeLocation(currentLocation.coordinates)
     
-    addLocation(currentLocation);
+    addLocation(updatedLocation);
     onReroute();  
   }
 
   render() {
     return (
       <article className='SearchWel'>
-        <h2>Discover your city</h2>
+        <h2>What's going on in...</h2>
+        <h3>(Where ya at?)</h3>
         <button 
           className='current-btn'
           onClick={this.handleCurrentLocation}
         >
-          Use My Current Location
+          USE MY CURRENT LOCATION
         </button>
+        <p>- OR -</p>
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}

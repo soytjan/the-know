@@ -2,6 +2,8 @@
 .Events {
   margin: 0 auto;
   max-width: 1760px; }
+  .Events button:hover {
+    background-color: #BEECE9; }
 
 .events-cont {
   display: grid;
@@ -12,13 +14,12 @@
 
 .time-btn {
   border: none;
-  color: #4ECDC4;
   font-size: 1.2em;
   font-weight: 400;
   background-color: #ECF0F1;
-  width: 160px; }
+  width: 160px;
+  color: #4ECDC4; }
   .time-btn:hover {
-    color: #383838;
     cursor: pointer; }
 
 .nav-time-container {

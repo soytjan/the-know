@@ -30,143 +30,78 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <form
-        onSubmit={[Function]}
+      "children": Array [
+        <h2>
+          Denver, CO, USA
+</h2>,
+        <NavLink
+          activeClassName="active"
+          ariaCurrent="true"
+          to="/"
 >
-        <input
-                className="input-search"
-                name="eventSearch"
-                onChange={[Function]}
-                placeholder="Find events in your area"
-                type="text"
-                value=""
-        />
-        <input
-                className="input-location"
-                name="location"
-                onChange={[Function]}
-                placeholder="Where?"
-                type="text"
-                value="Denver, CO, USA"
-        />
-        <button>
-                SEARCH
-        </button>
-</form>,
-      "className": "SearchMain",
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": Array [
-          <input
-            className="input-search"
-            name="eventSearch"
-            onChange={[Function]}
-            placeholder="Find events in your area"
-            type="text"
-            value=""
-/>,
-          <input
-            className="input-location"
-            name="location"
-            onChange={[Function]}
-            placeholder="Where?"
-            type="text"
-            value="Denver, CO, USA"
-/>,
-          <button>
-            SEARCH
-</button>,
-        ],
-        "onSubmit": [Function],
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "className": "input-search",
-            "name": "eventSearch",
-            "onChange": [Function],
-            "placeholder": "Find events in your area",
-            "type": "text",
-            "value": "",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "input",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "className": "input-location",
-            "name": "location",
-            "onChange": [Function],
-            "placeholder": "Where?",
-            "type": "text",
-            "value": "Denver, CO, USA",
-          },
-          "ref": null,
-          "rendered": null,
-          "type": "input",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "SEARCH",
-          },
-          "ref": null,
-          "rendered": "SEARCH",
-          "type": "button",
-        },
-      ],
-      "type": "form",
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <form
+          CHANGE MY LOCATION
+</NavLink>,
+        <h3>
+          Can't find what you were looking for?
+</h3>,
+        <form
+          className="search-main-form"
           onSubmit={[Function]}
 >
           <input
                     className="input-search"
                     name="eventSearch"
                     onChange={[Function]}
-                    placeholder="Find events in your area"
+                    placeholder="Search for more events"
                     type="text"
                     value=""
-          />
-          <input
-                    className="input-location"
-                    name="location"
-                    onChange={[Function]}
-                    placeholder="Where?"
-                    type="text"
-                    value="Denver, CO, USA"
           />
           <button>
                     SEARCH
           </button>
 </form>,
-        "className": "SearchMain",
+      ],
+      "className": "SearchMain",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Denver, CO, USA",
+        },
+        "ref": null,
+        "rendered": "Denver, CO, USA",
+        "type": "h2",
       },
-      "ref": null,
-      "rendered": Object {
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "activeClassName": "active",
+          "ariaCurrent": "true",
+          "children": "CHANGE MY LOCATION",
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": "CHANGE MY LOCATION",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Can't find what you were looking for?",
+        },
+        "ref": null,
+        "rendered": "Can't find what you were looking for?",
+        "type": "h3",
+      },
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -176,22 +111,15 @@ ShallowWrapper {
               className="input-search"
               name="eventSearch"
               onChange={[Function]}
-              placeholder="Find events in your area"
+              placeholder="Search for more events"
               type="text"
               value=""
-/>,
-            <input
-              className="input-location"
-              name="location"
-              onChange={[Function]}
-              placeholder="Where?"
-              type="text"
-              value="Denver, CO, USA"
 />,
             <button>
               SEARCH
 </button>,
           ],
+          "className": "search-main-form",
           "onSubmit": [Function],
         },
         "ref": null,
@@ -204,25 +132,9 @@ ShallowWrapper {
               "className": "input-search",
               "name": "eventSearch",
               "onChange": [Function],
-              "placeholder": "Find events in your area",
+              "placeholder": "Search for more events",
               "type": "text",
               "value": "",
-            },
-            "ref": null,
-            "rendered": null,
-            "type": "input",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "className": "input-location",
-              "name": "location",
-              "onChange": [Function],
-              "placeholder": "Where?",
-              "type": "text",
-              "value": "Denver, CO, USA",
             },
             "ref": null,
             "rendered": null,
@@ -242,6 +154,140 @@ ShallowWrapper {
         ],
         "type": "form",
       },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h2>
+            Denver, CO, USA
+</h2>,
+          <NavLink
+            activeClassName="active"
+            ariaCurrent="true"
+            to="/"
+>
+            CHANGE MY LOCATION
+</NavLink>,
+          <h3>
+            Can't find what you were looking for?
+</h3>,
+          <form
+            className="search-main-form"
+            onSubmit={[Function]}
+>
+            <input
+                        className="input-search"
+                        name="eventSearch"
+                        onChange={[Function]}
+                        placeholder="Search for more events"
+                        type="text"
+                        value=""
+            />
+            <button>
+                        SEARCH
+            </button>
+</form>,
+        ],
+        "className": "SearchMain",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Denver, CO, USA",
+          },
+          "ref": null,
+          "rendered": "Denver, CO, USA",
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "activeClassName": "active",
+            "ariaCurrent": "true",
+            "children": "CHANGE MY LOCATION",
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "CHANGE MY LOCATION",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Can't find what you were looking for?",
+          },
+          "ref": null,
+          "rendered": "Can't find what you were looking for?",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="input-search"
+                name="eventSearch"
+                onChange={[Function]}
+                placeholder="Search for more events"
+                type="text"
+                value=""
+/>,
+              <button>
+                SEARCH
+</button>,
+            ],
+            "className": "search-main-form",
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "input-search",
+                "name": "eventSearch",
+                "onChange": [Function],
+                "placeholder": "Search for more events",
+                "type": "text",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "SEARCH",
+              },
+              "ref": null,
+              "rendered": "SEARCH",
+              "type": "button",
+            },
+          ],
+          "type": "form",
+        },
+      ],
       "type": "div",
     },
   ],

@@ -31,14 +31,20 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <h2>
-          Discover your city
+          What's going on in...
 </h2>,
+        <h3>
+          (Where ya at?)
+</h3>,
         <button
           className="current-btn"
           onClick={[Function]}
 >
-          Use My Current Location
+          USE MY CURRENT LOCATION
 </button>,
+        <p>
+          - OR -
+</p>,
         <form
           onSubmit={[Function]}
 >
@@ -66,10 +72,10 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Discover your city",
+          "children": "What's going on in...",
         },
         "ref": null,
-        "rendered": "Discover your city",
+        "rendered": "What's going on in...",
         "type": "h2",
       },
       Object {
@@ -77,13 +83,35 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "Use My Current Location",
+          "children": "(Where ya at?)",
+        },
+        "ref": null,
+        "rendered": "(Where ya at?)",
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "USE MY CURRENT LOCATION",
           "className": "current-btn",
           "onClick": [Function],
         },
         "ref": null,
-        "rendered": "Use My Current Location",
+        "rendered": "USE MY CURRENT LOCATION",
         "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "- OR -",
+        },
+        "ref": null,
+        "rendered": "- OR -",
+        "type": "p",
       },
       Object {
         "instance": null,
@@ -151,14 +179,20 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <h2>
-            Discover your city
+            What's going on in...
 </h2>,
+          <h3>
+            (Where ya at?)
+</h3>,
           <button
             className="current-btn"
             onClick={[Function]}
 >
-            Use My Current Location
+            USE MY CURRENT LOCATION
 </button>,
+          <p>
+            - OR -
+</p>,
           <form
             onSubmit={[Function]}
 >
@@ -186,10 +220,10 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Discover your city",
+            "children": "What's going on in...",
           },
           "ref": null,
-          "rendered": "Discover your city",
+          "rendered": "What's going on in...",
           "type": "h2",
         },
         Object {
@@ -197,13 +231,35 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Use My Current Location",
+            "children": "(Where ya at?)",
+          },
+          "ref": null,
+          "rendered": "(Where ya at?)",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "USE MY CURRENT LOCATION",
             "className": "current-btn",
             "onClick": [Function],
           },
           "ref": null,
-          "rendered": "Use My Current Location",
+          "rendered": "USE MY CURRENT LOCATION",
           "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "- OR -",
+          },
+          "ref": null,
+          "rendered": "- OR -",
+          "type": "p",
         },
         Object {
           "instance": null,

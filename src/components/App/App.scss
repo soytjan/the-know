@@ -15,6 +15,17 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: 2px solid $search-btn-border-color;
+  color: $btn-font-color;
+  background-color: $btn-bg-color;
+
+  &:hover {
+    cursor: pointer;
+    color: $btn-hover-font-color;
+  }
+}
+
 .App {
   color: $default-font-color;
   font-family: $main-font;

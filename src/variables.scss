@@ -2,10 +2,11 @@
 
 // background colors
 $main-bg: #ECF0F1;
-$search-welcome-btn-bg: #BEECE9;
-$search-welcome-btn-hover-bg: #F8BFCD;
+$btn-bg-color: #BEECE9;
+$btn-hover-color: #7848b5;
+$card-btn-bg-color: #FBFCFC;
+
 $nav-category-active-bg: #BEECE9;
-$nav-category-hover-bg: #BEECE9;
 $favorited-card-bg: #F8BFCD;
 
 // drop shadow colors
@@ -20,13 +21,15 @@ $card-btn-border: #C6C6C6;
 
 // font colors
 $default-font-color: #383838;
+$btn-font-color: #383838;
 $headerlink-hover-color: #BEECE9;
 $nav-font-btn-color: #4ECDC4; 
 $nav-font-active-btn-color: #383838; 
-$search-btn-font: #979797; 
-$nav-time-font-color: #4ECDC4;
+$search-btn-font: #979797;
+$change-loc-link: #4ECDC4;  
 $nav-time-font-hover-color: #383838;
-$card-button-font-color: #EC5078;
+$card-button-font-color: #7848b5;
+$btn-hover-font-color: #FBFCFC;
 
 // colors
 $black: #383838;

@@ -2,7 +2,13 @@
 
 .Events {
   margin: 0 auto;
-  max-width: 1760px; 
+  max-width: 1760px;
+
+  button {
+    &:hover {
+      background-color: $light-turq;
+    }
+  } 
 }
 
 .events-cont {
@@ -15,14 +21,13 @@
 
 .time-btn {
   border: none;
-  color: $nav-time-font-color;
   font-size: 1.2em;
   font-weight: 400;
   background-color: $main-bg;
   width: 160px;
+  color: $turq;
 
   &:hover {
-    color: $nav-time-font-hover-color;
     cursor: pointer;
   }
 }

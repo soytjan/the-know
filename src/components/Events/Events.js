@@ -47,7 +47,6 @@ class Events extends Component {
     const events = this.filterEvents();
     const renderedEvents = events.map(event => <EventCard event={event} onFavorite={onFavorite} key={event.id}/>);
 
-
     return (
       <section className='Events'>
         <nav className='nav-time-container'> 
