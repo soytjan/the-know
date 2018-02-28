@@ -10,6 +10,10 @@ class Banner extends Component {
     return this.props.history.push('/home/search');
   };
 
+  handleChangeLocationRoute = () => {
+    return this.props.history.push('/');
+  };
+
   render() {
     return (
       <section className="Banner">

@@ -37,14 +37,18 @@ export class SearchMain extends Component {
   }
 
   render() {
+    const locationHeading = this.props.location.address || null;
+
     return (
-      <div className='SearchMain'>
-        <form onSubmit={this.handleSubmit}>
+      <div className='SearchMain'>  
+        <h2>{locationHeading}</h2>
+        <h3>Can't find what you were looking for?</h3>
+        <form className='search-main-form' onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
             name='eventSearch'
             value={this.state.eventSearch}
-            placeholder='Find events in your area'
+            placeholder='Search for more events'
             className='input-search' 
             type="text"
           />

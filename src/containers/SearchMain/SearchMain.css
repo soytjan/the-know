@@ -6,9 +6,22 @@
   border: 2px solid #ECF0F1; }
 
 .SearchMain button {
-  font-size: 1em;
-  padding: 5px;
-  width: 120px; }
+  font-size: 1.2em;
+  width: 160px;
+  padding: 5px; }
+  .SearchMain button:hover {
+    background-color: #7848b5; }
+
+.SearchMain h2 {
+  text-transform: uppercase;
+  color: #FBFCFC;
+  font-size: 1.8em;
+  padding-bottom: 20px; }
+
+.SearchMain h3 {
+  font-size: 1.2em;
+  color: #FBFCFC;
+  padding-bottom: 15px; }
 
 .SearchMain .input-search {
   width: 358px; }
@@ -16,3 +29,8 @@
 .SearchMain .input-location {
   width: 150px;
   text-transform: capitalize; }
+
+.search-main-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
