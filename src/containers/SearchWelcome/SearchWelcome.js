@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchAndCleanGeocodeLocation } from '../../helper';
+import { fetchAndCleanGeocodeLocation, fetchAndCleanReverseGeocodeLocation } from '../../helper';
 import { addEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 
@@ -23,15 +23,16 @@ export class SearchWelcome extends Component {
     event.preventDefault();
     const { location } = this.state;
     const { addLocation, onReroute } = this.props;
-    const geocodeLocation = await fetchAndCleanGeocodeLocation(location, 'event');
+    const geocodeLocation = await fetchAndCleanGeocodeLocation(location);
     addLocation(geocodeLocation);
     onReroute();
   }
 
   handleCurrentLocation = async () => {
     const { currentLocation, addLocation, onReroute } = this.props;
+    const updatedLocation = await fetchAndCleanReverseGeocodeLocation(currentLocation.coordinates)
     
-    addLocation(currentLocation);
+    addLocation(updatedLocation);
     onReroute();  
   }
 

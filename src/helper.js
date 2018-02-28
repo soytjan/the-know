@@ -46,10 +46,30 @@ export const cleanAddressCoords = (address) => {
   return cleanLocation;
 }
 
+export const getReverseGeocodeLocation = async (coords) => {
+  try {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${keys.googleMapsApiKey}`;
+    const response = await fetch(url)
+    if (response.status > 226) {
+      throw new Error('could not get address coordinates');
+    } else {
+      const responseJson = await response.json();
+      return responseJson;
+    }
+  } catch (error) {
+    throw (error);
+  }
+}
+
 export const fetchAndCleanGeocodeLocation = async (location) => {
   const jsonResponse = await getAddressCoords(location);
   return await cleanAddressCoords(jsonResponse);
 } 
+
+export const fetchAndCleanReverseGeocodeLocation = async (coords) => {
+  const jsonResponse = await getReverseGeocodeLocation(coords);
+  return await cleanAddressCoords(jsonResponse);
+}
 
 export const cleanEventDataToStore = (info, category) => {
   const events = info.events.event;

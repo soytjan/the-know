@@ -21,14 +21,12 @@
 
 .time-btn {
   border: none;
-  color: $nav-time-font-color;
   font-size: 1.2em;
   font-weight: 400;
   background-color: $main-bg;
   width: 160px;
 
   &:hover {
-    color: $nav-time-font-hover-color;
     cursor: pointer;
   }
 }
