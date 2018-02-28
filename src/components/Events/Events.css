@@ -3,7 +3,7 @@
   margin: 0 auto;
   max-width: 1760px; }
   .Events button:hover {
-    background-color: red; }
+    background-color: #BEECE9; }
 
 .events-cont {
   display: grid;

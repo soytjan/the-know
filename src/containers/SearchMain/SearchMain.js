@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { fetchAndCleanSearchData } from '../../helper';
 import { addEvents, removeSearch } from '../../actions/';
 import PropTypes from 'prop-types';
@@ -10,8 +11,7 @@ export class SearchMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventSearch: '',
-      location: this.props.location.address || ''
+      eventSearch: ''
     };
   }
 
@@ -42,6 +42,7 @@ export class SearchMain extends Component {
     return (
       <div className='SearchMain'>  
         <h2>{locationHeading}</h2>
+        <NavLink to='/'>CHANGE MY LOCATION</NavLink>
         <h3>Can't find what you were looking for?</h3>
         <form className='search-main-form' onSubmit={this.handleSubmit}>
           <input
@@ -50,14 +51,6 @@ export class SearchMain extends Component {
             value={this.state.eventSearch}
             placeholder='Search for more events'
             className='input-search' 
-            type="text"
-          />
-          <input 
-            onChange={this.handleChange}
-            name='location'
-            value={this.state.location}
-            placeholder='Where?' 
-            className='input-location'
             type="text"
           />
           <button>SEARCH</button>
