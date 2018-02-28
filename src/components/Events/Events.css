@@ -17,7 +17,8 @@
   font-size: 1.2em;
   font-weight: 400;
   background-color: #ECF0F1;
-  width: 160px; }
+  width: 160px;
+  color: #4ECDC4; }
   .time-btn:hover {
     cursor: pointer; }
 
