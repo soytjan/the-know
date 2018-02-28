@@ -6,7 +6,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -40px 0 0 -320px; }
+  margin: -140px 0 0 -320px; }
   .SearchWel h2 {
     font-size: 1.8em;
     padding-bottom: 20px;
@@ -24,7 +24,7 @@
     background-color: #BEECE9; }
     .SearchWel button:hover {
       cursor: pointer;
-      background-color: #F8BFCD; }
+      background-color: #7848b5; }
 
 .input-wel {
   font-size: 1.2em;
