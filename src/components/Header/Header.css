@@ -13,7 +13,7 @@
     color: #383838;
     font-size: 1.5em; }
     .Header a:hover {
-      background-color: #BEECE9; }
+      border-bottom: 3px solid #BEECE9; }
 
 .header-link-cont {
   display: flex; }
