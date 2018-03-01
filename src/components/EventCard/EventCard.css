@@ -44,8 +44,8 @@
   background-color: #F8BFCD; }
 
 .img-event {
-  height: 200px;
-  width: 200px; }
+  height: 280px;
+  width: 280px; }
 
 .img-box {
   background-color: #BEECE9;
@@ -66,17 +66,43 @@
 .event {
   background: center/contain no-repeat url("../../assets/event.jpg"); }
 
-.food {
-  background: center/contain no-repeat url("../../assets/food.jpg"); }
+.food1 {
+  background: center/contain no-repeat url("../../assets/food1.jpg"); }
 
-.music {
-  background: center/contain no-repeat url("../../assets/music.jpg"); }
+.food2 {
+  background: center/contain no-repeat url("../../assets/food2.jpg"); }
 
-.culture {
-  background: center/contain no-repeat url("../../assets/culture.jpg"); }
+.food3 {
+  background: center/contain no-repeat url("../../assets/food3.jpg"); }
 
-.nightlife {
-  background: center/contain no-repeat url("../../assets/nightlife.jpg"); }
+.music1 {
+  background: center/contain no-repeat url("../../assets/music1.jpg"); }
 
-.search {
+.music2 {
+  background: center/contain no-repeat url("../../assets/music2.jpg"); }
+
+.music3 {
+  background: center/contain no-repeat url("../../assets/music3.jpg"); }
+
+.culture1 {
+  background: center/contain no-repeat url("../../assets/culture1.jpg"); }
+
+.culture2 {
+  background: center/contain no-repeat url("../../assets/culture2.jpg"); }
+
+.culture3 {
+  background: center/contain no-repeat url("../../assets/culture3.jpg"); }
+
+.nightlife1 {
+  background: center/contain no-repeat url("../../assets/nightlife1.jpg"); }
+
+.nightlife2 {
+  background: center/contain no-repeat url("../../assets/nightlife2.jpg"); }
+
+.nightlife3 {
+  background: center/contain no-repeat url("../../assets/nightlife3.jpg"); }
+
+.search1,
+.search2,
+.search3 {
   background: center/contain no-repeat url("../../assets/event.jpg"); }
