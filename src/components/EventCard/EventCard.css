@@ -116,7 +116,5 @@
 .nightlife3 {
   background: center/contain no-repeat url("../../assets/nightlife3.jpg"); }
 
-.search1,
-.search2,
-.search3 {
+.search {
   background: center/contain no-repeat url("../../assets/event.jpg"); }
