@@ -21,6 +21,8 @@
     .EventCard a:hover {
       background-color: #BEECE9;
       color: white; }
+  .EventCard p {
+    color: #979797; }
 
 .btn-cont {
   padding: 5px;
