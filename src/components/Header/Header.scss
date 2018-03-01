@@ -18,7 +18,8 @@
     font-size: 1.5em;
 
     &:hover {
-      background-color: $headerlink-hover-color;
+      border-bottom: 3px solid $headerlink-hover-color;
+
     }
   }
 }
