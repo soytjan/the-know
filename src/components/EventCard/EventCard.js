@@ -6,13 +6,13 @@ import './EventCard.css';
 const EventCard = (props) => {
   const { event, onFavorite } = props;
   const favorited = event.isFavorited ? 'favorited' : '';
-  const randNum = Math.floor(Math.random() * 3 + 1);
-  const imgClass = `${event.category}${randNum}`;
+  // const randNum = Math.floor(Math.random() * 3 + 1);
+  // const imgClass = `${event.category}${randNum}`;
 
   return (
     <article className={`EventCard ${favorited}`}>
       <div className={`img-box`}>
-        <div className={`img-event ${imgClass}`}></div>
+        <div className={`img-event ${event.category}`}></div>
       </div>
       <div className='event-info'>
         <div className='event-info-text'>
