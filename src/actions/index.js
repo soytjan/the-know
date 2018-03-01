@@ -14,6 +14,10 @@ export const addEvents = (events, category) => ({
   category
 })
 
+export const clearEvents = () => ({
+  type: 'CLEAR_EVENTS'
+})
+
 export const updateEvents = event => ({
   type: 'UPDATE_EVENTS',
   event

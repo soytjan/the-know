@@ -15,9 +15,16 @@ class Events extends Component {
   convertEvents = () => {
     const { info, type } = this.props;
 
+    if (!info) {
+      return [];
+    }
+
     if (type === 'event') {
       const categories = Object.keys(info);
       return categories.reduce((eventsArr, category) => {
+        if (!info[category]) {
+          return [...eventsArr];
+        }
         const categoryEvents = convertObjToArray(info[category]);
 
         return [...eventsArr, ...categoryEvents];
