@@ -28,6 +28,10 @@
       color: white;
     }
   }
+
+  p {
+    color: $card-subheader-font-color;
+  }
 }
 
 .btn-cont {
@@ -59,8 +63,8 @@
 }
 
 .img-event {
-  height: 200px;
-  width: 200px;
+  height: 280px;
+  width: 280px;
 }
 
 .img-box {
@@ -86,19 +90,67 @@
 }
 
 .food {
-  background: center / contain no-repeat url('../../assets/food.jpg');
+  background: center / contain no-repeat url('../../assets/food2.jpg');
+}
+
+.food1 {
+  background: center / contain no-repeat url('../../assets/food1.jpg');
+}
+
+.food2 {
+  background: center / contain no-repeat url('../../assets/food2.jpg');
+}
+
+.food3 {
+  background: center / contain no-repeat url('../../assets/food3.jpg');
 }
 
 .music {
-  background: center / contain no-repeat url('../../assets/music.jpg');
+  background: center / contain no-repeat url('../../assets/music1.jpg');
+}
+
+.music1 {
+  background: center / contain no-repeat url('../../assets/music1.jpg');
+}
+
+.music2 {
+  background: center / contain no-repeat url('../../assets/music2.jpg');
+}
+
+.music3 {
+  background: center / contain no-repeat url('../../assets/music3.jpg');
 }
 
 .culture {
-  background: center / contain no-repeat url('../../assets/culture.jpg');
+  background: center / contain no-repeat url('../../assets/culture1.jpg');
+}
+
+.culture1 {
+  background: center / contain no-repeat url('../../assets/culture1.jpg');
+}
+
+.culture2 {
+  background: center / contain no-repeat url('../../assets/culture2.jpg');
+}
+
+.culture3 {
+  background: center / contain no-repeat url('../../assets/culture3.jpg');
 }
 
 .nightlife {
-  background: center / contain no-repeat url('../../assets/nightlife.jpg');
+  background: center / contain no-repeat url('../../assets/nightlife1.jpg');
+}
+
+.nightlife1 {
+  background: center / contain no-repeat url('../../assets/nightlife1.jpg');
+}
+
+.nightlife2 {
+  background: center / contain no-repeat url('../../assets/nightlife2.jpg');
+}
+
+.nightlife3 {
+  background: center / contain no-repeat url('../../assets/nightlife3.jpg');
 }
 
 .search {

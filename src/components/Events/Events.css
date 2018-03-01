@@ -28,3 +28,21 @@
   justify-content: space-between;
   margin: auto;
   padding: 0 0 25px; }
+
+@media screen and (max-width: 1530px) {
+  .Events {
+    max-width: 1190px; }
+  .events-cont {
+    grid-template-columns: repeat(4, 1fr); } }
+
+@media screen and (max-width: 1225px) {
+  .Events {
+    max-width: 900px; }
+  .events-cont {
+    grid-template-columns: repeat(3, 1fr); } }
+
+@media screen and (max-width: 915px) {
+  .Events {
+    max-width: 670px; }
+  .events-cont {
+    grid-template-columns: repeat(2, 1fr); } }

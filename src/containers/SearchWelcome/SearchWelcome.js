@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchAndCleanGeocodeLocation, fetchAndCleanReverseGeocodeLocation } from '../../helper';
-import { addEvents, addLocation } from '../../actions/';
+import { addEvents, clearEvents, addLocation } from '../../actions/';
 import './SearchWelcome.css';
 
 export class SearchWelcome extends Component {
@@ -22,15 +22,17 @@ export class SearchWelcome extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { location } = this.state;
-    const { addLocation, onReroute } = this.props;
+    const { addLocation, clearEvents, onReroute } = this.props;
+    clearEvents();
     const geocodeLocation = await fetchAndCleanGeocodeLocation(location);
     addLocation(geocodeLocation);
     onReroute();
   }
 
   handleCurrentLocation = async () => {
-    const { currentLocation, addLocation, onReroute } = this.props;
+    const { currentLocation, addLocation, onReroute, clearEvents } = this.props;
     const updatedLocation = await fetchAndCleanReverseGeocodeLocation(currentLocation.coordinates)
+    clearEvents();
     
     addLocation(updatedLocation);
     onReroute();  
@@ -77,6 +79,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addEvents: events => dispatch(addEvents(events)),
+  clearEvents: () => dispatch(clearEvents()),
   addLocation: location => dispatch(addLocation(location))
 });
 

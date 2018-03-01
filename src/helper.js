@@ -72,6 +72,9 @@ export const fetchAndCleanReverseGeocodeLocation = async (coords) => {
 }
 
 export const cleanEventDataToStore = (info, category) => {
+  if (!info.events) {
+    return null;
+  }
   const events = info.events.event;
 
   return events.reduce((eventsObj, event) => {
@@ -105,6 +108,9 @@ export const fetchAndCleanCategoryEventData = async (category, location) => {
 // minimize some of the repetition
 // handleError and pass in error as an argument
 export const genApiUrl = (type, location) => {
+  if (!location.coordinates) {
+    return null;
+  }
   const coords = location.coordinates;
 
   let category; 
@@ -131,6 +137,12 @@ export const genApiUrl = (type, location) => {
 export const getCategoryData = async (category, location) => {
   try {
     const url = genApiUrl(category, location);
+
+    // need to think of a better way to handle this -- some sort of error msg, etc.
+    if (!url) {
+      return {};
+    }
+
     const response = await fetch(url, {mode: 'cors'});
 
     if (response.status > 226) {

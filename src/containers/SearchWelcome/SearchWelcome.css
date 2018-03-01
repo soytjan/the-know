@@ -11,11 +11,11 @@
     font-size: 1.8em;
     padding-bottom: 20px;
     text-transform: uppercase; }
+  .SearchWel h3 {
+    font-size: 1.3em; }
   .SearchWel h3,
   .SearchWel p {
     color: #979797; }
-  .SearchWel h3 {
-    font-size: 1.3em; }
   .SearchWel p {
     padding-bottom: 30px; }
   .SearchWel button {
@@ -37,3 +37,16 @@
   height: 42px; }
   .btn-wel-search:hover {
     cursor: pointer; }
+
+@media screen and (max-width: 665px) {
+  .SearchWel {
+    padding: 30px 50px;
+    width: 90%; }
+    .SearchWel h2 {
+      font-size: 1.5em; }
+    .SearchWel h3 {
+      font-size: 1.1em; }
+    .SearchWel button {
+      font-size: 1em; }
+  .input-wel {
+    font-size: 1em; } }

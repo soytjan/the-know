@@ -34,7 +34,7 @@ ShallowWrapper {
           className="img-box"
 >
           <div
-                    className="img-event music"
+                    className="img-event music2"
           />
 </div>,
         <div
@@ -79,7 +79,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <div
-            className="img-event music"
+            className="img-event music2"
 />,
           "className": "img-box",
         },
@@ -89,7 +89,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "img-event music",
+            "className": "img-event music2",
           },
           "ref": null,
           "rendered": null,
@@ -270,7 +270,7 @@ ShallowWrapper {
             className="img-box"
 >
             <div
-                        className="img-event music"
+                        className="img-event music2"
             />
 </div>,
           <div
@@ -315,7 +315,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <div
-              className="img-event music"
+              className="img-event music2"
 />,
             "className": "img-box",
           },
@@ -325,7 +325,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "className": "img-event music",
+              "className": "img-event music2",
             },
             "ref": null,
             "rendered": null,
@@ -541,7 +541,7 @@ ShallowWrapper {
           className="img-box"
 >
           <div
-                    className="img-event music"
+                    className="img-event music3"
           />
 </div>,
         <div
@@ -586,7 +586,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <div
-            className="img-event music"
+            className="img-event music3"
 />,
           "className": "img-box",
         },
@@ -596,7 +596,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "className": "img-event music",
+            "className": "img-event music3",
           },
           "ref": null,
           "rendered": null,
@@ -777,7 +777,7 @@ ShallowWrapper {
             className="img-box"
 >
             <div
-                        className="img-event music"
+                        className="img-event music3"
             />
 </div>,
           <div
@@ -822,7 +822,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <div
-              className="img-event music"
+              className="img-event music3"
 />,
             "className": "img-box",
           },
@@ -832,7 +832,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "className": "img-event music",
+              "className": "img-event music3",
             },
             "ref": null,
             "rendered": null,
