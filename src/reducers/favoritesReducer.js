@@ -3,8 +3,9 @@ export const favoritesReducer = (state = {}, action) => {
     case 'ADD_FAVORITE':
       return {...state, [action.event.id]: action.event};
     case 'REMOVE_FAVORITE':
-      delete state[action.event.id];
-      return state;
+      return Object.entries(state)
+        .filter(([id, fav]) => id !== action.event.id)
+        .reduce((acc, [id, fav]) => ({...acc, [id]: fav}), {})     
     default:
       return state;
   }
