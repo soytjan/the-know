@@ -23,6 +23,7 @@ This application pulls in the Google Maps Geolocation and Geocoding APIs, and al
 To get this application running locally, you will need to get keys from both of these API's.
 
 [Google Maps API Documentation](https://developers.google.com/maps/documentation/)
+
 [Eventful API](http://api.eventful.com/)
 
 You will then need to save those keys in a file `src/api/keys.js` in the following format: 
@@ -43,6 +44,11 @@ To run the testing suites, `cd the-know` and run `npm test`
 ## Contributors
 
 Amanda Tjan is the software developer for this project.
+
+## Project Layout 
+
+![The Know Welcome Page]()
+![The Know Music Landing Page]()
 
 ## Wireframes
 Welcome Page
