@@ -5,10 +5,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 350px;
+  min-height: 350px;
   background-image: url('../../assets/banner-lights-2.jpg');
   background-color: $black;
   background-position: 0 -150px;
   padding: 45px 0;
 }
 
+@media screen and (max-width: 540px) {
+  .Banner {
+    min-height: 400px;
+  }
+}
+ 
+@media screen and (max-width: 510px) {
+  .Banner {
+    min-height: 500px;
+    padding: 30px 0 20px;
+  }
+}
+
+@media screen and (max-width: 433px) {
+  .Banner {
+    padding: 20px 10px 20px;
+  }
+}

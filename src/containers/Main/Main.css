@@ -28,3 +28,7 @@
 @media screen and (max-width: 588px) {
   .Main h3 {
     padding-bottom: 20px; } }
+
+@media screen and (max-width: 588px) {
+  .Main {
+    padding: 0 10px 10px; } }
