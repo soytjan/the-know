@@ -32,3 +32,11 @@
   margin: auto;
   margin-top: 50px;
 }
+
+@media screen and (max-width: 588px) {
+  .Main {
+    h3 {
+      padding-bottom: 20px;
+    }
+  }
+}

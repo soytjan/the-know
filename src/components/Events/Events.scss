@@ -76,3 +76,10 @@
   }
 }
 
+@media screen and (max-width: 588px) {
+  .nav-time-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
