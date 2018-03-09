@@ -2,11 +2,7 @@
 .SearchWel {
   background-color: #FBFCFC;
   border: 2px solid #979797;
-  padding: 50px 70px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -140px 0 0 -320px; }
+  padding: 50px 70px; }
   .SearchWel h2 {
     font-size: 1.8em;
     padding-bottom: 20px;
@@ -38,7 +34,7 @@
   .btn-wel-search:hover {
     cursor: pointer; }
 
-@media screen and (max-width: 665px) {
+@media screen and (max-width: 653px) {
   .SearchWel {
     padding: 30px 50px;
     width: 90%; }
@@ -48,5 +44,29 @@
       font-size: 1.1em; }
     .SearchWel button {
       font-size: 1em; }
+    .SearchWel form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
   .input-wel {
-    font-size: 1em; } }
+    font-size: 1em; }
+  .btn-wel-search {
+    height: inherit;
+    margin-top: 15px; } }
+
+@media screen and (max-width: 440px) {
+  .SearchWel {
+    margin-top: 50px;
+    padding: 30px 25px;
+    width: 95%; }
+  .input-wel {
+    width: 100%; } }
+
+@media screen and (max-width: 365px) {
+  .SearchWel {
+    padding: 20px; } }
+
+@media screen and (max-width: 329px) {
+  .SearchWel {
+    margin-top: 25px;
+    padding: 15px; } }

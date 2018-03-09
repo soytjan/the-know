@@ -4,10 +4,6 @@
   background-color: $white;
   border: 2px solid $gray;
   padding: 50px 70px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -140px 0 0 -320px;
 
   h2 {
     font-size: 1.8em;
@@ -57,9 +53,8 @@
   }
 }
 
-@media screen and (max-width: 665px) {
+@media screen and (max-width: 653px) {
   .SearchWel {
-    // position: relative;
     padding: 30px 50px;
     width: 90%;
 
@@ -74,9 +69,46 @@
     button {
       font-size: 1em;
     }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .input-wel {
     font-size: 1em;
+  }
+
+  .btn-wel-search {
+    height: inherit;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .SearchWel {
+    margin-top: 50px;
+    padding: 30px 25px;
+    width: 95%
+
+  }
+
+  .input-wel {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .SearchWel {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 329px) {
+  .SearchWel {
+    margin-top: 25px;
+    padding: 15px;
   }
 }

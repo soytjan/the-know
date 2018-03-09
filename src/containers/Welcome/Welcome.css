@@ -1,6 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poiret+One");
 .Welcome {
   height: 100%;
-  postion: relative;
   background-image: url("../../assets/concert-dark.jpg");
-  background-size: cover; }
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+@media screen and (max-width: 440px) {
+  .Welcome {
+    align-items: flex-start; } }
