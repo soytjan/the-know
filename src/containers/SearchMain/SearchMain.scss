@@ -62,10 +62,35 @@
   }
 }
 
+@media screen and (max-width: 540px) {
+  .SearchMain {
+    padding-bottom: 25px;
 
+    button {
+      margin-top: 10px;
+      width: 100%;
+    }
 
-// .search-main-form {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
+    .input-search {
+      width: 100%;
+    }
+  }
+
+  .search-main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 433px) {
+  .SearchMain {
+    button {
+      width: 90%;
+    }
+
+    .input-search {
+      width: 90%;
+    }
+  }
+}

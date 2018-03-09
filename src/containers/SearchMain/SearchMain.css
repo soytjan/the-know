@@ -45,3 +45,22 @@
 .SearchMain .input-location {
   width: 150px;
   text-transform: capitalize; }
+
+@media screen and (max-width: 540px) {
+  .SearchMain {
+    padding-bottom: 25px; }
+    .SearchMain button {
+      margin-top: 10px;
+      width: 100%; }
+    .SearchMain .input-search {
+      width: 100%; }
+  .search-main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; } }
+
+@media screen and (max-width: 433px) {
+  .SearchMain button {
+    width: 90%; }
+  .SearchMain .input-search {
+    width: 90%; } }
